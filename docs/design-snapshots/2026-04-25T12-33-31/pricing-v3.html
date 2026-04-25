@@ -1,0 +1,725 @@
+<!doctype html>
+<html lang="ru" data-palette="warm">
+<head>
+<meta charset="utf-8">
+<title>natalia.com — Тарифы</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@1,400;1,500;1,600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+  /* ─── Palettes ─── */
+  :root {
+    --hero-size: 88px;
+    --price-size: 88px;
+    --section-rhythm: 120px;
+    --card-radius: 0px;
+  }
+  [data-palette="warm"] {
+    --bg: #F7F4EE; --bg-card: #FBF9F4; --surface: #EFEAE0;
+    --ink: #1F1B16; --ink-2: #4A4339; --ink-3: #8A8175;
+    --hairline: rgba(31,27,22,.10); --hairline-2: rgba(31,27,22,.06);
+    --accent: #D9542B; --accent-ink: #FFFFFF;
+    --accent-soft: rgba(217,84,43,.08); --halo: rgba(217,84,43,.22);
+  }
+  [data-palette="navy"] {
+    --bg: #F4EFE4; --bg-card: #FBF7EC; --surface: #ECE4D2;
+    --ink: #0E1B33; --ink-2: #2A3A57; --ink-3: #6B7891;
+    --hairline: rgba(14,27,51,.14); --hairline-2: rgba(14,27,51,.07);
+    --accent: #B8893A; --accent-ink: #0E1B33;
+    --accent-soft: rgba(184,137,58,.10); --halo: rgba(184,137,58,.28);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-feature-settings: "ss01","cv11";
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    transition: background .35s ease, color .35s ease;
+  }
+  .it { font-family: 'Playfair Display', serif; font-style: italic; font-weight: 500; letter-spacing: -.005em; }
+  .mono { font-family: 'JetBrains Mono', ui-monospace, monospace; font-weight: 500; letter-spacing: .02em; }
+  ::selection { background: var(--accent); color: var(--accent-ink); }
+
+  /* ─── Container ─── */
+  .wrap { max-width: 1280px; margin: 0 auto; padding: 0 56px; }
+
+  /* ─── Sticky nav ─── */
+  .nav {
+    position: sticky; top: 0; z-index: 100;
+    background: color-mix(in srgb, var(--bg) 88%, transparent);
+    -webkit-backdrop-filter: saturate(160%) blur(14px);
+    backdrop-filter: saturate(160%) blur(14px);
+    border-bottom: 1px solid var(--hairline);
+  }
+  .nav-row {
+    display: flex; align-items: center; gap: 32px;
+    height: 64px;
+  }
+  .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; color: inherit; }
+  .logo-mark { width: 28px; height: 28px; background: var(--ink); display: grid; place-items: center; color: var(--bg); font-weight: 700; font-size: 14px; letter-spacing: -.02em; }
+  .logo-name { font-weight: 600; font-size: 15px; letter-spacing: -.01em; }
+  .logo-name .dot { color: var(--accent); }
+  .nav-links { display: flex; gap: 28px; margin-left: 32px; }
+  .nav-links a { color: var(--ink-2); text-decoration: none; font-size: 14px; font-weight: 500; transition: color .15s; }
+  .nav-links a:hover { color: var(--ink); }
+  .nav-spacer { flex: 1; }
+  .nav-cta { font-size: 13px; font-weight: 500; padding: 10px 16px; background: var(--ink); color: var(--bg); text-decoration: none; display: inline-flex; align-items: center; gap: 8px; transition: background .2s, color .2s; border: 0; cursor: pointer; }
+  .nav-cta:hover { background: var(--accent); color: var(--accent-ink); }
+
+  /* ─── Buttons ─── */
+  .btn {
+    font: inherit; font-size: 15px; font-weight: 500;
+    padding: 16px 22px; border: 1px solid transparent; cursor: pointer;
+    display: inline-flex; align-items: center; gap: 10px;
+    border-radius: var(--card-radius);
+    transition: background .2s ease, color .2s ease, border-color .2s ease;
+    text-decoration: none;
+  }
+  .btn .arr { display: inline-block; transition: transform .2s ease; }
+  .btn:hover .arr { transform: translateX(3px); }
+  .btn-primary { background: var(--ink); color: var(--bg); }
+  .btn-primary:hover { background: var(--accent); color: var(--accent-ink); }
+  .btn-accent { background: var(--accent); color: var(--accent-ink); }
+  .btn-accent:hover { filter: brightness(.92); }
+  .btn-ghost { background: transparent; color: var(--ink); border-color: var(--hairline); }
+  .btn-ghost:hover { border-color: var(--ink); }
+  .btn-block { width: 100%; justify-content: center; }
+
+  /* ─── HERO ─── */
+  .hero { padding: 88px 0 56px; }
+  .kicker { font-family: 'JetBrains Mono', monospace; font-weight: 500; font-size: 11.5px; letter-spacing: .16em; text-transform: uppercase; color: var(--ink-3); display: inline-flex; align-items: center; gap: 12px; margin-bottom: 32px; }
+  .kicker .dot { width: 6px; height: 6px; background: var(--accent); border-radius: 50%; }
+  .kicker .div { width: 28px; height: 1px; background: var(--hairline); }
+
+  .hero-grid { display: grid; grid-template-columns: 1.55fr 1fr; gap: 64px; align-items: end; }
+  h1.head {
+    font-size: var(--hero-size);
+    line-height: .98;
+    letter-spacing: -.035em;
+    font-weight: 600;
+    margin: 0 0 32px;
+    max-width: 14ch;
+    text-wrap: balance;
+  }
+  h1.head .it { font-size: 1em; line-height: 1; }
+  .sub { font-size: 19px; line-height: 1.5; color: var(--ink-2); max-width: 48ch; margin: 0 0 36px; text-wrap: pretty; }
+  .hero-ctas { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; }
+
+  /* photo column */
+  .photo-col { position: relative; }
+  body[data-show-photo="0"] .photo-col { display: none; }
+  body[data-show-photo="0"] .hero-grid { grid-template-columns: 1fr; }
+  .photo-wrap { position: relative; aspect-ratio: 4 / 5; background: var(--surface); overflow: hidden; }
+  .photo-wrap img { width: 100%; height: 100%; object-fit: cover; object-position: center 18%; display: block; filter: saturate(1.02); }
+  .photo-meta { position: absolute; left: 16px; bottom: 16px; right: 16px; display: flex; justify-content: space-between; color: #fff; font-family: 'JetBrains Mono', monospace; font-size: 10.5px; letter-spacing: .14em; text-transform: uppercase; mix-blend-mode: difference; }
+  .photo-tag { position: absolute; top: 16px; left: 16px; background: var(--bg); padding: 8px 12px; font-family: 'JetBrains Mono', monospace; font-size: 10.5px; letter-spacing: .14em; text-transform: uppercase; color: var(--ink); }
+
+  /* ─── Risk-reversal strip ─── */
+  .risk { padding: 28px 0; border-top: 1px solid var(--hairline); border-bottom: 1px solid var(--hairline); display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; }
+  .risk-item { display: flex; align-items: center; gap: 16px; padding: 0 32px; border-right: 1px solid var(--hairline); }
+  .risk-item:first-child { padding-left: 0; }
+  .risk-item:last-child { padding-right: 0; border-right: 0; }
+  .risk-num { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: .14em; color: var(--accent); font-weight: 500; }
+  .risk-text { font-size: 16px; font-weight: 500; line-height: 1.3; color: var(--ink); }
+  .risk-text small { display: block; font-size: 12px; color: var(--ink-3); font-weight: 400; margin-top: 2px; }
+
+  /* ─── Sections ─── */
+  section { padding: var(--section-rhythm) 0; }
+  .section-head { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 56px; gap: 32px; }
+  .section-head .eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-3); }
+  .section-head h2 { font-size: 56px; line-height: 1.02; letter-spacing: -.025em; font-weight: 600; margin: 12px 0 0; max-width: 16ch; text-wrap: balance; }
+  .section-head h2 .it { font-size: 1em; }
+  .section-head .right { color: var(--ink-2); font-size: 16px; line-height: 1.5; max-width: 36ch; }
+
+  /* ─── PRICING CARDS ─── */
+  #pricing { padding-top: 32px; }
+  .cards { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--ink); border-bottom: 1px solid var(--ink); }
+  .pcard {
+    padding: 40px 32px 36px;
+    background: var(--bg-card);
+    border-right: 1px solid var(--hairline);
+    display: flex; flex-direction: column;
+    border-radius: var(--card-radius);
+    position: relative;
+  }
+  .pcard:last-child { border-right: 0; }
+  .pcard.featured {
+    background: var(--bg);
+    box-shadow: inset 0 0 0 2px var(--ink);
+    z-index: 1;
+  }
+  [data-palette="warm"] .pcard.featured { background: var(--bg-card); box-shadow: inset 0 0 0 2px var(--ink), 0 0 0 1px var(--halo), 0 24px 60px -24px var(--halo); }
+  [data-palette="navy"] .pcard.featured { box-shadow: inset 0 0 0 2px var(--ink), 0 24px 60px -28px var(--halo); }
+
+  .roman { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: .16em; color: var(--ink-3); margin-bottom: 8px; }
+  .pcard.featured .roman { color: var(--accent); }
+  .pname { font-size: 26px; font-weight: 600; letter-spacing: -.015em; margin: 0 0 6px; }
+  .pname .it { font-size: 1em; }
+  .pwho { font-size: 14px; line-height: 1.5; color: var(--ink-2); margin: 0 0 36px; min-height: 42px; }
+
+  .price-row { display: flex; align-items: baseline; gap: 8px; margin-bottom: 6px; }
+  .price-v { font-size: var(--price-size); font-weight: 600; line-height: .92; letter-spacing: -.04em; font-variant-numeric: tabular-nums; }
+  .price-u { font-size: 14px; color: var(--ink-3); font-family: 'JetBrains Mono', monospace; }
+  .billing { font-size: 13px; color: var(--ink-3); margin-bottom: 32px; min-height: 18px; }
+  .billing b { color: var(--ink-2); font-weight: 600; }
+
+  .feat-list { list-style: none; padding: 0; margin: 0 0 36px; }
+  .feat-list li { padding: 14px 0; font-size: 14.5px; line-height: 1.45; color: var(--ink); border-top: 1px solid var(--hairline-2); display: flex; gap: 14px; align-items: flex-start; }
+  .feat-list li:first-child { border-top: 1px solid var(--hairline); }
+  .feat-list li .n { font-family: 'JetBrains Mono', monospace; font-size: 10.5px; color: var(--ink-3); padding-top: 4px; min-width: 22px; letter-spacing: .04em; }
+  .feat-list li .t { flex: 1; }
+  .feat-list li .t small { display: block; color: var(--ink-3); font-size: 12.5px; margin-top: 2px; line-height: 1.4; }
+
+  .pcard .cta-wrap { margin-top: auto; }
+  .pcard .fineprint { font-size: 12px; color: var(--ink-3); margin-top: 12px; line-height: 1.45; }
+
+  /* ─── Testimonials ─── */
+  .twall { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--hairline); border-bottom: 1px solid var(--hairline); }
+  .tcell { padding: 32px 28px; border-right: 1px solid var(--hairline); border-bottom: 1px solid var(--hairline); display: flex; flex-direction: column; gap: 20px; }
+  .tcell:nth-child(3n) { border-right: 0; }
+  .tcell:nth-last-child(-n+3) { border-bottom: 0; }
+  .quote { font-size: 17px; line-height: 1.5; color: var(--ink); margin: 0; flex: 1; text-wrap: pretty; }
+  .quote::before { content: "“"; font-family: 'Playfair Display', serif; font-size: 36px; line-height: 0; color: var(--accent); margin-right: 4px; vertical-align: -8px; font-style: italic; }
+  .who { display: flex; align-items: center; gap: 12px; }
+  .avatar { width: 36px; height: 36px; border-radius: 50%; background: var(--surface); display: grid; place-items: center; font-weight: 600; font-size: 13px; color: var(--ink-2); flex-shrink: 0; }
+  .who-text { font-size: 13px; line-height: 1.3; }
+  .who-text b { display: block; font-weight: 600; color: var(--ink); }
+  .who-text small { color: var(--ink-3); font-size: 12px; }
+
+  /* ─── How "Со мной" works — phase cards ─── */
+  .phases { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border-top: 1px solid var(--ink); }
+  .phase { padding: 40px 28px 36px; border-right: 1px solid var(--hairline); background: var(--bg-card); border-radius: var(--card-radius); display: flex; flex-direction: column; gap: 20px; min-height: 320px; }
+  .phase:last-child { border-right: 0; }
+  .phase-num { display: flex; justify-content: space-between; align-items: baseline; }
+  .phase-week { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: .14em; color: var(--ink-3); text-transform: uppercase; }
+  .phase-big { font-size: 56px; font-weight: 600; line-height: 1; letter-spacing: -.03em; color: var(--ink-3); font-variant-numeric: tabular-nums; }
+  .phase h3 { margin: 0; font-size: 22px; font-weight: 600; letter-spacing: -.015em; }
+  .phase p { margin: 0; font-size: 14px; line-height: 1.5; color: var(--ink-2); }
+  .phase .deliv { margin-top: auto; padding-top: 16px; border-top: 1px solid var(--hairline-2); font-family: 'JetBrains Mono', monospace; font-size: 10.5px; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-3); }
+
+  /* ─── Comparison matrix ─── */
+  .matrix { border-top: 1px solid var(--ink); }
+  .matrix-row { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr; border-bottom: 1px solid var(--hairline); }
+  .matrix-row.head { border-bottom: 1px solid var(--ink); background: var(--bg-card); }
+  .matrix-row.head > div { padding: 20px 24px; font-size: 13px; font-weight: 600; }
+  .matrix-row.head .col-name { font-size: 11px; font-family: 'JetBrains Mono', monospace; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-3); }
+  .matrix-row.head .col-name .roman { display: block; color: var(--ink-3); margin-bottom: 6px; }
+  .matrix-row.head .col-name .nm { font-family: 'Inter', sans-serif; font-size: 16px; letter-spacing: -.01em; text-transform: none; color: var(--ink); }
+  .matrix-row > div { padding: 18px 24px; font-size: 14.5px; line-height: 1.4; border-right: 1px solid var(--hairline-2); }
+  .matrix-row > div:last-child { border-right: 0; }
+  .matrix-row .feat { color: var(--ink); font-weight: 500; }
+  .matrix-row .feat small { display: block; color: var(--ink-3); font-size: 12.5px; font-weight: 400; margin-top: 2px; line-height: 1.4; }
+  .matrix-row .val { color: var(--ink-2); font-variant-numeric: tabular-nums; }
+  .matrix-row .val.dash { color: var(--ink-3); }
+  .matrix-row .val.full { color: var(--ink); font-weight: 500; }
+  .matrix-row.featured-col > .val:nth-child(3) { background: var(--accent-soft); }
+
+  /* ─── FAQ ─── */
+  .faq { border-top: 1px solid var(--ink); }
+  details.faq-item { border-bottom: 1px solid var(--hairline); padding: 28px 0; }
+  details.faq-item summary { display: flex; justify-content: space-between; align-items: baseline; gap: 24px; cursor: pointer; list-style: none; font-size: 22px; font-weight: 500; line-height: 1.3; letter-spacing: -.01em; }
+  details.faq-item summary::-webkit-details-marker { display: none; }
+  details.faq-item summary::after { content: "+"; font-size: 28px; font-weight: 300; color: var(--ink-3); transition: transform .25s; line-height: 1; }
+  details.faq-item[open] summary::after { content: "−"; color: var(--accent); }
+  details.faq-item .body { font-size: 16px; line-height: 1.6; color: var(--ink-2); margin: 18px 0 0; max-width: 78ch; }
+
+  /* ─── Final CTA ─── */
+  .final { padding: var(--section-rhythm) 0; border-top: 1px solid var(--hairline); }
+  .final-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 64px; align-items: end; }
+  .final h2 { font-size: 72px; line-height: .98; letter-spacing: -.035em; font-weight: 600; margin: 0; max-width: 14ch; text-wrap: balance; }
+  .final h2 .it { font-size: 1em; }
+  .final .ctas { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
+
+  /* ─── Footer ─── */
+  footer.foot { padding: 48px 0 64px; border-top: 1px solid var(--hairline); background: var(--bg); }
+  .foot-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 32px; }
+  .foot-grid h4 { font-size: 11px; font-family: 'JetBrains Mono', monospace; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-3); margin: 0 0 16px; font-weight: 500; }
+  .foot-grid ul { list-style: none; padding: 0; margin: 0; }
+  .foot-grid li { padding: 6px 0; }
+  .foot-grid a { color: var(--ink-2); text-decoration: none; font-size: 14px; }
+  .foot-grid a:hover { color: var(--accent); }
+  .foot-bottom { display: flex; justify-content: space-between; align-items: baseline; padding-top: 32px; margin-top: 48px; border-top: 1px solid var(--hairline-2); font-size: 12px; color: var(--ink-3); font-family: 'JetBrains Mono', monospace; letter-spacing: .04em; }
+
+  /* ─── Mobile ─── */
+  @media (max-width: 980px) {
+    :root { --hero-size: 48px; --price-size: 56px; --section-rhythm: 80px; }
+    .wrap { padding: 0 24px; }
+    .nav-links { display: none; }
+    .hero-grid, .final-grid { grid-template-columns: 1fr; gap: 40px; }
+    .photo-col { order: -1; max-width: 320px; }
+    .risk { grid-template-columns: 1fr; padding: 0; }
+    .risk-item { padding: 20px 0; border-right: 0; border-bottom: 1px solid var(--hairline-2); }
+    .risk-item:last-child { border-bottom: 0; }
+    .section-head { flex-direction: column; gap: 16px; margin-bottom: 32px; }
+    .section-head h2 { font-size: 36px; }
+    .cards, .phases, .twall { grid-template-columns: 1fr; }
+    .pcard, .phase { border-right: 0; border-bottom: 1px solid var(--hairline); }
+    .pcard:last-child, .phase:last-child { border-bottom: 0; }
+    .tcell { border-right: 0; border-bottom: 1px solid var(--hairline); }
+    .matrix-row { grid-template-columns: 1.6fr 1fr 1fr 1fr; font-size: 12px; }
+    .matrix-row > div { padding: 12px 8px; font-size: 12px; }
+    .matrix-row.head .col-name .nm { font-size: 13px; }
+    .final h2 { font-size: 40px; }
+    details.faq-item summary { font-size: 17px; }
+    .foot-grid { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body data-show-photo="1">
+
+<!-- ═════ NAV ═════ -->
+<nav class="nav">
+  <div class="wrap nav-row">
+    <a class="logo" href="#">
+      <span class="logo-mark">N</span>
+      <span class="logo-name">natalia<span class="dot">.</span>com</span>
+    </a>
+    <div class="nav-links">
+      <a href="#method">Метод</a>
+      <a href="#cases">Кейсы</a>
+      <a href="#pricing">Тарифы</a>
+    </div>
+    <div class="nav-spacer"></div>
+    <a class="nav-cta" href="#pricing" data-cta-primary>Попробовать бесплатно <span class="arr">→</span></a>
+  </div>
+</nav>
+
+<!-- ═════ HERO ═════ -->
+<header class="hero">
+  <div class="wrap">
+    <div class="kicker">
+      <span class="dot"></span>
+      <span>3 ТАРИФА · ОТ 0 ₽</span>
+      <span class="div"></span>
+      <span>МОСКВА · ЛОС-АНДЖЕЛЕС</span>
+    </div>
+
+    <div class="hero-grid">
+      <div>
+        <h1 class="head">Готова <span class="it">удвоить</span> выручку без найма команды?</h1>
+        <p class="sub">3 лендинга бесплатно, безлимитный инструмент за 2 990 ₽/мес или личная работа со мной 30 дней под ключ. Выбираешь по тому, сколько у тебя времени.</p>
+        <div class="hero-ctas">
+          <a class="btn btn-primary" href="#pricing" data-cta-primary>Попробовать бесплатно <span class="arr">→</span></a>
+          <a class="btn btn-ghost" href="#method">Посмотреть метод</a>
+        </div>
+      </div>
+
+      <div class="photo-col">
+        <div class="photo-wrap">
+          <img src="assets/natalia.jpg" alt="Наталья Бровкина">
+          <span class="photo-tag">Наталья · founder</span>
+          <div class="photo-meta">
+            <span>2026 · 04</span>
+            <span>natalia.com</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ═════ RISK REVERSAL ═════ -->
+<div class="wrap">
+  <div class="risk">
+    <div class="risk-item">
+      <span class="risk-num">01</span>
+      <div class="risk-text">3 лендинга бесплатно<small>Без регистрации, без карты</small></div>
+    </div>
+    <div class="risk-item">
+      <span class="risk-num">02</span>
+      <div class="risk-text">Без карты на trial<small>7 дней безлимита, потом сама решаешь</small></div>
+    </div>
+    <div class="risk-item">
+      <span class="risk-num">03</span>
+      <div class="risk-text">Возврат 14 дней<small>Не подошло — верну деньги без вопросов</small></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═════ PRICING ═════ -->
+<section id="pricing">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">/ ТАРИФЫ</div>
+        <h2>Три способа <span class="it">работать</span> со мной</h2>
+      </div>
+      <div class="right">Каждый тариф решает разную задачу. Не апгрейд-лестница — выбираешь по тому, что у тебя сейчас в дефиците: время, деньги или внимание.</div>
+    </div>
+
+    <div class="cards">
+
+      <!-- I — БЕСПЛАТНО -->
+      <article class="pcard">
+        <div class="roman">I — БЕСПЛАТНО</div>
+        <h3 class="pname">Старт</h3>
+        <p class="pwho">Хочешь посмотреть, как работают мои AI-агенты, без обязательств.</p>
+
+        <div class="price-row">
+          <span class="price-v">0</span>
+          <span class="price-u">₽ / навсегда</span>
+        </div>
+        <div class="billing">3 лендинга в месяц · без регистрации</div>
+
+        <ul class="feat-list">
+          <li><span class="n">01</span><span class="t">3 лендинга в месяц<small>с watermark natalia.com</small></span></li>
+          <li><span class="n">02</span><span class="t">2 AI-агента из 16<small>Копирайтер по Огилви + структуратор</small></span></li>
+          <li><span class="n">03</span><span class="t">База кейсов и шаблонов<small>15+ собранных воронок, открытый доступ</small></span></li>
+          <li><span class="n">04</span><span class="t">YouTube-разборы каждую неделю<small>Без e-mail. Просто заходишь и смотришь</small></span></li>
+        </ul>
+
+        <div class="cta-wrap">
+          <a class="btn btn-ghost btn-block" href="#">Открыть студию <span class="arr">→</span></a>
+          <div class="fineprint">Без карты, без регистрации. Откроется в новой вкладке.</div>
+        </div>
+      </article>
+
+      <!-- II — ИНСТРУМЕНТ (FEATURED) -->
+      <article class="pcard featured">
+        <div class="roman">II — ИНСТРУМЕНТ</div>
+        <h3 class="pname">Self-<span class="it">serve</span></h3>
+        <p class="pwho">У тебя есть 2 часа в неделю. Хочешь делать сама, но с командой агентов вместо подрядчиков.</p>
+
+        <div class="price-row">
+          <span class="price-v">2 990</span>
+          <span class="price-u">₽ / месяц</span>
+        </div>
+        <div class="billing"><b>7 дней trial</b> · без карты · отмена в один клик</div>
+
+        <ul class="feat-list">
+          <li><span class="n">01</span><span class="t">16 AI-агентов · безлимит<small>Огилви, Шварц, Хопкинс — методология вшита</small></span></li>
+          <li><span class="n">02</span><span class="t">Brand Memory<small>Один раз настроила тон — агенты помнят</small></span></li>
+          <li><span class="n">03</span><span class="t">Team Mode<small>До 3 человек на одном аккаунте</small></span></li>
+          <li><span class="n">04</span><span class="t">Без watermark · экспорт в любой формат<small>Лендинги, посты, рекламные тексты, скрипты</small></span></li>
+          <li><span class="n">05</span><span class="t">Закрытый Telegram-чат<small>Я отвечаю в течение 24 часов по будням</small></span></li>
+        </ul>
+
+        <div class="cta-wrap">
+          <a class="btn btn-primary btn-block" href="#">Начать 7-дневный trial <span class="arr">→</span></a>
+          <div class="fineprint">Без карты сейчас. Спросим только когда триал закончится — и за день предупредим.</div>
+        </div>
+      </article>
+
+      <!-- III — СО МНОЙ -->
+      <article class="pcard">
+        <div class="roman">III — СО МНОЙ</div>
+        <h3 class="pname">Personal</h3>
+        <p class="pwho">Времени совсем нет. Я лично за 30 дней собираю под ключ систему, которая продаёт.</p>
+
+        <div class="price-row">
+          <span class="price-v">49 000</span>
+          <span class="price-u">₽ разово</span>
+        </div>
+        <div class="billing"><b>3 места в месяц</b> · далее лист ожидания</div>
+
+        <ul class="feat-list">
+          <li><span class="n">01</span><span class="t">Аудит и позиционирование<small>1 неделя · в Zoom со мной + письменный отчёт</small></span></li>
+          <li><span class="n">02</span><span class="t">Лендинг под ключ<small>Копирайт + дизайн + вёрстка. Я веду</small></span></li>
+          <li><span class="n">03</span><span class="t">Реклама и Telegram-канал<small>Запуск + первые 30 дней оптимизации</small></span></li>
+          <li><span class="n">04</span><span class="t">Прямой контакт со мной<small>WhatsApp · ответы в течение часа в рабочее время</small></span></li>
+          <li><span class="n">05</span><span class="t">Год доступа к Self-serve включён<small>2 990 × 12 = 35 880 ₽ в подарок</small></span></li>
+        </ul>
+
+        <div class="cta-wrap">
+          <a class="btn btn-accent btn-block" href="#">Записаться · 3 места <span class="arr">→</span></a>
+          <div class="fineprint">Перед записью — короткий звонок. Если задача не моя, скажу честно.</div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═════ TESTIMONIALS ═════ -->
+<section id="cases" style="padding-top: 0;">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">/ КЛИЕНТЫ</div>
+        <h2>Что говорят те, кто уже <span class="it">сделал</span></h2>
+      </div>
+      <div class="right">Шесть голосов из последних трёх месяцев. Все согласовали публикацию, имена настоящие.</div>
+    </div>
+
+    <div class="twall">
+      <div class="tcell">
+        <p class="quote">За 30 дней с Натальей я закрыла продаж на 1.4 млн. До этого полгода крутила ту же воронку с агентством — ноль. Разница — в копирайте и структуре оффера.</p>
+        <div class="who"><div class="avatar">МК</div><div class="who-text"><b>Мария К.</b><small>Школа маникюра · 12 мастеров</small></div></div>
+      </div>
+      <div class="tcell">
+        <p class="quote">Self-serve окупил себя на третьем лендинге. Раньше платила копирайтеру по 25 000 за текст, теперь делаю сама за 20 минут. И тексты лучше.</p>
+        <div class="who"><div class="avatar">АС</div><div class="who-text"><b>Андрей С.</b><small>B2B-консалтинг · Москва</small></div></div>
+      </div>
+      <div class="tcell">
+        <p class="quote">Наталья не учит «как надо». Она садится рядом и делает с тобой. Через две недели я понимала, почему мой прошлый лендинг не работал.</p>
+        <div class="who"><div class="avatar">ЕП</div><div class="who-text"><b>Елена П.</b><small>Психолог · частная практика</small></div></div>
+      </div>
+      <div class="tcell">
+        <p class="quote">Бесплатные 3 лендинга — это не приманка, это полноценный инструмент. Я месяц на них прожила, прежде чем оплатить. Тут нет жадности.</p>
+        <div class="who"><div class="avatar">ИВ</div><div class="who-text"><b>Игорь В.</b><small>Курсы английского · 4 филиала</small></div></div>
+      </div>
+      <div class="tcell">
+        <p class="quote">16 агентов звучало как маркетинг. На третий день перестало звучать. Они правда разные, и каждый делает свою работу.</p>
+        <div class="who"><div class="avatar">ОФ</div><div class="who-text"><b>Ольга Ф.</b><small>Бренд одежды · Санкт-Петербург</small></div></div>
+      </div>
+      <div class="tcell">
+        <p class="quote">Personal — дорого, но я считала. Если бы я нанимала маркетолога на 30 дней с таким же результатом, ушло бы минимум 200 000. Это бизнес-решение.</p>
+        <div class="who"><div class="avatar">ДТ</div><div class="who-text"><b>Дмитрий Т.</b><small>Производство мебели</small></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═════ HOW PERSONAL WORKS ═════ -->
+<section id="method">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">/ КАК РАБОТАЕТ «СО МНОЙ»</div>
+        <h2>30 дней. Чётыре <span class="it">недели</span>. Под ключ.</h2>
+      </div>
+      <div class="right">Каждая неделя заканчивается конкретным артефактом, который можно показать. Никаких «продолжаем работу».</div>
+    </div>
+
+    <div class="phases">
+      <div class="phase">
+        <div class="phase-num">
+          <span class="phase-week">НЕДЕЛЯ 01</span>
+          <span class="phase-big">01</span>
+        </div>
+        <h3>Аудит и оффер</h3>
+        <p>Два созвона по 90 минут. Разбираем продукт, целевую, что уже пробовала. Я пишу позиционирование и оффер.</p>
+        <div class="deliv">→ Документ оффера</div>
+      </div>
+      <div class="phase">
+        <div class="phase-num">
+          <span class="phase-week">НЕДЕЛЯ 02</span>
+          <span class="phase-big">02</span>
+        </div>
+        <h3>Лендинг</h3>
+        <p>Копирайт пишу сама. Дизайн и вёрстку веду — у меня свой подрядчик. Ты согласовываешь блоки по ходу.</p>
+        <div class="deliv">→ Готовый лендинг</div>
+      </div>
+      <div class="phase">
+        <div class="phase-num">
+          <span class="phase-week">НЕДЕЛЯ 03</span>
+          <span class="phase-big">03</span>
+        </div>
+        <h3>Запуск трафика</h3>
+        <p>Настраиваем рекламу, запускаем Telegram-канал, тестируем 3–4 креатива. Я веду через свою команду.</p>
+        <div class="deliv">→ Поток лидов</div>
+      </div>
+      <div class="phase">
+        <div class="phase-num">
+          <span class="phase-week">НЕДЕЛЯ 04</span>
+          <span class="phase-big">04</span>
+        </div>
+        <h3>Оптимизация</h3>
+        <p>Смотрим что работает, режем что нет. Учу читать метрики самостоятельно. Передаю ключи.</p>
+        <div class="deliv">→ Передача системы</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═════ COMPARISON MATRIX ═════ -->
+<section style="padding-top:0;">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">/ СРАВНЕНИЕ</div>
+        <h2>Что входит, <span class="it">если</span> сравнить</h2>
+      </div>
+      <div class="right">Без галочек. Конкретное «3 в месяц», «безлимит» или «—». Если что-то не входит, я честно пишу прочерк.</div>
+    </div>
+
+    <div class="matrix">
+      <div class="matrix-row head">
+        <div></div>
+        <div class="col-name"><span class="roman">I</span><span class="nm">Старт</span></div>
+        <div class="col-name"><span class="roman" style="color:var(--accent)">II</span><span class="nm">Self-serve</span></div>
+        <div class="col-name"><span class="roman">III</span><span class="nm">Personal</span></div>
+      </div>
+
+      <div class="matrix-row">
+        <div class="feat">AI-агенты<small>На методологии Огилви, Шварца, Хопкинса</small></div>
+        <div class="val">2 из 16</div>
+        <div class="val full">16 · безлимит</div>
+        <div class="val full">16 · безлимит</div>
+      </div>
+      <div class="matrix-row">
+        <div class="feat">Лендинги в месяц</div>
+        <div class="val">3</div>
+        <div class="val full">безлимит</div>
+        <div class="val full">1 под ключ + безлимит сама</div>
+      </div>
+      <div class="matrix-row">
+        <div class="feat">Watermark natalia.com</div>
+        <div class="val">да</div>
+        <div class="val dash">—</div>
+        <div class="val dash">—</div>
+      </div>
+      <div class="matrix-row">
+        <div class="feat">Brand Memory + Team Mode</div>
+        <div class="val dash">—</div>
+        <div class="val full">да</div>
+        <div class="val full">да</div>
+      </div>
+      <div class="matrix-row">
+        <div class="feat">Аудит и позиционирование<small>2 созвона по 90 минут лично со мной</small></div>
+        <div class="val dash">—</div>
+        <div class="val dash">—</div>
+        <div class="val full">да</div>
+      </div>
+      <div class="matrix-row">
+        <div class="feat">Запуск рекламы и Telegram</div>
+        <div class="val dash">—</div>
+        <div class="val dash">—</div>
+        <div class="val full">да · 30 дней</div>
+      </div>
+      <div class="matrix-row">
+        <div class="feat">Прямой контакт со мной</div>
+        <div class="val dash">—</div>
+        <div class="val">Telegram-чат · 24ч</div>
+        <div class="val full">WhatsApp · 1ч</div>
+      </div>
+      <div class="matrix-row">
+        <div class="feat">Возврат денег</div>
+        <div class="val dash">—</div>
+        <div class="val">trial 7 дней</div>
+        <div class="val full">14 дней без вопросов</div>
+      </div>
+      <div class="matrix-row">
+        <div class="feat">Места в месяц</div>
+        <div class="val full">∞</div>
+        <div class="val full">∞</div>
+        <div class="val" style="color:var(--accent);font-weight:600;">3</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═════ FAQ ═════ -->
+<section style="padding-top:0;">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">/ FAQ</div>
+        <h2>Частые <span class="it">вопросы</span></h2>
+      </div>
+      <div class="right">Если своего вопроса не нашла — напиши в Telegram. Отвечаю обычно в течение нескольких часов.</div>
+    </div>
+
+    <div class="faq">
+      <details class="faq-item" open>
+        <summary>Почему именно 16 агентов, а не один большой ChatGPT?</summary>
+        <div class="body">Один универсальный AI отвечает «как ассистент». Узкий агент, обученный на работах Огилви, отвечает «как Огилви» — с его дисциплиной структуры и фокусом на доказательствах. У меня 16 ролей: копирайтер, структуратор, оффер-дизайнер, исследователь целевой и так далее. Каждый знает свою работу.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Можно перейти со Старт на Self-serve и обратно?</summary>
+        <div class="body">Да. Self-serve отменяется в один клик в любой момент. Деньги за неиспользованный месяц возвращаются пропорционально. На бесплатном тарифе тебе всегда рады обратно.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Что если у меня уже есть копирайтер или маркетолог?</summary>
+        <div class="body">Self-serve отлично работает в команде — Team Mode на 3 человека входит в тариф. Многие используют агентов как источник черновиков, а копирайтер их полирует. Получается быстрее и дешевле, чем писать с нуля.</div>
+      </details>
+      <details class="faq-item">
+        <summary>На Personal — а если мой бизнес «не подойдёт»?</summary>
+        <div class="body">Перед записью у нас короткий звонок 20 минут. Если задача не моя — скажу честно и порекомендую коллег. Я работаю с малым бизнесом в РФ с понятным продуктом и оборотом от 500 000 ₽ в месяц. С криптой, инфобизом и сетевым маркетингом не работаю.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Почему всего 3 места в месяц на Personal?</summary>
+        <div class="body">Потому что я делаю всё лично. Не передаю помощникам, не масштабирую. Четвёртое место означало бы хуже работу — а это та граница, за которую я не хочу заходить. Лист ожидания — обычно 4–6 недель.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Что включено в «возврат 14 дней»?</summary>
+        <div class="body">Любой тариф. Не понравилось — пишешь в Telegram, я возвращаю всю сумму без объяснений в течение трёх рабочих дней. Это не маркетинговый ход — у меня просто нет интереса держать недовольных клиентов.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Можно оплатить из-за рубежа?</summary>
+        <div class="body">Да. Карты любых стран, USDT, Wise, переводы на ИП в РФ или US LLC. Для US LLC выставляю инвойс, цена пересчитывается по курсу на день оплаты.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Где смотреть кейсы и метод подробнее?</summary>
+        <div class="body">YouTube-канал natalia.com — там еженедельные разборы реальных воронок клиентов (с их разрешения). Это и есть моё «80% польза, 20% продукт». Чтобы решить — лучше посмотреть 2–3 видео, чем читать обещания.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ═════ FINAL CTA ═════ -->
+<section class="final">
+  <div class="wrap">
+    <div class="final-grid">
+      <h2>Начнёшь <span class="it">сегодня</span> — увидишь результат за неделю.</h2>
+      <div>
+        <p class="sub" style="margin-bottom:24px;max-width:none;">Открой студию бесплатно. Если зайдёт — оплатишь Self-serve через 7 дней триала. Без карты сейчас.</p>
+        <div class="ctas">
+          <a class="btn btn-primary" href="#" data-cta-primary>Попробовать бесплатно <span class="arr">→</span></a>
+          <a class="btn btn-ghost" href="#cases">Посмотреть кейсы</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═════ FOOTER ═════ -->
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="logo" href="#">
+          <span class="logo-mark">N</span>
+          <span class="logo-name" style="font-size:17px;">natalia<span class="dot">.</span>com</span>
+        </a>
+        <p style="margin:16px 0 0;font-size:14px;line-height:1.5;color:var(--ink-2);max-width:38ch;">AI-маркетинг студия для малого бизнеса. Москва · Лос-Анджелес. 16 агентов на методологии Огилви, Шварца, Хопкинса.</p>
+      </div>
+      <div>
+        <h4>Продукт</h4>
+        <ul>
+          <li><a href="#pricing">Тарифы</a></li>
+          <li><a href="#method">Метод</a></li>
+          <li><a href="#cases">Кейсы</a></li>
+          <li><a href="#">Шаблоны</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Контент</h4>
+        <ul>
+          <li><a href="#">YouTube</a></li>
+          <li><a href="#">Telegram-канал</a></li>
+          <li><a href="#">Подкаст</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Связаться</h4>
+        <ul>
+          <li><a href="mailto:hi@natalia.com">hi@natalia.com</a></li>
+          <li><a href="#">Telegram · @natalia</a></li>
+          <li><a href="#">WhatsApp Business</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 NATALIA.COM · ИП БРОВКИНА Н. · US LLC</span>
+      <span>v 3.0 · 04.2026</span>
+    </div>
+  </div>
+</footer>
+
+<!-- Tweaks panel mount -->
+<div id="tweaks-root"></div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="tweaks-panel.jsx"></script>
+<script type="text/babel" src="pricing-app.jsx"></script>
+
+</body>
+</html>

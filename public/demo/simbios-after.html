@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Simbios — маркетинг, который окупается со второго месяца</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #0D1B2A;
+  --gold: #C8B79C;
+  --cream: #F5F3EF;
+  --steel: #6B7A8F;
+  --text: #1A1A1A;
+  --muted: #5A6875;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Inter', -apple-system, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--text);
+  background: #fff;
+  overflow-x: hidden;
+}
+
+h1, h2, h3 { font-family: 'Playfair Display', Georgia, serif; font-weight: 700; line-height: 1.15; letter-spacing: -0.5px; }
+
+.container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+/* Nav */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(255,255,255,0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+  padding: 14px 0;
+}
+.nav-inner { display: flex; align-items: center; justify-content: space-between; }
+.logo { font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 700; color: var(--navy); }
+.logo span { color: var(--gold); }
+.nav-cta { display: flex; align-items: center; gap: 20px; }
+.nav-phone { font-size: 14px; color: var(--text); font-weight: 600; text-decoration: none; }
+.btn {
+  display: inline-block; padding: 12px 24px; border-radius: 100px;
+  font-size: 14px; font-weight: 600; text-decoration: none;
+  transition: all 0.3s ease; cursor: pointer; border: none;
+}
+.btn-primary {
+  background: var(--navy); color: var(--gold);
+}
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 30px -10px rgba(13,27,42,0.4); }
+.btn-large { padding: 18px 36px; font-size: 16px; }
+
+/* Hero */
+.hero {
+  min-height: 100vh;
+  padding: 140px 0 80px;
+  color: var(--cream);
+  position: relative;
+  overflow: hidden;
+  background-image: url('https://images.unsplash.com/photo-1551836022-deb4988cc6c0?w=1600&q=80&auto=format&fit=crop');
+  background-size: cover;
+  background-position: center;
+}
+.hero::before {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(13,27,42,0.92) 0%, rgba(27,46,66,0.85) 100%);
+  pointer-events: none;
+}
+.hero::after {
+  content: ''; position: absolute; top: -50%; right: -20%;
+  width: 80%; height: 120%;
+  background: radial-gradient(circle, rgba(200,183,156,0.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero > .container { position: relative; z-index: 2; }
+.hero-badge {
+  display: inline-block;
+  padding: 6px 14px; border-radius: 100px;
+  background: rgba(200,183,156,0.15); border: 1px solid rgba(200,183,156,0.3);
+  color: var(--gold); font-size: 12px; font-weight: 600; letter-spacing: 1.5px;
+  margin-bottom: 24px;
+}
+.hero h1 {
+  font-size: clamp(2.4rem, 5.5vw, 4.6rem);
+  margin-bottom: 28px;
+  max-width: 900px;
+}
+.hero h1 em { color: var(--gold); font-style: normal; }
+.hero-subtitle {
+  font-size: clamp(1rem, 1.4vw, 1.25rem);
+  color: rgba(245,243,239,0.85);
+  max-width: 680px;
+  margin-bottom: 44px;
+  line-height: 1.65;
+}
+.hero-cta { display: flex; flex-wrap: wrap; gap: 16px; margin-bottom: 64px; align-items: center; }
+.btn-gold { background: var(--gold); color: var(--navy); }
+.btn-gold:hover { transform: translateY(-2px); box-shadow: 0 10px 30px -10px rgba(200,183,156,0.5); }
+.btn-ghost {
+  background: transparent; color: var(--cream);
+  border: 1px solid rgba(200,183,156,0.4);
+}
+.btn-ghost:hover { background: rgba(200,183,156,0.1); }
+.hero-guarantee { color: var(--gold); font-size: 13px; letter-spacing: 0.5px; }
+
+/* Stats */
+.stats {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px;
+  padding-top: 48px; border-top: 1px solid rgba(200,183,156,0.15);
+}
+.stat-big { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 3vw, 2.6rem); color: var(--gold); font-weight: 700; line-height: 1; }
+.stat-small { font-size: 11px; color: rgba(245,243,239,0.6); margin-top: 10px; letter-spacing: 1.5px; text-transform: uppercase; }
+
+/* Pain section */
+.pain {
+  padding: 120px 0;
+  background: var(--cream);
+}
+.section-label {
+  color: var(--gold); font-size: 12px; font-weight: 700; letter-spacing: 3px;
+  text-transform: uppercase; margin-bottom: 16px;
+}
+.section-title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  max-width: 800px; margin-bottom: 56px;
+}
+.pain-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+.pain-card {
+  background: #fff; padding: 36px 32px; border-radius: 16px;
+  box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05), 0 20px 40px -10px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.pain-card:hover { transform: translateY(-6px); box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05), 0 30px 50px -10px rgba(0,0,0,0.12); }
+.pain-icon { width: 48px; height: 48px; background: var(--navy); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: var(--gold); font-size: 22px; margin-bottom: 24px; font-weight: 700; }
+.pain-card h3 { font-size: 20px; margin-bottom: 12px; color: var(--navy); }
+.pain-card p { color: var(--muted); font-size: 15px; line-height: 1.65; }
+
+/* Solution / How it works */
+.solution { padding: 120px 0; background: #fff; }
+.steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+.step { padding: 32px 28px; border: 1px solid rgba(0,0,0,0.08); border-radius: 16px; position: relative; transition: all 0.3s ease; }
+.step:hover { border-color: var(--gold); box-shadow: 0 20px 40px -15px rgba(200,183,156,0.25); }
+.step-num { font-family: 'Playfair Display', serif; font-size: 48px; color: var(--gold); font-weight: 700; line-height: 1; margin-bottom: 16px; opacity: 0.4; }
+.step h3 { font-size: 18px; margin-bottom: 10px; color: var(--navy); font-family: 'Inter', sans-serif; font-weight: 700; }
+.step p { color: var(--muted); font-size: 14px; line-height: 1.6; }
+
+/* Case studies */
+.cases { padding: 120px 0; background: var(--navy); color: var(--cream); }
+.cases-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; margin-top: 56px; }
+.case {
+  border-radius: 16px;
+  background: rgba(245,243,239,0.04);
+  border: 1px solid rgba(200,183,156,0.15);
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+.case-image { height: 180px; background-size: cover; background-position: center; border-bottom: 1px solid rgba(200,183,156,0.15); }
+.case-content { padding: 28px 28px 32px; }
+.case:hover { border-color: var(--gold); transform: translateY(-6px); background: rgba(245,243,239,0.06); }
+.case-client { color: var(--gold); font-size: 13px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 20px; }
+.case-number { font-family: 'Playfair Display', serif; font-size: 48px; color: var(--cream); font-weight: 700; line-height: 1; margin-bottom: 12px; }
+.case-number span { color: var(--gold); }
+.case-desc { color: rgba(245,243,239,0.75); font-size: 14px; line-height: 1.6; }
+
+/* Testimonials */
+.testimonials { padding: 120px 0; background: var(--cream); }
+.t-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; margin-top: 56px; }
+.t-card { background: #fff; padding: 36px 32px; border-radius: 16px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05), 0 20px 40px -10px rgba(0,0,0,0.08); }
+.t-stars { color: var(--gold); font-size: 16px; margin-bottom: 18px; letter-spacing: 2px; }
+.t-quote { font-size: 15px; line-height: 1.7; color: var(--text); margin-bottom: 24px; font-style: italic; }
+.t-author { display: flex; align-items: center; gap: 14px; }
+.t-avatar { width: 48px; height: 48px; border-radius: 50%; background-size: cover; background-position: center; flex-shrink: 0; }
+.t-name { font-weight: 700; color: var(--navy); font-size: 14px; }
+.t-role { color: var(--muted); font-size: 12px; }
+
+/* Pricing */
+.pricing { padding: 120px 0; background: #fff; }
+.price-intro { max-width: 600px; color: var(--muted); font-size: 16px; line-height: 1.7; margin-bottom: 48px; }
+.price-card {
+  max-width: 700px; margin: 0 auto;
+  padding: 56px 48px; border-radius: 24px;
+  background: linear-gradient(135deg, #0D1B2A 0%, #1B2E42 100%);
+  color: var(--cream); text-align: center;
+}
+.price-tag { font-size: 13px; color: var(--gold); font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px; }
+.price-number { font-family: 'Playfair Display', serif; font-size: clamp(2.4rem, 5vw, 3.6rem); color: var(--gold); font-weight: 700; line-height: 1; margin-bottom: 8px; }
+.price-note { color: rgba(245,243,239,0.6); font-size: 14px; margin-bottom: 32px; }
+.price-guarantee {
+  display: inline-block; padding: 14px 24px; border-radius: 12px;
+  background: rgba(200,183,156,0.1); border: 1px solid rgba(200,183,156,0.3);
+  color: var(--cream); font-size: 14px; line-height: 1.5; margin-bottom: 32px;
+}
+.price-guarantee strong { color: var(--gold); }
+
+/* CTA section */
+.cta-section { padding: 120px 0; background: var(--cream); text-align: center; }
+.cta-section .container { max-width: 780px; }
+.cta-section h2 { margin-bottom: 24px; }
+.cta-section p { color: var(--muted); font-size: 17px; margin-bottom: 40px; line-height: 1.65; }
+.cta-phone { margin-top: 20px; color: var(--muted); font-size: 14px; }
+.cta-phone a { color: var(--navy); font-weight: 700; text-decoration: none; }
+
+/* Footer */
+footer { background: var(--navy); color: rgba(245,243,239,0.7); padding: 56px 0 32px; font-size: 13px; }
+.footer-inner { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 24px; border-bottom: 1px solid rgba(200,183,156,0.15); padding-bottom: 32px; margin-bottom: 24px; }
+.footer-brand .logo { color: var(--cream); }
+.footer-col a { display: block; color: rgba(245,243,239,0.7); text-decoration: none; padding: 4px 0; }
+.footer-col a:hover { color: var(--gold); }
+.footer-copy { font-size: 12px; color: rgba(245,243,239,0.4); }
+
+/* Animations */
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.4s ease, transform 0.4s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* Mobile */
+@media (max-width: 768px) {
+  .hero { padding: 120px 0 64px; }
+  .stats, .pain-grid, .cases-grid, .t-grid, .steps { grid-template-columns: 1fr; gap: 20px; }
+  .steps { grid-template-columns: repeat(2, 1fr); }
+  .nav-phone { display: none; }
+  .hero-cta { flex-direction: column; align-items: stretch; }
+  .btn { text-align: center; }
+  .price-card { padding: 40px 24px; }
+  .footer-inner { flex-direction: column; }
+}
+</style>
+<noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
+</head>
+<body>
+
+<nav>
+  <div class="container nav-inner">
+    <div class="logo">Simbios<span>.</span></div>
+    <div class="nav-cta">
+      <a href="tel:+74951234567" class="nav-phone">+7 (495) 123-45-67</a>
+      <a href="#pricing" class="btn btn-primary">Получить план</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-badge">МАРКЕТИНГОВОЕ АГЕНТСТВО · МОСКВА И СПБ</div>
+    <h1>
+      Растим выручку SMB на&nbsp;<em>23-58%</em><br>
+      за&nbsp;60&nbsp;дней.<br>
+      Без &laquo;давайте подумаем&raquo;.
+    </h1>
+    <p class="hero-subtitle">
+      Маркетинг под ключ: контекст, таргет, лендинги, CRM. 47&nbsp;клиентов с&nbsp;2019. Не&nbsp;ведём &laquo;на&nbsp;отвяжись&raquo; — гарантируем ROMI со&nbsp;второго месяца или возвращаем деньги.
+    </p>
+    <div class="hero-cta">
+      <a href="#pricing" class="btn btn-gold btn-large">Получить план на 90 дней →</a>
+      <a href="#cases" class="btn btn-ghost btn-large">Смотреть кейсы</a>
+    </div>
+    <div class="hero-guarantee">✓ Первая встреча 20 минут · Бесплатно · Без обязательств</div>
+
+    <div class="stats">
+      <div class="reveal">
+        <div class="stat-big">47&nbsp;млн&nbsp;₽</div>
+        <div class="stat-small">Заработали клиентам в 2024</div>
+      </div>
+      <div class="reveal">
+        <div class="stat-big">13 500</div>
+        <div class="stat-small">Водителей сдали в&nbsp;таксопарки</div>
+      </div>
+      <div class="reveal">
+        <div class="stat-big">1 800 ₽</div>
+        <div class="stat-small">Средняя цена лида</div>
+      </div>
+      <div class="reveal">
+        <div class="stat-big">5&nbsp;лет</div>
+        <div class="stat-small">На рынке RU SMB</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PAIN -->
+<section class="pain">
+  <div class="container">
+    <div class="section-label">Узнаёте себя?</div>
+    <h2 class="section-title">Три признака того, что маркетинг перестал работать</h2>
+    <div class="pain-grid">
+      <div class="pain-card reveal">
+        <div class="pain-icon">01</div>
+        <h3>Заявки есть &mdash; денег нет</h3>
+        <p>Подрядчик показывает лиды и CPL, а прибыли не видно. Никто не считает &laquo;деньги на выходе&raquo;: сколько из этих заявок дошло до сделки и с каким чеком.</p>
+      </div>
+      <div class="pain-card reveal">
+        <div class="pain-icon">02</div>
+        <h3>Платите трём, результат как от&nbsp;одного</h3>
+        <p>SMM-щик, таргетолог, SEO-шник &mdash; каждый в&nbsp;своём окне. Никто не видит картину целиком. В итоге 300 000 ₽/мес &mdash; и вы всё ещё не знаете, какой канал окупается.</p>
+      </div>
+      <div class="pain-card reveal">
+        <div class="pain-icon">03</div>
+        <h3>Сезон закончился &mdash; пусто</h3>
+        <p>Работали &laquo;на&nbsp;продаже&raquo;, не&nbsp;строили базу. Когда ниша проседает, реклама останавливается &mdash; и&nbsp;бизнес встаёт на&nbsp;паузу вместе с&nbsp;ней.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="solution">
+  <div class="container">
+    <div class="section-label">Как мы работаем</div>
+    <h2 class="section-title">Четыре шага от &laquo;поговорили&raquo; до &laquo;окупилось&raquo;</h2>
+    <div class="steps">
+      <div class="step reveal">
+        <div class="step-num">01</div>
+        <h3>Диагностика</h3>
+        <p>20-минутный созвон: смотрим воронку, считаем unit-экономику, находим где&nbsp;течёт. Бесплатно.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">02</div>
+        <h3>План на 90 дней</h3>
+        <p>Прогноз: сколько лидов, цена, бюджет, ожидаемый ROMI. В письменном виде, с&nbsp;конкретными KPI.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">03</div>
+        <h3>Запуск за 14 дней</h3>
+        <p>Креативы, настройка, аналитика, CRM-сквозная. Команда: таргетолог, дизайнер, аналитик, проджект.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">04</div>
+        <h3>Еженедельный отчёт</h3>
+        <p>Отчёт каждый понедельник: что сделали, какой результат, что меняем. В&nbsp;Telegram, без презентаций.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CASES -->
+<section class="cases" id="cases">
+  <div class="container">
+    <div class="section-label" style="color:var(--gold)">Кейсы клиентов</div>
+    <h2 class="section-title" style="color:var(--cream)">Крупные бренды доверяют. Им&nbsp;есть с&nbsp;чем сравнивать.</h2>
+    <div class="cases-grid">
+      <div class="case reveal">
+        <div class="case-image" style="background-image:url('https://images.unsplash.com/photo-1557804506-669a67965ba0?w=900&q=80&auto=format&fit=crop')"></div>
+        <div class="case-content">
+          <div class="case-client">Яндекс.Такси</div>
+          <div class="case-number"><span>+13 500</span></div>
+          <div class="case-desc">Водителей привлекли в&nbsp;таксопарки-партнёры за&nbsp;2024. Средний CPL 1 800&nbsp;₽ в&nbsp;столичных регионах.</div>
+        </div>
+      </div>
+      <div class="case reveal">
+        <div class="case-image" style="background-image:url('https://images.unsplash.com/photo-1560250097-0b93528c311a?w=900&q=80&auto=format&fit=crop')"></div>
+        <div class="case-content">
+          <div class="case-client">Купер</div>
+          <div class="case-number">×<span>3,4</span></div>
+          <div class="case-desc">Вырост конверсии в&nbsp;заявку после перестройки посадочных страниц и&nbsp;контекста. За&nbsp;первые 60&nbsp;дней.</div>
+        </div>
+      </div>
+      <div class="case reveal">
+        <div class="case-image" style="background-image:url('https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=900&q=80&auto=format&fit=crop')"></div>
+        <div class="case-content">
+          <div class="case-client">Ситимобил</div>
+          <div class="case-number"><span>&minus;42%</span></div>
+          <div class="case-desc">Стоимость регистрации пассажира снизили за&nbsp;счёт look-alike аудиторий и&nbsp;ретаргета на&nbsp;брошенные корзины.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <div class="container">
+    <div class="section-label">Слова клиентов</div>
+    <h2 class="section-title">12 агентств в Москве &mdash; мы&nbsp;среди&nbsp;трёх, кто гарантирует ROMI</h2>
+    <div class="t-grid">
+      <div class="t-card reveal">
+        <div class="t-stars">★★★★★</div>
+        <p class="t-quote">&laquo;Работаем с Simbios 2&nbsp;года. За это время поток клиентов в&nbsp;салон вырос в&nbsp;3 раза. Помогли настроить Инстаграм и&nbsp;Яндекс.Директ, сейчас 80% заявок идёт именно оттуда.&raquo;</p>
+        <div class="t-author">
+          <div class="t-avatar" style="background-image:url('https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=120&q=80&auto=format&fit=crop')"></div>
+          <div>
+            <div class="t-name">Анна М.</div>
+            <div class="t-role">Салон красоты &laquo;Лиана&raquo;, Москва</div>
+          </div>
+        </div>
+      </div>
+      <div class="t-card reveal">
+        <div class="t-stars">★★★★★</div>
+        <p class="t-quote">&laquo;Заказывал сайт для ресторана и&nbsp;ведение SMM. Сделали за&nbsp;месяц, прибыль выросла на&nbsp;40%. Отдельное спасибо команде за&nbsp;еженедельные отчёты &mdash; такого нигде раньше не&nbsp;видел.&raquo;</p>
+        <div class="t-author">
+          <div class="t-avatar" style="background-image:url('https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=120&q=80&auto=format&fit=crop')"></div>
+          <div>
+            <div class="t-name">Дмитрий К.</div>
+            <div class="t-role">Ресторан-холдинг, 4 точки в&nbsp;Москве</div>
+          </div>
+        </div>
+      </div>
+      <div class="t-card reveal">
+        <div class="t-stars">★★★★★</div>
+        <p class="t-quote">&laquo;Обращалась в&nbsp;3 агентства до&nbsp;них &mdash; везде шаблон. Simbios погрузились в&nbsp;мою клинику, изучили пациентов, сделали стратегию. Через 2&nbsp;месяца &mdash; запись на&nbsp;3 недели вперёд.&raquo;</p>
+        <div class="t-author">
+          <div class="t-avatar" style="background-image:url('https://images.unsplash.com/photo-1551836022-deb4988cc6c0?w=120&q=80&auto=format&fit=crop')"></div>
+          <div>
+            <div class="t-name">Елена С.</div>
+            <div class="t-role">Медицинский центр, Санкт-Петербург</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing" id="pricing">
+  <div class="container">
+    <div class="section-label">Инвестиция</div>
+    <h2 class="section-title">Прозрачно: сколько стоит и&nbsp;когда окупится</h2>
+    <p class="price-intro">
+      Мы&nbsp;не берём клиентов, для которых маркетинг не&nbsp;окупится. Если после диагностики увидим, что&nbsp;ROMI меньше 200% &mdash; скажем честно и&nbsp;не&nbsp;возьмём в&nbsp;работу.
+    </p>
+    <div class="price-card">
+      <div class="price-tag">Ведение под ключ</div>
+      <div class="price-number">от 69 000 ₽/мес</div>
+      <div class="price-note">Проектный минимум 260&nbsp;000&nbsp;₽ &middot; Бюджет на&nbsp;рекламу &mdash; отдельно</div>
+      <div class="price-guarantee">
+        <strong>Гарантия:</strong> окупаемость со&nbsp;2-го месяца при&nbsp;бюджете от&nbsp;80&nbsp;000&nbsp;₽ на&nbsp;рекламу.<br>Иначе &mdash; следующий месяц работаем бесплатно.
+      </div>
+      <br>
+      <a href="#cta" class="btn btn-gold btn-large">Получить план на 90 дней →</a>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="cta-section" id="cta">
+  <div class="container">
+    <div class="section-label">Следующий шаг</div>
+    <h2>Созвонимся на 20 минут &mdash; дадим план, а не&nbsp;презентацию</h2>
+    <p>
+      Расскажите что у&nbsp;вас за&nbsp;бизнес. Мы посмотрим воронку, назовём где течёт, и&nbsp;дадим прогноз: сколько лидов, за&nbsp;какие деньги, к&nbsp;какому сроку. Без обязательств.
+    </p>
+    <a href="#" class="btn btn-primary btn-large" onclick="alert('В реальном инструменте тут форма заявки'); return false;">Получить план →</a>
+    <div class="cta-phone">
+      Или позвоните: <a href="tel:+74951234567">+7 (495) 123-45-67</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="logo">Simbios<span>.</span></div>
+        <p style="margin-top:10px;max-width:260px">Маркетинг под ключ для&nbsp;SMB в&nbsp;Москве и&nbsp;СПб. 5 лет, 47 клиентов, 13 500 водителей.</p>
+      </div>
+      <div class="footer-col">
+        <strong style="color:var(--cream);display:block;margin-bottom:12px">Услуги</strong>
+        <a href="#">Контекст и таргет</a>
+        <a href="#">SMM и контент</a>
+        <a href="#">Лендинги и сайты</a>
+        <a href="#">CRM-сквозная</a>
+      </div>
+      <div class="footer-col">
+        <strong style="color:var(--cream);display:block;margin-bottom:12px">Контакты</strong>
+        <a href="tel:+74951234567">+7 (495) 123-45-67</a>
+        <a href="mailto:hello@simbios.ru">hello@simbios.ru</a>
+        <a href="#">Telegram</a>
+        <a href="#">VK</a>
+      </div>
+    </div>
+    <div class="footer-copy">
+      © 2026 Simbios Marketing · Демо-версия для презентации AI-инструмента<br>
+      <a href="#" style="color:rgba(245,243,239,0.5)">Политика конфиденциальности</a> · <a href="#" style="color:rgba(245,243,239,0.5)">Оферта</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Scroll reveal
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) { entry.target.classList.add('visible'); }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

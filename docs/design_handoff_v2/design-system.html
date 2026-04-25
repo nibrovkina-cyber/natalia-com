@@ -1,0 +1,520 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>natalia.com — Design System</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@1,400;1,500;1,600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+  /* ─────────── Palette I — Warm AI ─────────── */
+  :root, [data-palette="warm"] {
+    --bg:           #F7F4EE;        /* off-white cream */
+    --bg-card:      #FBF9F4;
+    --surface:      #EFEAE0;        /* deeper cream for sections */
+    --ink:          #1F1B16;        /* near-black warm */
+    --ink-2:        #4A4339;
+    --ink-3:        #8A8175;
+    --hairline:     rgba(31,27,22,.10);
+    --hairline-2:   rgba(31,27,22,.06);
+    --accent:       #D9542B;        /* Anthropic-leaning rust orange */
+    --accent-ink:   #FFFFFF;
+    --accent-soft:  rgba(217,84,43,.08);
+    --halo:         rgba(217,84,43,.18);
+    --good:         #2F6E3F;
+  }
+  [data-palette="navy"] {
+    --bg:           #F4EFE4;        /* cream */
+    --bg-card:      #FBF7EC;
+    --surface:      #ECE4D2;
+    --ink:          #0E1B33;        /* navy */
+    --ink-2:        #2A3A57;
+    --ink-3:        #6B7891;
+    --hairline:     rgba(14,27,51,.14);
+    --hairline-2:   rgba(14,27,51,.07);
+    --accent:       #B8893A;        /* gold */
+    --accent-ink:   #0E1B33;
+    --accent-soft:  rgba(184,137,58,.10);
+    --halo:         rgba(184,137,58,.22);
+    --good:         #2F6E3F;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-feature-settings: "ss01", "cv11";
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* type primitives */
+  .mono { font-family: 'JetBrains Mono', ui-monospace, monospace; font-weight: 500; letter-spacing: .02em; }
+  .italic-display { font-family: 'Playfair Display', serif; font-style: italic; font-weight: 500; letter-spacing: -.01em; }
+
+  /* page chrome */
+  .page { max-width: 1280px; margin: 0 auto; padding: 64px 56px 120px; }
+  .page-head { display: flex; align-items: baseline; justify-content: space-between; padding-bottom: 28px; border-bottom: 1px solid var(--hairline); margin-bottom: 56px; }
+  .page-head h1 { font-size: 40px; font-weight: 600; margin: 0; letter-spacing: -.025em; }
+  .page-head h1 .it { font-family: 'Playfair Display', serif; font-style: italic; font-weight: 500; }
+  .page-head .meta { color: var(--ink-3); font-size: 12px; }
+
+  section.ds { margin-bottom: 88px; }
+  .ds-h { display: flex; align-items: baseline; gap: 16px; margin-bottom: 28px; padding-bottom: 14px; border-bottom: 1px solid var(--hairline-2); }
+  .ds-h h2 { font-size: 13px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; margin: 0; color: var(--ink-2); }
+  .ds-h .num { font-size: 11px; color: var(--ink-3); letter-spacing: .12em; }
+  .ds-h .desc { margin-left: auto; font-size: 13px; color: var(--ink-3); max-width: 460px; text-align: right; }
+
+  .grid { display: grid; gap: 24px; }
+  .g-2 { grid-template-columns: 1fr 1fr; }
+  .g-3 { grid-template-columns: repeat(3, 1fr); }
+  .g-4 { grid-template-columns: repeat(4, 1fr); }
+  .g-6 { grid-template-columns: repeat(6, 1fr); }
+
+  /* ── palette swatches ── */
+  .palette-bar { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+  .palette { padding: 28px; background: var(--bg-card); border: 1px solid var(--hairline); }
+  .palette h3 { margin: 0 0 4px; font-size: 18px; font-weight: 600; letter-spacing: -.01em; }
+  .palette .tag { font-size: 11px; color: var(--ink-3); margin-bottom: 24px; }
+  .palette .tag b { color: var(--ink-2); font-weight: 600; }
+  .swatches { display: grid; grid-template-columns: repeat(6, 1fr); gap: 0; border: 1px solid var(--hairline); }
+  .sw { height: 96px; padding: 12px; display: flex; flex-direction: column; justify-content: space-between; font-size: 10.5px; font-family: 'JetBrains Mono', monospace; }
+  .sw .nm { font-weight: 600; }
+  .sw .hx { opacity: .7; }
+  .sw + .sw { border-left: 1px solid var(--hairline); }
+
+  /* ── type scale ── */
+  .type-row { display: grid; grid-template-columns: 100px 1fr 120px; gap: 24px; align-items: baseline; padding: 18px 0; border-bottom: 1px solid var(--hairline-2); }
+  .type-row .label { font-size: 11px; color: var(--ink-3); font-family: 'JetBrains Mono', monospace; padding-top: 6px; }
+  .type-row .specimen { color: var(--ink); }
+  .type-row .specs { font-size: 11px; color: var(--ink-3); font-family: 'JetBrains Mono', monospace; text-align: right; padding-top: 6px; }
+  .t-display { font-size: 96px; line-height: .95; font-weight: 600; letter-spacing: -.035em; }
+  .t-h1 { font-size: 64px; line-height: 1; font-weight: 600; letter-spacing: -.03em; }
+  .t-h2 { font-size: 40px; line-height: 1.05; font-weight: 600; letter-spacing: -.02em; }
+  .t-h3 { font-size: 24px; line-height: 1.2; font-weight: 600; letter-spacing: -.01em; }
+  .t-body { font-size: 17px; line-height: 1.55; font-weight: 400; }
+  .t-small { font-size: 14px; line-height: 1.5; color: var(--ink-2); }
+  .t-mono { font-size: 11px; font-family: 'JetBrains Mono', monospace; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-2); }
+
+  /* ── headline showcase ── */
+  .head-show { padding: 48px; background: var(--bg-card); border: 1px solid var(--hairline); }
+  .head-show .h { font-size: 80px; line-height: .98; letter-spacing: -.03em; font-weight: 600; margin: 0 0 24px; max-width: 18ch; }
+  .head-show .h .it { font-family: 'Playfair Display', serif; font-style: italic; font-weight: 500; letter-spacing: -.01em; }
+  .head-show .sub { font-size: 19px; color: var(--ink-2); max-width: 56ch; line-height: 1.5; }
+
+  /* ── buttons ── */
+  .btn-row { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+  .btn { font-family: 'Inter', sans-serif; font-size: 15px; font-weight: 500; letter-spacing: -.005em; padding: 14px 22px; border: 1px solid transparent; cursor: pointer; transition: transform .15s ease, background .2s ease, color .2s ease; display: inline-flex; align-items: center; gap: 10px; border-radius: 0; }
+  .btn-primary { background: var(--ink); color: var(--bg); }
+  .btn-primary:hover { background: var(--accent); color: var(--accent-ink); }
+  .btn-accent { background: var(--accent); color: var(--accent-ink); }
+  .btn-accent:hover { filter: brightness(.93); }
+  .btn-ghost { background: transparent; color: var(--ink); border-color: var(--hairline); }
+  .btn-ghost:hover { border-color: var(--ink); }
+  .btn-link { background: transparent; padding: 14px 0; border: 0; color: var(--ink); border-bottom: 1px solid var(--ink); border-radius: 0; }
+  .btn-link:hover { color: var(--accent); border-color: var(--accent); }
+  .btn .arr { display: inline-block; transition: transform .2s ease; }
+  .btn:hover .arr { transform: translateX(3px); }
+
+  /* ── pricing card preview ── */
+  .cards-preview { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border: 1px solid var(--hairline); }
+  .pcard { padding: 32px 28px; background: var(--bg-card); border-right: 1px solid var(--hairline); display: flex; flex-direction: column; min-height: 380px; }
+  .pcard:last-child { border-right: 0; }
+  .pcard.featured { background: var(--bg); position: relative; }
+  .pcard.featured::before { content: ""; position: absolute; inset: 0; box-shadow: 0 0 0 2px var(--ink) inset; pointer-events: none; }
+  .pcard .roman { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: .14em; color: var(--ink-3); margin-bottom: 6px; }
+  .pcard .nm { font-size: 22px; font-weight: 600; letter-spacing: -.01em; margin-bottom: 4px; }
+  .pcard .nm .it { font-family: 'Playfair Display', serif; font-style: italic; font-weight: 500; }
+  .pcard .who { font-size: 13px; color: var(--ink-3); margin-bottom: 28px; line-height: 1.45; }
+  .pcard .price { display: flex; align-items: baseline; gap: 6px; margin-bottom: 4px; }
+  .pcard .price .v { font-size: 56px; font-weight: 600; letter-spacing: -.03em; line-height: 1; }
+  .pcard .price .u { font-size: 13px; color: var(--ink-3); font-family: 'JetBrains Mono', monospace; }
+  .pcard .billing { font-size: 12px; color: var(--ink-3); margin-bottom: 28px; }
+  .pcard ul { list-style: none; padding: 0; margin: 0 0 28px; }
+  .pcard li { font-size: 14px; line-height: 1.5; color: var(--ink-2); padding: 10px 0; border-top: 1px solid var(--hairline-2); display: flex; gap: 14px; }
+  .pcard li:first-child { border-top: 1px solid var(--hairline); }
+  .pcard li .n { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--ink-3); min-width: 22px; padding-top: 1px; }
+  .pcard .cta-wrap { margin-top: auto; }
+
+  /* ── badges / tags ── */
+  .tag-row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+  .tag { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; padding: 6px 10px; border: 1px solid var(--hairline); color: var(--ink-2); display: inline-flex; align-items: center; gap: 8px; }
+  .tag .dot { width: 6px; height: 6px; background: var(--accent); border-radius: 50%; }
+  .tag.solid { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+  .tag.accent { background: var(--accent-soft); border-color: var(--accent); color: var(--accent); }
+  .tag.accent .dot { background: var(--accent); }
+
+  /* ── grid system ── */
+  .gridviz { background: var(--bg-card); padding: 24px; border: 1px solid var(--hairline); position: relative; height: 200px; overflow: hidden; }
+  .gridviz .col { position: absolute; top: 0; bottom: 0; background: var(--accent-soft); border-left: 1px solid var(--halo); border-right: 1px solid var(--halo); }
+
+  /* ── motion / interaction ── */
+  .motion-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .motion { padding: 28px; background: var(--bg-card); border: 1px solid var(--hairline); }
+  .motion h4 { margin: 0 0 4px; font-size: 14px; font-weight: 600; }
+  .motion p { margin: 0; font-size: 12px; color: var(--ink-3); font-family: 'JetBrains Mono', monospace; }
+  .motion .demo { height: 88px; margin-top: 16px; position: relative; overflow: hidden; }
+  .motion .demo .ball { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); width: 32px; height: 32px; background: var(--ink); border-radius: 50%; animation: bounce 2.4s infinite; }
+  @keyframes bounce { 0%, 100% { left: 12px; } 50% { left: calc(100% - 44px); } }
+  .motion.ease .ball { animation-timing-function: cubic-bezier(.2,.8,.2,1); }
+  .motion.linear .ball { animation-timing-function: linear; }
+  .motion.spring .ball { animation-timing-function: cubic-bezier(.5,1.6,.4,1); }
+
+  /* ── voice/copy ── */
+  .voice { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border: 1px solid var(--hairline); }
+  .voice > div { padding: 28px; }
+  .voice .yes { border-right: 1px solid var(--hairline); }
+  .voice h4 { margin: 0 0 16px; font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-3); font-family: 'JetBrains Mono', monospace; }
+  .voice .yes h4 { color: var(--good); }
+  .voice .no h4 { color: var(--accent); }
+  .voice ul { list-style: none; margin: 0; padding: 0; }
+  .voice li { padding: 10px 0; font-size: 15px; line-height: 1.45; border-top: 1px solid var(--hairline-2); }
+  .voice li:first-child { border-top: 0; }
+
+  /* ── numerals ── */
+  .num-show { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border: 1px solid var(--hairline); }
+  .num-show > div { padding: 32px 24px; border-right: 1px solid var(--hairline); background: var(--bg-card); }
+  .num-show > div:last-child { border-right: 0; }
+  .num-show .v { font-size: 64px; line-height: 1; font-weight: 600; letter-spacing: -.03em; font-variant-numeric: tabular-nums; margin-bottom: 8px; }
+  .num-show .v .u { font-size: 22px; color: var(--ink-3); font-weight: 500; }
+  .num-show .lbl { font-size: 12px; color: var(--ink-3); font-family: 'JetBrains Mono', monospace; letter-spacing: .08em; text-transform: uppercase; }
+
+  /* spec dl */
+  dl.spec { margin: 0; display: grid; grid-template-columns: 140px 1fr; row-gap: 8px; column-gap: 16px; font-size: 13px; }
+  dl.spec dt { color: var(--ink-3); font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: .08em; text-transform: uppercase; padding-top: 2px; }
+  dl.spec dd { margin: 0; color: var(--ink-2); }
+
+  /* palette toggle for this page */
+  .palette-toggle { display: inline-flex; border: 1px solid var(--hairline); }
+  .palette-toggle button { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; padding: 8px 14px; background: transparent; border: 0; color: var(--ink-2); cursor: pointer; }
+  .palette-toggle button[data-active="1"] { background: var(--ink); color: var(--bg); }
+
+  @media (max-width: 900px) {
+    .page { padding: 40px 24px 80px; }
+    .palette-bar, .g-2 { grid-template-columns: 1fr; }
+    .g-3, .cards-preview, .num-show, .motion-row { grid-template-columns: 1fr; }
+    .pcard { border-right: 0; border-bottom: 1px solid var(--hairline); }
+    .pcard:last-child { border-bottom: 0; }
+    .head-show .h { font-size: 44px; }
+    .t-display { font-size: 56px; }
+    .t-h1 { font-size: 40px; }
+  }
+</style>
+</head>
+<body data-palette="warm">
+
+<div class="page">
+
+  <header class="page-head">
+    <div>
+      <div class="mono" style="font-size:11px;letter-spacing:.16em;color:var(--ink-3);text-transform:uppercase;margin-bottom:8px;">natalia.com / DS-01</div>
+      <h1>Design <span class="it">system</span></h1>
+    </div>
+    <div style="display:flex;gap:24px;align-items:center;">
+      <div class="palette-toggle" id="paletteToggle">
+        <button data-pal="warm" data-active="1">Warm AI</button>
+        <button data-pal="navy">Navy / Gold</button>
+      </div>
+      <div class="meta mono">v 1.0 · 04.2026</div>
+    </div>
+  </header>
+
+  <!-- 01 PALETTES -->
+  <section class="ds">
+    <div class="ds-h">
+      <span class="num mono">01</span>
+      <h2>Palettes</h2>
+      <div class="desc">Two parallel palettes. Warm AI is the default — off-white cream with a single rust accent. Navy / Gold is the editorial alternative for long-form moments.</div>
+    </div>
+
+    <div class="palette-bar">
+      <!-- Warm AI -->
+      <div class="palette" data-palette="warm">
+        <h3>Warm AI</h3>
+        <div class="tag"><b>Default.</b> Off-white cream surface · single rust accent · echoes Anthropic and v0 without copying either.</div>
+        <div class="swatches">
+          <div class="sw" style="background:#F7F4EE;color:#1F1B16;"><div class="nm">bg</div><div class="hx">F7F4EE</div></div>
+          <div class="sw" style="background:#FBF9F4;color:#1F1B16;"><div class="nm">card</div><div class="hx">FBF9F4</div></div>
+          <div class="sw" style="background:#EFEAE0;color:#1F1B16;"><div class="nm">surface</div><div class="hx">EFEAE0</div></div>
+          <div class="sw" style="background:#1F1B16;color:#F7F4EE;"><div class="nm">ink</div><div class="hx">1F1B16</div></div>
+          <div class="sw" style="background:#8A8175;color:#FBF9F4;"><div class="nm">ink-3</div><div class="hx">8A8175</div></div>
+          <div class="sw" style="background:#D9542B;color:#fff;"><div class="nm">accent</div><div class="hx">D9542B</div></div>
+        </div>
+        <dl class="spec" style="margin-top:24px;">
+          <dt>Accent use</dt><dd>One per screen — primary CTA, link hover, inline emphasis. Never in body copy.</dd>
+          <dt>Ink contrast</dt><dd>WCAG AA at 14px+ across all surface variants.</dd>
+        </dl>
+      </div>
+
+      <!-- Navy / Gold -->
+      <div class="palette" data-palette="navy">
+        <h3>Navy <span class="italic-display" style="font-size:1em;">editorial</span></h3>
+        <div class="tag"><b>Alternative.</b> Cream + deep navy + gold leaf. For long reads and high-credibility moments.</div>
+        <div class="swatches">
+          <div class="sw" style="background:#F4EFE4;color:#0E1B33;"><div class="nm">bg</div><div class="hx">F4EFE4</div></div>
+          <div class="sw" style="background:#FBF7EC;color:#0E1B33;"><div class="nm">card</div><div class="hx">FBF7EC</div></div>
+          <div class="sw" style="background:#ECE4D2;color:#0E1B33;"><div class="nm">surface</div><div class="hx">ECE4D2</div></div>
+          <div class="sw" style="background:#0E1B33;color:#F4EFE4;"><div class="nm">ink</div><div class="hx">0E1B33</div></div>
+          <div class="sw" style="background:#6B7891;color:#FBF7EC;"><div class="nm">ink-3</div><div class="hx">6B7891</div></div>
+          <div class="sw" style="background:#B8893A;color:#0E1B33;"><div class="nm">accent</div><div class="hx">B8893A</div></div>
+        </div>
+        <dl class="spec" style="margin-top:24px;">
+          <dt>Accent use</dt><dd>Gold reads as quiet authority — small accents only, never as a fill behind dense type.</dd>
+          <dt>Pairs with</dt><dd>Playfair italic words inside Inter headlines (sparingly).</dd>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <!-- 02 TYPE -->
+  <section class="ds">
+    <div class="ds-h">
+      <span class="num mono">02</span>
+      <h2>Typography</h2>
+      <div class="desc">Inter does the work. Playfair Italic appears only as <span class="italic-display">single words</span> inside headlines. JetBrains Mono is the meta-voice for kickers, tags, prices.</div>
+    </div>
+
+    <div class="type-row"><div class="label">display</div><div class="specimen t-display">Готова <span class="italic-display">удвоить</span></div><div class="specs">Inter 600 · 96/95 · −3.5%</div></div>
+    <div class="type-row"><div class="label">h1</div><div class="specimen t-h1">Hero headline, two&nbsp;lines max</div><div class="specs">Inter 600 · 64/64 · −3%</div></div>
+    <div class="type-row"><div class="label">h2</div><div class="specimen t-h2">Section heading</div><div class="specs">Inter 600 · 40/42 · −2%</div></div>
+    <div class="type-row"><div class="label">h3</div><div class="specimen t-h3">Card title or callout</div><div class="specs">Inter 600 · 24/29 · −1%</div></div>
+    <div class="type-row"><div class="label">body</div><div class="specimen t-body">Длинный read для секций «как работает» и FAQ. Достаточно крупный для лендинга, не читается как блог.</div><div class="specs">Inter 400 · 17/26</div></div>
+    <div class="type-row"><div class="label">small</div><div class="specimen t-small">Подписи под кнопками, mини-копи, метаданные карточек.</div><div class="specs">Inter 400 · 14/21</div></div>
+    <div class="type-row"><div class="label">kicker</div><div class="specimen t-mono">3 тарифа · от 0 ₽</div><div class="specs">JetBrains 500 · 11 · 14%</div></div>
+
+    <div class="head-show" style="margin-top:32px;">
+      <h3 class="h">Готова <span class="it">удвоить</span> выручку без найма команды?</h3>
+      <p class="sub">Italic word — Playfair Display 500 italic. Остальное — Inter 600. Одно italic-слово на headline, не больше. Никаких drop-cap, никаких больших serif-блоков.</p>
+    </div>
+  </section>
+
+  <!-- 03 NUMERALS / PRICE TYPE -->
+  <section class="ds">
+    <div class="ds-h">
+      <span class="num mono">03</span>
+      <h2>Numerals &amp; Prices</h2>
+      <div class="desc">Tabular numerals everywhere. Currency unit always smaller, in Mono, set baseline-aligned with the value.</div>
+    </div>
+    <div class="num-show">
+      <div><div class="v">0<span class="u"> ₽</span></div><div class="lbl">free / forever</div></div>
+      <div><div class="v">2 990<span class="u"> ₽/мес</span></div><div class="lbl">tool · self-serve</div></div>
+      <div><div class="v">49 000<span class="u"> ₽</span></div><div class="lbl">personal · one-time</div></div>
+      <div><div class="v">3<span class="u"> места</span></div><div class="lbl">monthly cap</div></div>
+    </div>
+  </section>
+
+  <!-- 04 BUTTONS -->
+  <section class="ds">
+    <div class="ds-h">
+      <span class="num mono">04</span>
+      <h2>Buttons &amp; CTAs</h2>
+      <div class="desc">Square corners. No gradients. Primary uses Ink. Accent only when the moment is unmissable. Underlined link is a real, working pattern — not a fallback.</div>
+    </div>
+    <div class="btn-row" style="padding:32px;background:var(--bg-card);border:1px solid var(--hairline);">
+      <button class="btn btn-primary">Попробовать бесплатно <span class="arr">→</span></button>
+      <button class="btn btn-accent">Записаться · 3 места <span class="arr">→</span></button>
+      <button class="btn btn-ghost">Посмотреть метод</button>
+      <button class="btn btn-link">Читать кейсы <span class="arr">→</span></button>
+    </div>
+    <dl class="spec" style="margin-top:24px;">
+      <dt>Hover · primary</dt><dd>Background swaps Ink → Accent. 200ms ease.</dd>
+      <dt>Arrow</dt><dd>+3px translateX on hover. Not on link variant when underline is the affordance.</dd>
+      <dt>Radius</dt><dd>0px by default. Tweakable up to 24px globally on the live site.</dd>
+    </dl>
+  </section>
+
+  <!-- 05 TAGS -->
+  <section class="ds">
+    <div class="ds-h">
+      <span class="num mono">05</span>
+      <h2>Tags &amp; Risk-reversal</h2>
+      <div class="desc">Mono uppercase. Used for kickers, plan labels, and the trio of risk-reversal items under hero CTA.</div>
+    </div>
+    <div class="tag-row" style="padding:32px;background:var(--bg-card);border:1px solid var(--hairline);">
+      <span class="tag">3 ТАРИФА · ОТ 0 ₽</span>
+      <span class="tag"><span class="dot"></span>3 ЛЕНДИНГА БЕСПЛАТНО</span>
+      <span class="tag"><span class="dot"></span>БЕЗ КАРТЫ</span>
+      <span class="tag"><span class="dot"></span>ВОЗВРАТ 14 ДНЕЙ</span>
+      <span class="tag solid">PERSONAL</span>
+      <span class="tag accent"><span class="dot"></span>3 МЕСТА В МЕС</span>
+    </div>
+  </section>
+
+  <!-- 06 PRICING CARD ANATOMY -->
+  <section class="ds">
+    <div class="ds-h">
+      <span class="num mono">06</span>
+      <h2>Pricing Card Anatomy</h2>
+      <div class="desc">Three-column row, no gaps between cards — they share hairlines. Featured card is recessed into the page bg with a 2px ink frame. No badges, no "Most Popular".</div>
+    </div>
+    <div class="cards-preview">
+      <div class="pcard">
+        <div class="roman">I — БЕСПЛАТНО</div>
+        <div class="nm">Старт</div>
+        <div class="who">Пробуешь без обязательств. Watermark natalia.com. Без регистрации.</div>
+        <div class="price"><span class="v">0</span><span class="u">₽ / месяц</span></div>
+        <div class="billing">3 лендинга в месяц</div>
+        <ul>
+          <li><span class="n">01</span><span>3 лендинга в месяц</span></li>
+          <li><span class="n">02</span><span>2 AI-агента из 16</span></li>
+          <li><span class="n">03</span><span>Watermark natalia.com</span></li>
+        </ul>
+        <div class="cta-wrap"><button class="btn btn-ghost" style="width:100%;justify-content:center;">Открыть студию <span class="arr">→</span></button></div>
+      </div>
+
+      <div class="pcard featured">
+        <div class="roman">II — ИНСТРУМЕНТ</div>
+        <div class="nm">Self-<span class="it" style="font-family:'Playfair Display',serif;font-style:italic;font-weight:500;">serve</span></div>
+        <div class="who">У тебя есть 2 часа в неделю. Хочешь делать сам, но с командой агентов.</div>
+        <div class="price"><span class="v">2 990</span><span class="u">₽ / месяц</span></div>
+        <div class="billing">7 дней trial · без карты</div>
+        <ul>
+          <li><span class="n">01</span><span>16 AI-агентов · безлимит</span></li>
+          <li><span class="n">02</span><span>Brand Memory + Team Mode</span></li>
+          <li><span class="n">03</span><span>Без watermark</span></li>
+        </ul>
+        <div class="cta-wrap"><button class="btn btn-primary" style="width:100%;justify-content:center;">Начать 7-дневный trial <span class="arr">→</span></button></div>
+      </div>
+
+      <div class="pcard">
+        <div class="roman">III — СО МНОЙ</div>
+        <div class="nm">Personal</div>
+        <div class="who">Времени совсем нет. Я лично делаю всё под ключ за 30 дней.</div>
+        <div class="price"><span class="v">49 000</span><span class="u">₽ разово</span></div>
+        <div class="billing">3 места · 30 дней</div>
+        <ul>
+          <li><span class="n">01</span><span>Аудит + позиционирование</span></li>
+          <li><span class="n">02</span><span>Лендинг + реклама + Telegram</span></li>
+          <li><span class="n">03</span><span>Я лично · 30 дней</span></li>
+        </ul>
+        <div class="cta-wrap"><button class="btn btn-accent" style="width:100%;justify-content:center;">Записаться <span class="arr">→</span></button></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 07 GRID -->
+  <section class="ds">
+    <div class="ds-h">
+      <span class="num mono">07</span>
+      <h2>Grid &amp; Spacing</h2>
+      <div class="desc">12 columns, 24px gutter, 56px outer margin desktop / 24px mobile. Vertical rhythm: 88px between major sections, 28–32px in-section.</div>
+    </div>
+    <div class="gridviz" id="gridviz"></div>
+    <dl class="spec" style="margin-top:24px;">
+      <dt>Columns</dt><dd>12 · gutter 24px</dd>
+      <dt>Page max</dt><dd>1280px</dd>
+      <dt>Margins</dt><dd>56px desktop · 24px mobile</dd>
+      <dt>Section rhythm</dt><dd>88px (tweakable 56–144px)</dd>
+      <dt>Card padding</dt><dd>32px desktop · 24px mobile</dd>
+    </dl>
+  </section>
+
+  <!-- 08 MOTION -->
+  <section class="ds">
+    <div class="ds-h">
+      <span class="num mono">08</span>
+      <h2>Motion</h2>
+      <div class="desc">Calm and deliberate. No spring-y bounces on a pricing page; reserved springs for confirmation moments only.</div>
+    </div>
+    <div class="motion-row">
+      <div class="motion ease">
+        <h4>Hover · ease-out</h4>
+        <p>cubic-bezier(.2,.8,.2,1) · 200ms</p>
+        <div class="demo"><div class="ball"></div></div>
+      </div>
+      <div class="motion linear">
+        <h4>Reveal · linear fade</h4>
+        <p>opacity 0 → 1 · 240ms</p>
+        <div class="demo"><div class="ball"></div></div>
+      </div>
+      <div class="motion spring">
+        <h4>Confirm · gentle spring</h4>
+        <p>cubic-bezier(.5,1.6,.4,1) · 320ms</p>
+        <div class="demo"><div class="ball"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 09 VOICE -->
+  <section class="ds">
+    <div class="ds-h">
+      <span class="num mono">09</span>
+      <h2>Voice &amp; Copy</h2>
+      <div class="desc">Прямая речь Натальи. Ты, не вы. Без жаргона агентств. Без эмодзи. Конкретные цифры лучше прилагательных.</div>
+    </div>
+    <div class="voice">
+      <div class="yes">
+        <h4>↓ так</h4>
+        <ul>
+          <li>«Готова удвоить выручку без найма команды?»</li>
+          <li>«16 AI-агентов. Безлимит. Без watermark.»</li>
+          <li>«3 места в месяц. Дальше — лист ожидания.»</li>
+          <li>«Я лично делаю. 30 дней. Под ключ.»</li>
+          <li>«Не подойдёт — верну деньги в течение 14 дней.»</li>
+        </ul>
+      </div>
+      <div class="no">
+        <h4>↑ не так</h4>
+        <ul>
+          <li>«Раскройте потенциал вашего бизнеса с помощью AI 🚀»</li>
+          <li>«Революционная платформа нового поколения»</li>
+          <li>«Только сегодня! Скидка 50%! ⚡»</li>
+          <li>«Наша команда экспертов поможет вам достичь...»</li>
+          <li>«Most Popular ⭐ Best Value 💎»</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10 DON'TS -->
+  <section class="ds">
+    <div class="ds-h">
+      <span class="num mono">10</span>
+      <h2>Don'ts</h2>
+      <div class="desc">Things that look like AI-slop pricing pages and pull credibility down.</div>
+    </div>
+    <ul style="list-style:none;padding:0;margin:0;column-count:2;column-gap:48px;">
+      <li style="padding:14px 0;border-top:1px solid var(--hairline-2);font-size:15px;break-inside:avoid;"><span class="mono" style="color:var(--accent);font-size:11px;letter-spacing:.14em;">×&nbsp;NO&nbsp;</span> Pill-кнопки с purple/blue градиентом</li>
+      <li style="padding:14px 0;border-top:1px solid var(--hairline-2);font-size:15px;break-inside:avoid;"><span class="mono" style="color:var(--accent);font-size:11px;letter-spacing:.14em;">×&nbsp;NO&nbsp;</span> ✓ галочки в feature-листах</li>
+      <li style="padding:14px 0;border-top:1px solid var(--hairline-2);font-size:15px;break-inside:avoid;"><span class="mono" style="color:var(--accent);font-size:11px;letter-spacing:.14em;">×&nbsp;NO&nbsp;</span> «Most Popular» badge</li>
+      <li style="padding:14px 0;border-top:1px solid var(--hairline-2);font-size:15px;break-inside:avoid;"><span class="mono" style="color:var(--accent);font-size:11px;letter-spacing:.14em;">×&nbsp;NO&nbsp;</span> Stat-strip «47 млн / 20 / 16» в hero</li>
+      <li style="padding:14px 0;border-top:1px solid var(--hairline-2);font-size:15px;break-inside:avoid;"><span class="mono" style="color:var(--accent);font-size:11px;letter-spacing:.14em;">×&nbsp;NO&nbsp;</span> Editorial drop-cap</li>
+      <li style="padding:14px 0;border-top:1px solid var(--hairline-2);font-size:15px;break-inside:avoid;"><span class="mono" style="color:var(--accent);font-size:11px;letter-spacing:.14em;">×&nbsp;NO&nbsp;</span> Playfair для целых headline</li>
+      <li style="padding:14px 0;border-top:1px solid var(--hairline-2);font-size:15px;break-inside:avoid;"><span class="mono" style="color:var(--accent);font-size:11px;letter-spacing:.14em;">×&nbsp;NO&nbsp;</span> Сравнительная SaaS-таблица с галочками</li>
+      <li style="padding:14px 0;border-top:1px solid var(--hairline-2);font-size:15px;break-inside:avoid;"><span class="mono" style="color:var(--accent);font-size:11px;letter-spacing:.14em;">×&nbsp;NO&nbsp;</span> Эмодзи в любых местах</li>
+    </ul>
+  </section>
+
+  <footer style="margin-top:96px;padding-top:32px;border-top:1px solid var(--hairline);display:flex;justify-content:space-between;align-items:baseline;font-size:12px;color:var(--ink-3);">
+    <div class="mono">natalia.com / DS-01 / v 1.0</div>
+    <div class="mono">→ pricing-v3.html</div>
+  </footer>
+
+</div>
+
+<script>
+  // palette toggle for this page
+  const root = document.body;
+  const tog = document.getElementById('paletteToggle');
+  tog.addEventListener('click', (e) => {
+    const b = e.target.closest('button[data-pal]');
+    if (!b) return;
+    root.setAttribute('data-palette', b.dataset.pal);
+    [...tog.querySelectorAll('button')].forEach(x => x.dataset.active = x === b ? '1' : '0');
+  });
+
+  // grid viz columns
+  const gv = document.getElementById('gridviz');
+  for (let i = 0; i < 12; i++) {
+    const col = document.createElement('div');
+    col.className = 'col';
+    col.style.left = `calc(${(i / 12) * 100}% + 12px)`;
+    col.style.width = `calc(${100 / 12}% - 24px)`;
+    gv.appendChild(col);
+  }
+</script>
+</body>
+</html>

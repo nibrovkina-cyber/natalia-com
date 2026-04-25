@@ -1,0 +1,564 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>MEDEA DENT · Кейс — natalia.com</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0D1B2A;
+    --navy-2: #142638;
+    --gold: #C8B79C;
+    --gold-2: #E0D3BB;
+    --cream: #F5F3EF;
+    --cream-2: #EFEBE2;
+    --steel: #6B7A8F;
+    --mint: #5BBFA5;
+    --line: rgba(13,27,42,0.08);
+    --line-dark: rgba(245,243,239,0.12);
+  }
+  * { box-sizing: border-box; }
+  html, body { margin:0; padding:0; }
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    background: var(--cream);
+    color: var(--navy);
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.55;
+  }
+  h1,h2,h3,h4 { font-family: 'Playfair Display', Georgia, serif; font-weight: 600; letter-spacing: -0.015em; margin: 0; }
+  em { font-style: italic; color: var(--steel); font-weight: 500; }
+  .wrap { max-width: 1240px; margin: 0 auto; padding: 0 32px; }
+
+  /* ─── Navbar ─── */
+  .nav {
+    position: sticky; top: 0; z-index: 20;
+    background: rgba(245,243,239,0.92);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav .wrap { display:flex; align-items:center; justify-content: space-between; padding: 14px 32px; }
+  .nav-left { display:flex; align-items:center; gap: 14px; }
+  .avatar {
+    width: 40px; height: 40px; border-radius: 50%;
+    background: url('../../assets/portrait.png') center 15%/cover, var(--cream-2);
+    border: 2px solid var(--gold);
+    flex-shrink: 0;
+  }
+  .nav-brand { font-family: 'Playfair Display', serif; font-size: 21px; font-weight: 600; letter-spacing: -0.01em; }
+  .nav-brand small { display:block; font-family: 'Inter',sans-serif; font-size: 11px; color: var(--steel); font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; margin-top: -2px; }
+  .nav a.tool {
+    background: var(--navy); color: var(--cream);
+    padding: 10px 20px; border-radius: 999px;
+    font-size: 14px; font-weight: 500; text-decoration:none;
+    display:inline-flex; align-items:center; gap: 8px;
+  }
+  .nav a.tool::after { content:"→"; }
+
+  /* ─── Breadcrumbs ─── */
+  .crumbs { padding: 28px 0 6px; font-size: 13px; color: var(--steel); }
+  .crumbs a { color: var(--steel); text-decoration: none; }
+  .crumbs a:hover { color: var(--navy); }
+  .crumbs .sep { margin: 0 10px; opacity: 0.5; }
+  .crumbs .cur { color: var(--navy); font-weight: 500; }
+
+  /* ─── Page head ─── */
+  .phead { padding: 28px 0 48px; }
+  .phead .tags { display:flex; gap: 10px; align-items: center; flex-wrap: wrap; margin-bottom: 22px; }
+  .badge {
+    padding: 6px 14px; border-radius: 999px; font-size: 12px; font-weight: 500;
+    letter-spacing: 0.06em; text-transform: uppercase;
+  }
+  .badge.niche { background: var(--navy); color: var(--mint); }
+  .badge.meta { color: var(--steel); padding-left: 0; }
+  .badge.meta::before { content:"·"; margin-right: 14px; color: var(--line); }
+  .phead h1 { font-size: 72px; line-height: 1.02; max-width: 980px; }
+  .phead h1 em { color: var(--steel); }
+  .phead .lede { margin-top: 24px; font-size: 19px; color: var(--steel); max-width: 720px; line-height: 1.55; }
+
+  /* ─── Hero metrics ─── */
+  .metrics { display:grid; grid-template-columns: repeat(4, 1fr); gap: 0; margin-top: 52px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .metric { padding: 28px 24px 28px 0; border-right: 1px solid var(--line); }
+  .metric:last-child { border-right: none; padding-right: 0; }
+  .metric .v { font-family: 'Playfair Display', serif; font-size: 44px; font-weight: 600; letter-spacing: -0.02em; line-height: 1; }
+  .metric .v .up { color: var(--mint); font-size: 28px; margin-right: 4px; vertical-align: 4px; }
+  .metric .k { font-size: 12px; color: var(--steel); letter-spacing: 0.12em; text-transform: uppercase; margin-top: 10px; font-weight: 500; }
+
+  /* ─── Compare slider ─── */
+  .compare-wrap { padding: 72px 0 40px; position: relative; }
+  .compare-lead { display:flex; justify-content: space-between; align-items: flex-end; margin-bottom: 24px; gap: 40px; flex-wrap: wrap; }
+  .compare-lead .heading { max-width: 620px; }
+  .compare-lead h2 { font-size: 36px; line-height: 1.15; margin-bottom: 10px; }
+  .compare-lead .sub { color: var(--steel); font-size: 15px; }
+  .compare-lead .hint { font-size: 12px; color: var(--steel); letter-spacing: 0.12em; text-transform: uppercase; font-weight: 500; display:flex; align-items:center; gap: 10px; white-space: nowrap; }
+  .compare-lead .hint .drag { display:inline-grid; grid-template-columns: repeat(3,1fr); gap: 2px; }
+  .compare-lead .hint .drag span { width: 4px; height: 14px; background: var(--steel); opacity: 0.4; border-radius: 2px; }
+  .compare-lead .hint .drag span:nth-child(2) { opacity: 0.7; }
+  .compare-lead .hint .drag span:nth-child(3) { opacity: 1; }
+
+  .compare {
+    position: relative; width: 100%;
+    height: 75vh; min-height: 560px; max-height: 820px;
+    border-radius: 20px; overflow: hidden;
+    box-shadow: 0 50px 120px -50px rgba(13,27,42,0.5), 0 0 0 1px var(--line);
+    background: var(--navy);
+    user-select: none;
+    touch-action: none;
+  }
+  .compare .frame {
+    position: absolute; top: 0; bottom: 0;
+    width: 1280px; max-width: 1280px;
+    overflow: hidden;
+  }
+  .compare iframe {
+    border: none; display: block;
+    width: 1280px; height: 100%;
+    transform-origin: top left;
+  }
+  .compare .before { left: 0; }
+  .compare .after {
+    right: 0;
+    clip-path: inset(0 0 0 50%);
+    transition: clip-path 0s;
+  }
+  .compare .after iframe { margin-left: 0; }
+
+  .compare .label-chip {
+    position: absolute; top: 20px;
+    padding: 8px 16px; border-radius: 999px;
+    font-size: 11px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase;
+    z-index: 3; pointer-events: none;
+    backdrop-filter: blur(10px);
+  }
+  .label-chip.before { left: 24px; background: rgba(13,27,42,0.78); color: var(--gold); border: 1px solid rgba(200,183,156,0.3); }
+  .label-chip.after  { right: 24px; background: rgba(91,191,165,0.15); color: var(--mint); border: 1px solid rgba(91,191,165,0.4); }
+
+  .compare .handle {
+    position: absolute; top: 0; bottom: 0;
+    width: 2px; background: var(--gold);
+    left: 50%; transform: translateX(-50%);
+    z-index: 4; cursor: ew-resize;
+  }
+  .compare .handle::before {
+    content:""; position: absolute; top: 0; bottom: 0; left: -20px; right: -20px;
+  }
+  .handle-knob {
+    position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60px; height: 60px; border-radius: 50%;
+    background: var(--gold); color: var(--navy);
+    display: grid; place-items: center;
+    box-shadow: 0 20px 40px -10px rgba(13,27,42,0.6), 0 0 0 6px rgba(200,183,156,0.18);
+    font-weight: 700; font-size: 12px;
+    cursor: ew-resize;
+  }
+  .handle-knob svg { width: 22px; height: 22px; }
+
+  /* Problem pins on the BEFORE side */
+  .pin {
+    position: absolute; z-index: 3;
+    background: rgba(13,27,42,0.92);
+    color: var(--cream);
+    border: 1px solid var(--gold);
+    border-radius: 10px;
+    padding: 10px 14px; font-size: 12px; font-weight: 500;
+    max-width: 220px; line-height: 1.35;
+    opacity: 0; transition: opacity .3s ease;
+    pointer-events: none;
+    backdrop-filter: blur(8px);
+  }
+  .pin .num {
+    display:inline-grid; place-items:center;
+    width: 18px; height: 18px; border-radius: 50%;
+    background: var(--gold); color: var(--navy);
+    font-family: 'Playfair Display', serif; font-weight: 700;
+    font-size: 11px; margin-right: 8px; vertical-align: 1px;
+  }
+  .pin::before {
+    content:""; position:absolute;
+    width: 10px; height: 10px; background: inherit;
+    border-left: 1px solid var(--gold); border-top: 1px solid var(--gold);
+    transform: rotate(-45deg);
+    left: -6px; top: 50%; margin-top: -5px;
+  }
+  .compare[data-position="before"] .pin { opacity: 1; }
+
+  .pin.p1 { top: 8%;  left: 15%; }
+  .pin.p2 { top: 30%; left: 28%; }
+  .pin.p3 { top: 56%; left: 12%; }
+  .pin.p4 { top: 78%; left: 22%; }
+
+  .compare-foot { display:flex; justify-content: space-between; margin-top: 18px; font-size: 12px; color: var(--steel); letter-spacing: 0.06em; }
+  .compare-foot .ctrl { display:flex; gap: 20px; }
+  .compare-foot .ctrl button {
+    background: none; border: none; color: var(--steel); font-family: inherit;
+    font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 500;
+    cursor: pointer; padding: 6px 0;
+  }
+  .compare-foot .ctrl button:hover { color: var(--navy); }
+  .compare-foot .ctrl button.active { color: var(--navy); border-bottom: 1px solid var(--gold); }
+
+  /* ─── Two-column: fixes + methodology ─── */
+  .two-col { padding: 100px 0; display:grid; grid-template-columns: 1fr 1fr; gap: 64px; }
+  .two-col h2 { font-size: 38px; margin-bottom: 10px; }
+  .two-col .kicker { font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--mint); font-weight: 500; margin-bottom: 12px; }
+  .fixes ol { list-style: none; counter-reset: f; padding: 0; margin: 28px 0 0; }
+  .fixes li {
+    counter-increment: f;
+    padding: 20px 0 20px 58px; position: relative;
+    border-bottom: 1px solid var(--line);
+  }
+  .fixes li:last-child { border-bottom: none; }
+  .fixes li::before {
+    content: counter(f, decimal-leading-zero);
+    position: absolute; left: 0; top: 22px;
+    font-family: 'Playfair Display', serif; font-weight: 600;
+    color: var(--gold); font-size: 22px;
+    border-right: 1px solid var(--line);
+    padding-right: 14px; width: 44px;
+  }
+  .fixes li h4 { font-family: 'Inter', sans-serif; font-size: 16px; font-weight: 600; margin-bottom: 4px; }
+  .fixes li p { margin: 0; color: var(--steel); font-size: 14px; line-height: 1.55; }
+
+  .method .cards { display:flex; flex-direction: column; gap: 16px; margin-top: 28px; }
+  .mcard {
+    background: white; border-radius: 14px; border: 1px solid var(--line);
+    padding: 24px 26px;
+    position: relative;
+  }
+  .mcard .author { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 14px; }
+  .mcard blockquote {
+    margin: 0 0 16px; padding: 0;
+    font-family: 'Playfair Display', serif;
+    font-style: italic; font-size: 18px; line-height: 1.4;
+    color: var(--navy);
+  }
+  .mcard blockquote::before { content:"\201C"; font-size: 40px; line-height: 0; vertical-align: -12px; margin-right: 4px; color: var(--gold); font-style: normal; }
+  .mcard .apply { font-size: 13px; color: var(--steel); padding-top: 14px; border-top: 1px solid var(--line); line-height: 1.55; }
+  .mcard .apply b { color: var(--navy); font-weight: 600; }
+
+  /* ─── Bottom CTA ─── */
+  .cta {
+    background: var(--navy); color: var(--cream);
+    padding: 120px 0; position: relative; overflow: hidden;
+  }
+  .cta::before {
+    content:""; position:absolute; inset:0;
+    background: radial-gradient(ellipse at 80% 30%, rgba(200,183,156,0.12), transparent 55%);
+  }
+  .cta .wrap { position: relative; display:grid; grid-template-columns: 1.3fr 1fr; gap: 60px; align-items:center; }
+  .cta h2 { font-size: 64px; line-height: 1.05; color: var(--cream); }
+  .cta h2 em { color: var(--gold); font-style: italic; }
+  .cta p { color: rgba(245,243,239,0.7); font-size: 17px; margin: 20px 0 36px; max-width: 540px; }
+  .cta .actions { display:flex; gap: 16px; flex-wrap: wrap; }
+  .cta .btn-primary {
+    background: var(--mint); color: var(--navy);
+    padding: 18px 32px; border-radius: 10px; text-decoration:none;
+    font-weight: 600; font-size: 16px; display:inline-flex; align-items:center; gap: 10px;
+  }
+  .cta .btn-ghost {
+    border: 1px solid var(--gold); color: var(--gold);
+    padding: 17px 28px; border-radius: 10px; text-decoration:none;
+    font-weight: 500; font-size: 16px;
+  }
+  .signature {
+    padding: 32px 32px 36px;
+    border-left: 1px solid var(--line-dark);
+    display:flex; flex-direction: column; gap: 18px; align-items: flex-start;
+  }
+  .sig-who { display:flex; gap: 14px; align-items:center; }
+  .sig-who .ava { width: 56px; height: 56px; border-radius: 50%; background: url('../../assets/portrait.png') center 15%/cover, #333; border: 1.5px solid var(--gold); flex-shrink: 0; }
+  .sig-who .nm { font-family: 'Playfair Display', serif; font-size: 22px; color: var(--cream); font-weight: 600; }
+  .sig-who .nm small { display:block; font-family:'Inter', sans-serif; font-size: 12px; color: rgba(245,243,239,0.55); font-weight: 400; letter-spacing: 0.08em; text-transform: uppercase; margin-top: 3px; }
+  .sig-quote { font-family: 'Playfair Display', serif; font-size: 17px; font-style: italic; color: rgba(245,243,239,0.75); line-height: 1.5; }
+
+  footer.site { background: var(--navy); border-top: 1px solid var(--line-dark); padding: 28px 0; color: rgba(245,243,239,0.5); font-size: 12px; }
+  footer.site .wrap { display:flex; justify-content: space-between; }
+
+  /* Tooltip-free mode toggle */
+  .compare .handle-knob { transition: transform .2s ease; }
+  .compare.animating .handle { transition: left 1.4s cubic-bezier(.7,0,.3,1); }
+
+  /* ─── Mobile ─── */
+  @media (max-width: 900px) {
+    .wrap { padding: 0 20px; }
+    .nav .wrap { padding: 12px 20px; }
+    .phead h1 { font-size: 40px; }
+    .phead .lede { font-size: 16px; }
+    .metrics { grid-template-columns: 1fr 1fr; }
+    .metric { border-right: none; border-bottom: 1px solid var(--line); padding: 20px 0; }
+    .metric:nth-child(2n) { border-left: 1px solid var(--line); padding-left: 18px; }
+    .metric .v { font-size: 32px; }
+    .compare-lead h2 { font-size: 26px; }
+    .compare-lead .hint { display:none; }
+    .compare { height: 56vh; min-height: 420px; border-radius: 12px; }
+    .pin { display:none; }
+    .two-col { grid-template-columns: 1fr; gap: 56px; padding: 72px 0; }
+    .two-col h2 { font-size: 28px; }
+    .cta { padding: 72px 0; }
+    .cta .wrap { grid-template-columns: 1fr; gap: 40px; }
+    .cta h2 { font-size: 38px; }
+    .signature { border-left: none; border-top: 1px solid var(--line-dark); padding: 28px 0 0; }
+  }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <div class="nav-left">
+      <div class="avatar" aria-label="Natalia Brovkina"></div>
+      <div class="nav-brand">natalia<small>AI · marketing studio</small></div>
+    </div>
+    <a class="tool" href="#">Открыть инструмент</a>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <nav class="crumbs" aria-label="breadcrumbs">
+      <a href="#">Галерея</a><span class="sep">/</span>
+      <a href="#">Стоматологии</a><span class="sep">/</span>
+      <span class="cur">MEDEA DENT</span>
+    </nav>
+
+    <section class="phead">
+      <div class="tags">
+        <span class="badge niche">Стоматология</span>
+        <span class="badge meta">Москва</span>
+        <span class="badge meta">Март 2026</span>
+        <span class="badge meta">Сделано за 4 дня</span>
+      </div>
+      <h1>Заменили Tilda-одностраничник <em>на&nbsp;премиум-сайт</em>, который продаёт имплантацию.</h1>
+      <p class="lede">Клиника работает 16&nbsp;лет, но&nbsp;старый сайт отпугивал дорогую аудиторию. Переписали текст по&nbsp;методологии Огилви, пересобрали структуру под&nbsp;Шварца, доказали ценность по&nbsp;Хопкинсу&nbsp;— за&nbsp;4&nbsp;дня AI-командой.</p>
+
+      <div class="metrics">
+        <div class="metric"><div class="v"><span class="up">↑</span>3,4×</div><div class="k">Заявок в первый месяц</div></div>
+        <div class="metric"><div class="v"><span class="up">↑</span>€€€</div><div class="k">Средний чек заявки</div></div>
+        <div class="metric"><div class="v">4&nbsp;дня</div><div class="k">От брифа до публикации</div></div>
+        <div class="metric"><div class="v">7&nbsp;из&nbsp;16</div><div class="k">Агентов задействовано</div></div>
+      </div>
+    </section>
+
+    <!-- Compare slider -->
+    <section class="compare-wrap">
+      <div class="compare-lead">
+        <div class="heading">
+          <h2>Перетащите ползунок. <em>Посмотрите, что изменилось.</em></h2>
+          <p class="sub">Слева — сайт до обращения (Tilda, 2022). Справа — живой сайт, опубликованный из&nbsp;Студии.</p>
+        </div>
+        <div class="hint">
+          <span class="drag"><span></span><span></span><span></span></span>
+          Тяните влево-вправо
+        </div>
+      </div>
+
+      <div class="compare" id="compare" data-position="center">
+        <div class="frame before">
+          <iframe src="../demo/medea-before.html" title="Before" loading="lazy" scrolling="no"></iframe>
+        </div>
+        <div class="frame after" id="afterFrame">
+          <iframe src="../demo/medea-after.html" title="After" loading="lazy" scrolling="no"></iframe>
+        </div>
+
+        <!-- Problem pins over BEFORE -->
+        <div class="pin p1"><span class="num">1</span>Кричащий заголовок капсом — отпугивает премиум-аудиторию</div>
+        <div class="pin p2"><span class="num">2</span>Прайс-таблица «от&nbsp;500&nbsp;₽» обесценивает имплантацию за&nbsp;500&nbsp;000</div>
+        <div class="pin p3"><span class="num">3</span>Врачи без фото и регалий — ноль доверия</div>
+        <div class="pin p4"><span class="num">4</span>4&nbsp;поп-апа и&nbsp;пульсирующая кнопка&nbsp;— инфобиз-стиль</div>
+
+        <div class="label-chip before">01 · До · Tilda 2022</div>
+        <div class="label-chip after">02 · После · AI-команда</div>
+
+        <div class="handle" id="handle">
+          <div class="handle-knob" aria-label="Перетащить">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M9 6 L4 12 L9 18 M15 6 L20 12 L15 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+        </div>
+      </div>
+
+      <div class="compare-foot">
+        <div>Iframe показаны в масштабе. Живая версия — <a href="../demo/medea-after.html" style="color:var(--navy);">medea-dent.ru</a></div>
+        <div class="ctrl">
+          <button data-pos="before">Только до</button>
+          <button data-pos="center" class="active">50/50</button>
+          <button data-pos="after">Только после</button>
+          <button id="demoBtn">▶ Показать разницу</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Two-column: fixes + methodology -->
+    <section class="two-col">
+      <div class="fixes">
+        <div class="kicker">Что AI исправил</div>
+        <h2>Пять решений, которые <em>сдвинули конверсию</em></h2>
+        <ol>
+          <li>
+            <h4>Переписали заголовок под результат, а не услугу</h4>
+            <p>Было: «Лечение зубов в&nbsp;Москве без&nbsp;боли и&nbsp;переплат». Стало: «Зубы, которыми хочется улыбаться без&nbsp;стеснения».</p>
+          </li>
+          <li>
+            <h4>Перенесли имплантацию в&nbsp;центр предложения</h4>
+            <p>Цены показаны как «под&nbsp;ключ», а&nbsp;не&nbsp;«от&nbsp;35&nbsp;000 ₽&nbsp;+ всё остальное». Премиум-покупатель готов платить за&nbsp;ясность.</p>
+          </li>
+          <li>
+            <h4>Форма записи — прямо в&nbsp;первом экране</h4>
+            <p>Один CTA сверху: первичная консультация бесплатно. Поля: имя, телефон, клиника, удобное время. Минимум трения.</p>
+          </li>
+          <li>
+            <h4>Врачи с&nbsp;именами, регалиями, сертификатами</h4>
+            <p>К.М.Н., AAID Fellow, Invisalign Platinum. Каждая регалия подтверждена ссылкой на&nbsp;международный реестр.</p>
+          </li>
+          <li>
+            <h4>Убрали 4&nbsp;поп-апа, виджет и&nbsp;кричащие анимации</h4>
+            <p>Доверие строится на&nbsp;тишине. Страница читается, как разговор с&nbsp;главврачом в&nbsp;кабинете, а&nbsp;не&nbsp;как лендинг на&nbsp;курс.</p>
+          </li>
+        </ol>
+      </div>
+
+      <div class="method">
+        <div class="kicker">Методология</div>
+        <h2>Не&nbsp;гадали&nbsp;— <em>применили школу</em></h2>
+        <div class="cards">
+          <div class="mcard">
+            <div class="author">David Ogilvy · 1963</div>
+            <blockquote>Заголовок читают в&nbsp;пять раз чаще, чем основной текст. Если он&nbsp;не&nbsp;продал&nbsp;— 80&nbsp;% бюджета потрачены зря.</blockquote>
+            <div class="apply"><b>Как применили:</b> агент Copy-Ogilvy сгенерировал 24&nbsp;варианта заголовка, отсеял всё, что не&nbsp;отвечает на&nbsp;«почему именно эта клиника», оставил три — один пошёл в&nbsp;финал.</div>
+          </div>
+          <div class="mcard">
+            <div class="author">Eugene Schwartz · 1966</div>
+            <blockquote>Пишите для того уровня осознанности, на&nbsp;котором клиент находится сейчас. Не&nbsp;выше, не&nbsp;ниже.</blockquote>
+            <div class="apply"><b>Как применили:</b> аудит показал, что аудитория имплантации&nbsp;— на&nbsp;уровне 4&nbsp;(решение выбрано, ищут исполнителя). Сайт говорит языком «почему&nbsp;мы, а&nbsp;не&nbsp;соседи», а&nbsp;не&nbsp;«зачем вообще импланты».</div>
+          </div>
+          <div class="mcard">
+            <div class="author">Claude Hopkins · 1923</div>
+            <blockquote>Общие утверждения не&nbsp;считаются. Платит только конкретика&nbsp;— цифры, имена, даты, подтверждения.</blockquote>
+            <div class="apply"><b>Как применили:</b> заменили «опыт 15&nbsp;лет» на&nbsp;«2&nbsp;400&nbsp;+ кейсов за&nbsp;5&nbsp;лет», «качество» — на&nbsp;«гарантия 10&nbsp;лет по&nbsp;договору», «современное оборудование» — на&nbsp;список брендов: Straumann, Nobel, Invisalign.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Bottom CTA -->
+  <section class="cta">
+    <div class="wrap">
+      <div>
+        <h2>Хочешь такой&nbsp;же? <em>Попробуй&nbsp;— бесплатно.</em></h2>
+        <p>Загрузи свой текущий сайт — AI-команда за&nbsp;60&nbsp;секунд соберёт премиум-версию. Смотришь, нравится&nbsp;— публикуешь.</p>
+        <div class="actions">
+          <a class="btn-primary" href="#">Попробовать бесплатно →</a>
+          <a class="btn-ghost" href="#">Смотреть ещё 29 кейсов</a>
+        </div>
+      </div>
+      <aside class="signature">
+        <div class="sig-who">
+          <span class="ava"></span>
+          <div class="nm">Наталья Бровкина<small>Founder, natalia.com</small></div>
+        </div>
+        <div class="sig-quote">Я&nbsp;лично ревью каждый сайт перед публикацией. Если AI&nbsp;сделает плохо&nbsp;— не&nbsp;отдам.</div>
+      </aside>
+    </div>
+  </section>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div>© 2026 natalia.com · Кейсы публикуются с&nbsp;согласия клиентов</div>
+    <div><a href="#" style="color:inherit;">Галерея</a> · <a href="#" style="color:inherit;">Pricing</a> · <a href="#" style="color:inherit;">Telegram</a></div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  const compare = document.getElementById('compare');
+  const handle  = document.getElementById('handle');
+  const after   = document.getElementById('afterFrame');
+
+  // Scale iframes to their container so the full 1280px page fits
+  function scaleFrames() {
+    const w = compare.clientWidth;
+    const scale = w / 1280;
+    compare.querySelectorAll('iframe').forEach(f => {
+      f.style.transform = 'scale(' + scale + ')';
+      f.style.width = '1280px';
+      f.style.height = (compare.clientHeight / scale) + 'px';
+    });
+    compare.querySelectorAll('.frame').forEach(fr => { fr.style.width = w + 'px'; });
+  }
+  window.addEventListener('resize', scaleFrames);
+  // Wait a tick for iframes + layout
+  requestAnimationFrame(scaleFrames);
+  setTimeout(scaleFrames, 200);
+
+  function setPos(pct, animate) {
+    pct = Math.max(0, Math.min(100, pct));
+    if (animate) compare.classList.add('animating'); else compare.classList.remove('animating');
+    handle.style.left = pct + '%';
+    after.style.clipPath = 'inset(0 0 0 ' + pct + '%)';
+    compare.dataset.position = pct < 12 ? 'before' : pct > 88 ? 'after' : 'center';
+    updateBtns(pct);
+  }
+
+  function updateBtns(pct) {
+    document.querySelectorAll('.compare-foot [data-pos]').forEach(b => {
+      const p = b.dataset.pos;
+      const active = (p === 'before' && pct < 12) || (p === 'after' && pct > 88) || (p === 'center' && pct >= 12 && pct <= 88);
+      b.classList.toggle('active', active);
+    });
+  }
+
+  let dragging = false;
+  function pctFromEvent(e) {
+    const r = compare.getBoundingClientRect();
+    const x = (e.touches ? e.touches[0].clientX : e.clientX) - r.left;
+    return (x / r.width) * 100;
+  }
+  function start(e) { dragging = true; compare.classList.remove('animating'); setPos(pctFromEvent(e)); e.preventDefault(); }
+  function move(e)  { if (!dragging) return; setPos(pctFromEvent(e)); }
+  function end()    { dragging = false; }
+
+  handle.addEventListener('mousedown', start);
+  compare.addEventListener('mousedown', start);
+  window.addEventListener('mousemove', move);
+  window.addEventListener('mouseup', end);
+  handle.addEventListener('touchstart', start, { passive: false });
+  compare.addEventListener('touchstart', start, { passive: false });
+  window.addEventListener('touchmove', move, { passive: false });
+  window.addEventListener('touchend', end);
+
+  document.querySelectorAll('.compare-foot [data-pos]').forEach(b => {
+    b.addEventListener('click', () => {
+      const p = b.dataset.pos;
+      setPos(p === 'before' ? 2 : p === 'after' ? 98 : 50, true);
+    });
+  });
+
+  // Auto-demo animation on first visibility
+  const demoBtn = document.getElementById('demoBtn');
+  function runDemo() {
+    setPos(50, false);
+    setTimeout(() => setPos(4, true), 200);
+    setTimeout(() => setPos(96, true), 1800);
+    setTimeout(() => setPos(50, true), 3400);
+  }
+  demoBtn.addEventListener('click', runDemo);
+
+  // Run once when scrolled into view
+  let ranOnce = false;
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting && !ranOnce) { ranOnce = true; setTimeout(runDemo, 600); }
+    });
+  }, { threshold: 0.4 });
+  io.observe(compare);
+
+  setPos(50, false);
+})();
+</script>
+</body>
+</html>

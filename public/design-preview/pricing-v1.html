@@ -1,0 +1,381 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Тарифы · natalia.com</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0D1B2A;
+    --navy-2: #142638;
+    --gold: #C8B79C;
+    --gold-2: #E0D3BB;
+    --cream: #F5F3EF;
+    --cream-2: #EFEBE2;
+    --steel: #6B7A8F;
+    --mint: #5BBFA5;
+    --line: rgba(13,27,42,0.08);
+    --line-dark: rgba(245,243,239,0.12);
+  }
+  * { box-sizing: border-box; }
+  html, body { margin:0; padding:0; }
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    background: var(--cream);
+    color: var(--navy);
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.55;
+  }
+  h1,h2,h3,h4 { font-family: 'Playfair Display', Georgia, serif; font-weight: 600; letter-spacing: -0.015em; margin: 0; }
+  em { font-style: italic; color: var(--steel); font-weight: 500; }
+  .wrap { max-width: 1240px; margin: 0 auto; padding: 0 32px; }
+  a { color: inherit; }
+
+  /* Navbar */
+  .nav {
+    position: sticky; top: 0; z-index: 20;
+    background: rgba(245,243,239,0.92);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav .wrap { display:flex; align-items:center; justify-content: space-between; padding: 14px 32px; }
+  .nav-left { display:flex; align-items:center; gap: 14px; }
+  .avatar { width: 40px; height: 40px; border-radius: 50%; background: url('../assets/portrait.png') center 15%/cover, var(--cream-2); border: 2px solid var(--gold); }
+  .nav-brand { font-family: 'Playfair Display', serif; font-size: 21px; font-weight: 600; }
+  .nav-brand small { display:block; font-family: 'Inter',sans-serif; font-size: 11px; color: var(--steel); font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; margin-top: -2px; }
+  .nav a.tool { background: var(--navy); color: var(--cream); padding: 10px 20px; border-radius: 999px; font-size: 14px; font-weight: 500; text-decoration:none; }
+
+  /* Page head */
+  .phead { padding: 80px 0 48px; text-align: center; }
+  .phead .kicker { font-size: 12px; color: var(--mint); letter-spacing: 0.28em; text-transform: uppercase; font-weight: 500; margin-bottom: 18px; }
+  .phead h1 { font-size: 72px; line-height: 1.02; max-width: 900px; margin: 0 auto 20px; }
+  .phead .lede { color: var(--steel); font-size: 18px; max-width: 620px; margin: 0 auto; }
+
+  /* Plans */
+  .plans {
+    display:grid; grid-template-columns: 1fr 1fr;
+    gap: 28px; margin-top: 56px; padding-bottom: 80px;
+  }
+  .plan {
+    border-radius: 22px; padding: 48px 44px;
+    display:flex; flex-direction: column;
+    position: relative; overflow: hidden;
+  }
+
+  /* Self-Serve (light) */
+  .plan.self {
+    background: white;
+    border: 1px solid var(--line);
+  }
+  .plan.self .badge {
+    display:inline-flex; align-items:center; gap: 8px;
+    font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--steel); font-weight: 600;
+    padding-bottom: 20px; border-bottom: 1px solid var(--line); margin-bottom: 28px;
+  }
+  .plan.self .badge .dot { width:7px; height:7px; border-radius:50%; background: var(--steel); }
+  .plan.self h2 { font-size: 48px; line-height: 1.05; margin-bottom: 10px; }
+  .plan.self .desc { color: var(--steel); font-size: 15px; margin-bottom: 36px; max-width: 340px; }
+  .plan.self .price { margin-bottom: 36px; padding-bottom: 28px; border-bottom: 1px solid var(--line); }
+  .plan.self .amount { display:flex; align-items:baseline; gap: 10px; }
+  .plan.self .amount .v { font-family: 'Playfair Display', serif; font-size: 68px; font-weight: 600; line-height: 1; letter-spacing: -0.025em; }
+  .plan.self .amount .u { color: var(--steel); font-size: 16px; }
+  .plan.self .fine { font-size: 13px; color: var(--steel); margin-top: 8px; }
+
+  /* Personal (dark premium) */
+  .plan.personal {
+    background: var(--navy);
+    color: var(--cream);
+    border: 1px solid var(--navy);
+  }
+  .plan.personal::before {
+    content:""; position:absolute; inset:0;
+    background:
+      radial-gradient(ellipse at 110% -10%, rgba(200,183,156,0.18), transparent 55%),
+      radial-gradient(ellipse at -10% 110%, rgba(200,183,156,0.08), transparent 55%);
+    pointer-events: none;
+  }
+  .plan.personal > * { position: relative; z-index: 1; }
+  .plan.personal .badge {
+    display:inline-flex; align-items:center; gap: 8px;
+    font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--gold); font-weight: 600;
+    padding-bottom: 20px; border-bottom: 1px solid var(--line-dark); margin-bottom: 28px;
+  }
+  .plan.personal .badge .dot { width:7px; height:7px; border-radius:50%; background: var(--gold); }
+  .plan.personal .badge .slots { margin-left: auto; color: rgba(245,243,239,0.6); letter-spacing: 0.14em; font-weight: 500; }
+  .plan.personal .slots b { color: var(--gold); font-weight: 600; margin-right: 6px; }
+
+  .plan.personal .head-row { display:flex; align-items:center; gap: 22px; margin-bottom: 22px; }
+  .plan.personal .portrait-sm {
+    width: 72px; height: 72px; border-radius: 50%;
+    background: url('../assets/portrait.png') center 12%/cover, #333;
+    border: 1.5px solid var(--gold);
+    flex-shrink: 0;
+  }
+  .plan.personal h2 { font-size: 48px; line-height: 1.05; color: var(--cream); }
+  .plan.personal h2 em { color: var(--gold); }
+  .plan.personal .desc { color: rgba(245,243,239,0.7); font-size: 15px; margin-bottom: 36px; max-width: 380px; }
+  .plan.personal .price { margin-bottom: 36px; padding-bottom: 28px; border-bottom: 1px solid var(--line-dark); }
+  .plan.personal .amount { display:flex; align-items:baseline; gap: 10px; }
+  .plan.personal .amount .v { font-family: 'Playfair Display', serif; font-size: 68px; font-weight: 600; line-height: 1; color: var(--gold); letter-spacing: -0.025em; }
+  .plan.personal .amount .u { color: rgba(245,243,239,0.6); font-size: 16px; }
+  .plan.personal .fine { font-size: 13px; color: rgba(245,243,239,0.55); margin-top: 8px; }
+
+  /* Features list */
+  .plan ul { list-style: none; padding: 0; margin: 0 0 36px; }
+  .plan li { padding: 14px 0 14px 36px; position: relative; font-size: 15px; line-height: 1.45; }
+  .plan li + li { border-top: 1px solid var(--line); }
+  .plan.personal li + li { border-top: 1px solid var(--line-dark); }
+  .plan li::before {
+    content:""; position:absolute; left: 2px; top: 20px;
+    width: 20px; height: 2px; background: var(--mint);
+  }
+  .plan.self li b { font-weight: 600; }
+  .plan.personal li { color: rgba(245,243,239,0.92); }
+  .plan.personal li::before { background: var(--gold); }
+  .plan li small { display:block; color: var(--steel); font-size: 13px; margin-top: 3px; }
+  .plan.personal li small { color: rgba(245,243,239,0.5); }
+
+  /* CTA */
+  .plan .cta {
+    margin-top: auto;
+    display: flex; flex-direction: column; gap: 10px;
+  }
+  .plan.self .btn {
+    background: var(--navy); color: var(--cream);
+    padding: 18px 24px; border-radius: 12px; text-align: center;
+    font-weight: 600; font-size: 15px; text-decoration: none;
+    display:flex; align-items:center; justify-content:center; gap: 10px;
+    transition: transform .15s ease;
+  }
+  .plan.self .btn:hover { transform: translateY(-2px); }
+  .plan.self .btn-sub { font-size: 12px; color: var(--steel); text-align: center; letter-spacing: 0.08em; text-transform: uppercase; }
+  .plan.personal .btn {
+    background: var(--gold); color: var(--navy);
+    padding: 18px 24px; border-radius: 12px; text-align: center;
+    font-weight: 600; font-size: 15px; text-decoration: none;
+    display:flex; align-items:center; justify-content:center; gap: 10px;
+    transition: transform .15s ease;
+  }
+  .plan.personal .btn:hover { transform: translateY(-2px); }
+  .plan.personal .btn-sub { font-size: 12px; color: rgba(245,243,239,0.55); text-align: center; letter-spacing: 0.08em; text-transform: uppercase; }
+
+  /* Comparison row */
+  .compare-row {
+    padding: 56px 0 80px;
+    border-top: 1px solid var(--line);
+  }
+  .compare-row .kicker { font-size: 12px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--mint); font-weight: 500; margin-bottom: 12px; text-align:center; }
+  .compare-row h3 { text-align:center; font-size: 32px; margin-bottom: 48px; }
+  .compare-row h3 em { color: var(--steel); }
+  .compare-tbl {
+    display:grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 0;
+    border-top: 1px solid var(--line);
+  }
+  .compare-tbl > div {
+    padding: 20px 24px;
+    border-bottom: 1px solid var(--line);
+    font-size: 15px;
+    display: flex; align-items: center;
+  }
+  .compare-tbl .h {
+    font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 600;
+    background: transparent;
+  }
+  .compare-tbl .h.self-col { color: var(--steel); justify-content: center; }
+  .compare-tbl .h.personal-col { color: var(--gold); background: var(--navy); color: var(--gold); justify-content: center; }
+  .compare-tbl .q { font-weight: 500; }
+  .compare-tbl .v { justify-content: center; text-align: center; color: var(--steel); }
+  .compare-tbl .v.yes { color: var(--navy); font-weight: 500; }
+  .compare-tbl .v.personal-v { background: rgba(13,27,42,0.03); }
+  .check { color: var(--mint); font-weight: 700; }
+  .dash { color: var(--line); }
+
+  /* FAQ band */
+  .faq { padding: 80px 0; border-top: 1px solid var(--line); }
+  .faq h3 { font-size: 32px; margin-bottom: 36px; }
+  .faq h3 em { color: var(--steel); }
+  .faq-grid { display:grid; grid-template-columns: 1fr 1fr; gap: 32px 48px; }
+  .faq-item h4 { font-family: 'Inter', sans-serif; font-size: 16px; font-weight: 600; margin-bottom: 6px; }
+  .faq-item p { color: var(--steel); font-size: 14px; margin: 0; line-height: 1.6; }
+
+  /* Footer */
+  footer.site { background: var(--navy); color: rgba(245,243,239,0.55); padding: 32px 0; font-size: 12px; }
+  footer.site .wrap { display:flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+
+  /* Mobile */
+  @media (max-width: 900px) {
+    .wrap { padding: 0 20px; }
+    .nav .wrap { padding: 12px 20px; }
+    .phead { padding: 56px 0 32px; }
+    .phead h1 { font-size: 40px; }
+    .plans { grid-template-columns: 1fr; gap: 20px; padding-bottom: 56px; }
+    .plan { padding: 36px 28px; border-radius: 18px; }
+    .plan.self h2, .plan.personal h2 { font-size: 34px; }
+    .plan.self .amount .v, .plan.personal .amount .v { font-size: 48px; }
+    .compare-tbl { grid-template-columns: 1.2fr 1fr 1fr; }
+    .compare-tbl > div { padding: 14px 12px; font-size: 13px; }
+    .faq-grid { grid-template-columns: 1fr; gap: 24px; }
+    .plan.personal .head-row { flex-direction: column; align-items: flex-start; gap: 16px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <div class="nav-left">
+      <div class="avatar"></div>
+      <div class="nav-brand">natalia<small>AI · marketing studio</small></div>
+    </div>
+    <a class="tool" href="#">Открыть инструмент →</a>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <section class="phead">
+      <div class="kicker">Два способа работать со мной</div>
+      <h1>Запусти сама&nbsp;— или <em>передай мне на&nbsp;30&nbsp;дней</em></h1>
+      <p class="lede">Одна методология. Разная степень моего участия. Никаких пакетов «Platinum / Diamond / Titanium» — только то, что реально нужно малому бизнесу.</p>
+    </section>
+
+    <section class="plans">
+      <!-- Self-Serve -->
+      <article class="plan self">
+        <div class="badge"><span class="dot"></span>Self-Serve · Инструмент</div>
+        <h2>Инструмент</h2>
+        <p class="desc">Работаешь сама. AI&#8209;команда из&nbsp;16&nbsp;специалистов&nbsp;— за&nbsp;маркетологов.</p>
+
+        <div class="price">
+          <div class="amount"><span class="v">2 990</span><span class="u">₽ / мес</span></div>
+          <div class="fine">Первые 7&nbsp;дней бесплатно. Без карты при регистрации.</div>
+        </div>
+
+        <ul>
+          <li><b>16 AI-агентов</b> на методологии Ogilvy, Schwartz, Hopkins<small>Каждый агент — на одну задачу: копирайтер, SEO, SMM, структурщик…</small></li>
+          <li><b>Студия сайта</b> — генерация лендинга за 60&nbsp;секунд по&nbsp;URL<small>Вставляешь адрес конкурента или свой текущий — получаешь премиум-версию</small></li>
+          <li><b>Brand Memory</b> — один профиль бренда на&nbsp;все агенты<small>Tone of voice, цвета, ЦА загружаются один раз</small></li>
+          <li><b>Team Mode</b> — 4&nbsp;агента отвечают параллельно<small>Сравниваешь версии Ogilvy / Schwartz / Hopkins / Kennedy одним взглядом</small></li>
+          <li><b>Экспорт HTML</b> с&nbsp;водяным знаком natalia.com<small>Убирается при апгрейде на годовой план</small></li>
+        </ul>
+
+        <div class="cta">
+          <a class="btn" href="#">Попробовать 7 дней бесплатно →</a>
+          <div class="btn-sub">Карту вводить не нужно</div>
+        </div>
+      </article>
+
+      <!-- Personal -->
+      <article class="plan personal">
+        <div class="badge">
+          <span class="dot"></span>Personal · Со мной
+          <span class="slots"><b>3</b>места в этом месяце</span>
+        </div>
+        <div class="head-row">
+          <div class="portrait-sm"></div>
+          <h2>Со&nbsp;<em>мной</em></h2>
+        </div>
+        <p class="desc">Я&nbsp;лично делаю твой маркетинг за&nbsp;30&nbsp;дней. Ты&nbsp;присылаешь бриф&nbsp;— я&nbsp;сдаю работающий актив.</p>
+
+        <div class="price">
+          <div class="amount"><span class="v">49 000</span><span class="u">₽ разово</span></div>
+          <div class="fine">Старт — в течение 3&nbsp;рабочих дней после брифа</div>
+        </div>
+
+        <ul>
+          <li><b>Аудит текущего маркетинга</b> + стратегия на&nbsp;90&nbsp;дней<small>PDF-отчёт: что работает, что нет, почему, что&nbsp;делать</small></li>
+          <li><b>Лендинг под ключ</b> — вёрстка, копи, публикация<small>На&nbsp;твоём домене, с&nbsp;интеграцией формы записи</small></li>
+          <li><b>3 рекламных объявления</b> VK&nbsp;Ads + Яндекс.Директ<small>С&nbsp;креативами, таргетингами, готовые к&nbsp;запуску</small></li>
+          <li><b>Telegram-канал</b>: описание + 10&nbsp;стартовых постов<small>Публикационная сетка на&nbsp;первый месяц</small></li>
+          <li><b>30 дней сопровождения</b> лично в&nbsp;Telegram<small>Правки, консультации, ответы на&nbsp;вопросы — без лимита</small></li>
+        </ul>
+
+        <div class="cta">
+          <a class="btn" href="#">Записаться в Telegram →</a>
+          <div class="btn-sub">@natalia_brovkina · ответ в течение дня</div>
+        </div>
+      </article>
+    </section>
+
+    <!-- Comparison -->
+    <section class="compare-row">
+      <div class="kicker">Что входит</div>
+      <h3>Короткое <em>сравнение по пунктам</em></h3>
+      <div class="compare-tbl">
+        <div class="h"></div>
+        <div class="h self-col">Инструмент · 2 990₽</div>
+        <div class="h personal-col">Со мной · 49 000₽</div>
+
+        <div class="q">16 AI-агентов в&nbsp;Студии</div>
+        <div class="v yes"><span class="check">✓</span></div>
+        <div class="v yes personal-v"><span class="check">✓</span></div>
+
+        <div class="q">Генерация лендинга за&nbsp;60&nbsp;сек</div>
+        <div class="v yes"><span class="check">✓</span></div>
+        <div class="v yes personal-v"><span class="check">✓</span></div>
+
+        <div class="q">Публикация на&nbsp;твоём домене</div>
+        <div class="v">самостоятельно</div>
+        <div class="v yes personal-v">я делаю</div>
+
+        <div class="q">Аудит + стратегия на&nbsp;90&nbsp;дней</div>
+        <div class="v"><span class="dash">—</span></div>
+        <div class="v yes personal-v"><span class="check">✓</span></div>
+
+        <div class="q">Рекламные объявления VK&nbsp;Ads / Директ</div>
+        <div class="v"><span class="dash">—</span></div>
+        <div class="v yes personal-v">3 готовых</div>
+
+        <div class="q">Telegram-канал и&nbsp;контент-план</div>
+        <div class="v"><span class="dash">—</span></div>
+        <div class="v yes personal-v">10 постов</div>
+
+        <div class="q">Личное сопровождение в&nbsp;Telegram</div>
+        <div class="v"><span class="dash">—</span></div>
+        <div class="v yes personal-v">30 дней</div>
+
+        <div class="q">Подходит если…</div>
+        <div class="v">есть 1–2 часа в&nbsp;неделю</div>
+        <div class="v yes personal-v">нет времени вообще</div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq">
+      <h3>Частые <em>вопросы</em></h3>
+      <div class="faq-grid">
+        <div class="faq-item">
+          <h4>Можно ли начать с&nbsp;«Инструмента», потом перейти на&nbsp;«Со&nbsp;мной»?</h4>
+          <p>Да. 40&nbsp;% клиентов так и&nbsp;делают: сначала смотрят сами, что умеет AI, потом заказывают лично ведение под ключ.</p>
+        </div>
+        <div class="faq-item">
+          <h4>Почему у «Со мной» только 3&nbsp;места в&nbsp;месяц?</h4>
+          <p>Я&nbsp;веду каждый проект сама, без&nbsp;ассистентов. Больше трёх&nbsp;— не&nbsp;успеваю давать качество, которое обещаю.</p>
+        </div>
+        <div class="faq-item">
+          <h4>Что если AI&nbsp;в&nbsp;«Инструменте» сделает плохо?</h4>
+          <p>Возврат 100&nbsp;% в&nbsp;первые 14&nbsp;дней по&nbsp;первому запросу. Без вопросов и&nbsp;бюрократии.</p>
+        </div>
+        <div class="faq-item">
+          <h4>Как платить?</h4>
+          <p>«Инструмент» — карта или СБП, ежемесячная подписка. «Со мной» — счёт для ИП/ООО или карта физлицу, акт+чек самозанятого.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div>© 2026 natalia.com · ИП Бровкина Н.</div>
+    <div><a href="#">Кейсы</a> · <a href="#">Telegram @natalia_brovkina</a> · <a href="#">Студия</a></div>
+  </div>
+</footer>
+
+</body>
+</html>

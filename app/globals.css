@@ -1,0 +1,216 @@
+@import "tailwindcss";
+
+/* ========== DESIGN TOKENS v2 (Claude Design — Warm AI default) ==========
+   Two parallel palettes. Switch via <html data-palette="navy">.
+   "warm" — default, off-white cream + rust orange (Anthropic-leaning)
+   "navy" — editorial alternative, cream + navy + gold
+*/
+
+:root, [data-palette="warm"] {
+  /* Surfaces */
+  --bg: #F7F4EE;          /* off-white cream */
+  --bg-card: #FBF9F4;     /* lighter card */
+  --surface: #EFEAE0;     /* deeper cream for sections */
+
+  /* Ink */
+  --ink: #1F1B16;         /* near-black warm */
+  --ink-2: #4A4339;
+  --ink-3: #8A8175;
+
+  /* Accent */
+  --accent: #D9542B;      /* rust orange */
+  --accent-ink: #FFFFFF;
+  --accent-soft: rgba(217, 84, 43, 0.08);
+  --halo: rgba(217, 84, 43, 0.18);
+  --good: #2F6E3F;
+
+  /* Hairlines */
+  --hairline: rgba(31, 27, 22, 0.10);
+  --hairline-2: rgba(31, 27, 22, 0.06);
+
+  /* Legacy aliases (for existing components — map to new tokens) */
+  --navy: var(--ink);
+  --navy-2: var(--ink-2);
+  --navy-3: var(--ink-3);
+  --gold: var(--accent);
+  --gold-2: var(--accent-soft);
+  --gold-glow: var(--halo);
+  --cream: var(--bg);
+  --cream-2: var(--bg-card);
+  --steel: var(--ink-3);
+  --mint: var(--good);
+  --line: var(--hairline-2);
+  --line-2: var(--hairline);
+  --line-dark: rgba(255, 255, 255, 0.08);
+  --line-dark-2: rgba(255, 255, 255, 0.14);
+}
+
+[data-palette="navy"] {
+  /* Editorial alternative — for /method longread, etc. */
+  --bg: #F4EFE4;
+  --bg-card: #FBF7EC;
+  --surface: #ECE4D2;
+
+  --ink: #0E1B33;
+  --ink-2: #2A3A57;
+  --ink-3: #6B7891;
+
+  --accent: #B8893A;       /* gold leaf */
+  --accent-ink: #0E1B33;
+  --accent-soft: rgba(184, 137, 58, 0.10);
+  --halo: rgba(184, 137, 58, 0.22);
+  --good: #2F6E3F;
+
+  --hairline: rgba(14, 27, 51, 0.14);
+  --hairline-2: rgba(14, 27, 51, 0.07);
+
+  /* Legacy aliases */
+  --navy: var(--ink);
+  --navy-2: var(--ink-2);
+  --navy-3: var(--ink-3);
+  --gold: var(--accent);
+  --gold-2: var(--accent-soft);
+  --gold-glow: var(--halo);
+  --cream: var(--bg);
+  --cream-2: var(--bg-card);
+  --steel: var(--ink-3);
+  --mint: #5BBFA5;
+  --line: var(--hairline-2);
+  --line-2: var(--hairline);
+  --line-dark: rgba(255, 255, 255, 0.08);
+  --line-dark-2: rgba(255, 255, 255, 0.14);
+}
+
+:root {
+
+  /* Radii */
+  --r-xs: 4px;
+  --r-sm: 6px;
+  --r-md: 8px;
+  --r-lg: 10px;
+  --r-xl: 14px;
+  --r-2xl: 22px;
+  --r-full: 999px;
+
+  /* Shadows */
+  --shadow-premium: 0 40px 100px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.06);
+  --shadow-float: 0 20px 40px rgba(0, 0, 0, 0.3);
+  --shadow-card: 0 2px 6px rgba(13, 27, 42, 0.04);
+  --shadow-card-hover: 0 30px 60px -20px rgba(13, 27, 42, 0.15);
+
+  /* Gradients */
+  --gradient-gold-radial:
+    radial-gradient(ellipse at 110% -10%, rgba(200, 183, 156, 0.18), transparent 55%),
+    radial-gradient(ellipse at -10% 110%, rgba(200, 183, 156, 0.08), transparent 55%);
+  --gradient-preview-bg:
+    radial-gradient(ellipse at 80% -10%, rgba(200, 183, 156, 0.08), transparent 55%),
+    var(--navy);
+
+  /* Font family tokens (wired via next/font in layout.tsx) */
+  --font-serif: var(--font-playfair), Georgia, serif;
+  --font-sans: var(--font-inter), system-ui, -apple-system, sans-serif;
+  --font-mono: var(--font-mono), "JetBrains Mono", ui-monospace, monospace;
+}
+
+/* ========== BASE ========== */
+html {
+  scroll-behavior: smooth;
+}
+body {
+  background-color: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-feature-settings: "ss01", "cv11";
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  line-height: 1.55;
+  overflow-x: hidden;
+}
+
+/* Headings default to Inter Display (modern AI 2026).
+   Use .italic-display class on a single word for Playfair italic accent. */
+h1, h2, h3, h4 {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  margin: 0;
+  color: var(--ink);
+}
+h1 { letter-spacing: -0.035em; }
+
+/* Editorial italic accent — only for SINGLE words inside headlines */
+.italic-display {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+/* Legacy editorial helpers (backward-compat) */
+.em-accent {
+  font-style: italic;
+  color: var(--ink-3);
+  font-weight: 500;
+}
+.em-accent--gold {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* Kicker / supertitle */
+.kicker {
+  font-size: 11px;
+  color: var(--mint);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+/* ========== REVEAL ANIMATION BASE ========== */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Fallback when JS disabled */
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+/* ========== FOCUS RING (a11y) ========== */
+:is(button, a, input, textarea, select):focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+/* ========== TAILWIND @theme (v4 syntax) ========== */
+@theme inline {
+  --color-navy: var(--navy);
+  --color-navy-2: var(--navy-2);
+  --color-navy-3: var(--navy-3);
+  --color-gold: var(--gold);
+  --color-gold-2: var(--gold-2);
+  --color-cream: var(--cream);
+  --color-cream-2: var(--cream-2);
+  --color-steel: var(--steel);
+  --color-mint: var(--mint);
+
+  --radius-xs: var(--r-xs);
+  --radius-sm: var(--r-sm);
+  --radius-md: var(--r-md);
+  --radius-lg: var(--r-lg);
+  --radius-xl: var(--r-xl);
+  --radius-2xl: var(--r-2xl);
+
+  --font-serif: var(--font-serif);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+}

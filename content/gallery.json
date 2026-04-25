@@ -1,0 +1,66 @@
+[
+  {
+    "slug": "medea-dent-moscow",
+    "title": "Стоматология на Покровке",
+    "niche": "dental",
+    "nicheLabel": "Стоматология",
+    "city": "Москва",
+    "originalUrl": "https://medeadent.tilda.ws",
+    "beforeScreenshot": "/demo/gallery/medea-dent-moscow/before.png",
+    "afterFile": "/demo/medea-after.html",
+    "description": "Tilda-домен, шаблонные stock-отзывы, пустая /about-us, цены спрятаны",
+    "rating": 4.4,
+    "reviewCount": 12,
+    "date": "2026-04-23",
+    "featured": true,
+    "metric": {
+      "value": "3,4×",
+      "label": "заявок в месяц после AI-редизайна",
+      "period": "90 дней"
+    },
+    "fixes": [
+      "Hero-заголовок переписан по Ogilvy: named-audience + конкретный benefit",
+      "Секция боли вместо общего списка услуг (Schwartz Level 2 — Problem Aware)",
+      "Врачи с реальным стажем вынесены в hero (proof по Hopkins)",
+      "Прозрачные цены с гарантией вместо 'от 2000 ₽'",
+      "FAQ блок закрывающий 6 главных возражений — снят барьер перед записью"
+    ],
+    "methodology": [
+      "OGILVY: заголовок называет аудиторию + конкретный результат",
+      "SCHWARTZ: уровень 2 (Problem Aware) — клиент знает боль, ищет решение",
+      "HOPKINS: цифры 4.4★, 10-25 лет стажа, 0 ₽ консультация — всё верифицируемо"
+    ]
+  },
+  {
+    "slug": "simbios-marketing-moscow",
+    "title": "Маркетинговое агентство",
+    "niche": "agency",
+    "nicheLabel": "Агентство",
+    "city": "Москва",
+    "originalUrl": "https://simbios-marketing.ru",
+    "beforeScreenshot": "/demo/gallery/simbios-marketing-moscow/before.png",
+    "afterFile": "/demo/simbios-after.html",
+    "description": "Нет кейсов с цифрами, CTA без выгоды, клиенты Яндекс.Такси/Купер не использованы",
+    "rating": null,
+    "reviewCount": null,
+    "date": "2026-04-23",
+    "featured": true,
+    "metric": {
+      "value": "+58%",
+      "label": "конверсия в заявку",
+      "period": "60 дней"
+    },
+    "fixes": [
+      "Killer-headline: 'Привели 13 500 водителей таксопаркам за 1 800 ₽ за лида' — реальный кейс вместо абстракций",
+      "Секция 'Когда не стоит обращаться' — контринтуитивный Schwartz-приём на сложном рынке",
+      "Прозрачный расчёт команды in-house vs retainer — Hopkins-специфика в цифрах",
+      "Гарантия ROMI со 2-го месяца или следующий бесплатно — снижает барьер входа",
+      "Telegram/WhatsApp как основные каналы связи — RU-специфика"
+    ],
+    "methodology": [
+      "OGILVY: заголовок с числом 13 500 и ценой за лид 1 800 ₽",
+      "SCHWARTZ: уровень 3-4 (Solution/Product Aware) — рынок насыщен, нужен механизм",
+      "HOPKINS: каждое обещание подкреплено цифрой (2-й месяц, 1 800 ₽, 13 500)"
+    ]
+  }
+]

@@ -1,0 +1,763 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Студия · natalia.com</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0D1B2A;
+    --navy-2: #142638;
+    --navy-3: #1C3148;
+    --gold: #C8B79C;
+    --gold-2: #E0D3BB;
+    --cream: #F5F3EF;
+    --cream-2: #EFEBE2;
+    --steel: #6B7A8F;
+    --mint: #5BBFA5;
+    --line: rgba(13,27,42,0.08);
+    --line-dark: rgba(245,243,239,0.08);
+    --line-dark-2: rgba(245,243,239,0.14);
+  }
+  * { box-sizing: border-box; }
+  html, body { margin:0; padding:0; height:100%; overflow: hidden; }
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    background: var(--navy);
+    color: var(--cream);
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.5;
+  }
+  h1,h2,h3,h4 { font-family: 'Playfair Display', Georgia, serif; font-weight: 600; letter-spacing: -0.015em; margin: 0; }
+  em { font-style: italic; }
+  .mono { font-family: 'JetBrains Mono', ui-monospace, monospace; }
+
+  /* Top chrome */
+  .chrome {
+    height: 56px;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 20px;
+    border-bottom: 1px solid var(--line-dark);
+    background: var(--navy-2);
+    position: relative; z-index: 5;
+  }
+  .chrome-left { display:flex; align-items:center; gap: 18px; }
+  .chrome-back { color: rgba(245,243,239,0.6); text-decoration:none; font-size: 13px; display:flex; align-items:center; gap: 8px; }
+  .chrome-back:hover { color: var(--cream); }
+  .chrome-brand { display:flex; align-items:center; gap: 10px; padding-left: 18px; border-left: 1px solid var(--line-dark-2); }
+  .avatar-sm { width: 28px; height: 28px; border-radius: 50%; background: url('assets/portrait.png') center 12%/cover, #333; border: 1.5px solid var(--gold); }
+  .chrome-brand span { font-family: 'Playfair Display', serif; font-size: 15px; color: var(--cream); }
+  .chrome-brand small { color: var(--gold); font-family: 'Inter', sans-serif; font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; margin-left: 4px; }
+
+  .chrome-right { display:flex; align-items:center; gap: 14px; }
+  .chrome-plan {
+    font-size: 11px; color: rgba(245,243,239,0.6);
+    letter-spacing: 0.14em; text-transform: uppercase;
+  }
+  .chrome-plan b { color: var(--gold); }
+  .chrome-acct {
+    width: 32px; height: 32px; border-radius: 50%;
+    background: linear-gradient(135deg, #3a5a7a 0%, #1a2f44 100%);
+    display:flex; align-items:center; justify-content:center;
+    font-size: 12px; font-weight: 600; color: var(--cream);
+  }
+
+  /* Layout */
+  .stage {
+    display: grid;
+    grid-template-columns: 420px 1fr;
+    height: calc(100vh - 56px);
+  }
+
+  /* LEFT: form */
+  .form-pane {
+    background: var(--navy-2);
+    border-right: 1px solid var(--line-dark-2);
+    overflow-y: auto;
+    padding: 32px 28px 40px;
+  }
+  .form-pane::-webkit-scrollbar { width: 6px; }
+  .form-pane::-webkit-scrollbar-thumb { background: rgba(245,243,239,0.1); border-radius: 3px; }
+
+  .pane-kicker { font-size: 11px; color: var(--mint); letter-spacing: 0.22em; text-transform: uppercase; font-weight: 500; margin-bottom: 10px; }
+  .pane-title { font-size: 28px; margin-bottom: 6px; }
+  .pane-title em { color: var(--gold); }
+  .pane-lede { color: rgba(245,243,239,0.55); font-size: 13px; margin-bottom: 28px; }
+
+  .field { margin-bottom: 22px; }
+  .field label { display:block; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(245,243,239,0.5); margin-bottom: 8px; font-weight: 500; }
+  .field .url-input {
+    display:flex; align-items: center;
+    background: var(--navy); border: 1px solid var(--line-dark-2);
+    border-radius: 8px; overflow: hidden;
+    transition: border-color .15s ease;
+  }
+  .field .url-input:focus-within { border-color: var(--gold); }
+  .url-input .proto { padding: 0 12px; color: var(--steel); font-size: 13px; border-right: 1px solid var(--line-dark-2); height: 42px; display:flex; align-items:center; }
+  .url-input input {
+    flex: 1; background: transparent; border: 0; color: var(--cream);
+    padding: 0 12px; height: 42px;
+    font-family: 'Inter', sans-serif; font-size: 14px; outline: none;
+  }
+  .url-input input::placeholder { color: rgba(245,243,239,0.3); }
+
+  .field textarea {
+    width:100%; background: var(--navy); border: 1px solid var(--line-dark-2);
+    border-radius: 8px; color: var(--cream); padding: 12px 14px;
+    font-family: 'Inter', sans-serif; font-size: 13px; line-height: 1.5;
+    resize: none; height: 72px; outline: none;
+    transition: border-color .15s ease;
+  }
+  .field textarea:focus { border-color: var(--gold); }
+  .field textarea::placeholder { color: rgba(245,243,239,0.3); }
+
+  /* chip rows */
+  .chips { display:flex; flex-wrap: wrap; gap: 6px; }
+  .chip {
+    padding: 8px 12px; border-radius: 999px;
+    border: 1px solid var(--line-dark-2); background: var(--navy);
+    color: rgba(245,243,239,0.7); font-size: 12px; cursor: pointer;
+    transition: all .15s ease; user-select: none;
+  }
+  .chip:hover { border-color: var(--gold); color: var(--cream); }
+  .chip.active { background: var(--gold); color: var(--navy); border-color: var(--gold); font-weight: 600; }
+
+  /* Agent mode cards */
+  .modes { display:grid; grid-template-columns: 1fr; gap: 8px; }
+  .mode {
+    border: 1px solid var(--line-dark-2);
+    border-radius: 10px; padding: 14px 16px;
+    cursor: pointer; background: var(--navy);
+    transition: all .15s ease;
+    position: relative;
+  }
+  .mode:hover { border-color: var(--gold-2); }
+  .mode.active { border-color: var(--gold); background: rgba(200,183,156,0.06); }
+  .mode .mode-head { display:flex; align-items:center; justify-content:space-between; }
+  .mode .mode-name { font-family: 'Playfair Display', serif; font-size: 16px; color: var(--cream); }
+  .mode .mode-name em { color: var(--gold); font-weight: 500; }
+  .mode .mode-badge {
+    font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--gold); font-weight: 600;
+    background: rgba(200,183,156,0.14); padding: 3px 8px; border-radius: 4px;
+  }
+  .mode .mode-desc { color: rgba(245,243,239,0.5); font-size: 12px; margin-top: 4px; line-height: 1.5; }
+  .mode .mode-agents { font-size: 11px; color: var(--mint); margin-top: 8px; letter-spacing: 0.04em; }
+
+  .submit {
+    width: 100%; margin-top: 8px;
+    background: var(--gold); color: var(--navy);
+    border: 0; border-radius: 10px; padding: 16px;
+    font-family: 'Inter', sans-serif; font-size: 15px; font-weight: 600;
+    cursor: pointer; transition: transform .15s ease, background .15s ease;
+    display:flex; align-items:center; justify-content:center; gap: 10px;
+  }
+  .submit:hover { transform: translateY(-1px); background: var(--gold-2); }
+  .submit:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+  .submit .spin {
+    width: 14px; height: 14px; border-radius: 50%;
+    border: 2px solid rgba(13,27,42,0.2); border-top-color: var(--navy);
+    animation: spin 0.8s linear infinite;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .form-hint {
+    margin-top: 16px; padding: 14px; border-radius: 8px;
+    background: rgba(91,191,165,0.08); border: 1px solid rgba(91,191,165,0.2);
+    font-size: 12px; color: rgba(245,243,239,0.75); line-height: 1.5;
+  }
+  .form-hint b { color: var(--mint); font-weight: 600; }
+
+  /* RIGHT: preview */
+  .preview-pane {
+    position: relative; overflow: hidden;
+    background:
+      radial-gradient(ellipse at 80% -10%, rgba(200,183,156,0.08), transparent 55%),
+      var(--navy);
+    display:flex; flex-direction: column;
+  }
+
+  /* preview toolbar */
+  .preview-top {
+    height: 44px; padding: 0 20px;
+    display:flex; align-items:center; justify-content: space-between;
+    border-bottom: 1px solid var(--line-dark);
+    flex-shrink: 0;
+  }
+  .preview-tabs { display:flex; gap: 2px; align-items: center; }
+  .ptab {
+    padding: 6px 14px; border-radius: 6px;
+    font-size: 12px; color: rgba(245,243,239,0.5); cursor: pointer;
+    transition: all .15s ease;
+  }
+  .ptab.active { background: var(--navy-2); color: var(--gold); }
+  .ptab:hover:not(.active) { color: var(--cream); }
+  .preview-right-tools { display:flex; align-items:center; gap: 14px; font-size: 11px; color: rgba(245,243,239,0.4); letter-spacing: 0.08em; }
+  .vp-switch { display:flex; background: var(--navy-2); border-radius: 6px; padding: 2px; gap: 2px; }
+  .vp {
+    padding: 5px 10px; border-radius: 4px;
+    font-size: 11px; color: rgba(245,243,239,0.5); cursor: pointer;
+  }
+  .vp.active { background: var(--navy-3); color: var(--gold); }
+
+  /* preview body */
+  .preview-body {
+    flex: 1; display:flex; align-items: flex-start; justify-content: center;
+    padding: 40px 40px 40px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .frame-container {
+    width: 100%; max-width: 1280px; height: 100%;
+    background: white; border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 40px 100px rgba(0,0,0,0.4), 0 0 0 1px rgba(255,255,255,0.06);
+    position: relative;
+  }
+  .frame-container iframe {
+    width: 100%; height: 100%; border: 0; display: block;
+    background: white;
+  }
+
+  /* Empty state */
+  .empty {
+    position: absolute; inset: 0;
+    display:flex; flex-direction: column; align-items: center; justify-content: center;
+    color: rgba(245,243,239,0.35);
+    text-align: center;
+    padding: 40px;
+  }
+  .empty-art {
+    width: 120px; height: 120px; margin-bottom: 24px;
+    position: relative;
+    opacity: 0.7;
+  }
+  .empty-art::before, .empty-art::after {
+    content:""; position: absolute; inset: 0;
+    border-radius: 50%; border: 1px solid var(--gold);
+    opacity: 0.3;
+  }
+  .empty-art::before { animation: pulse 3s ease-in-out infinite; }
+  .empty-art::after { animation: pulse 3s ease-in-out infinite; animation-delay: 1.5s; }
+  @keyframes pulse {
+    0%, 100% { transform: scale(0.6); opacity: 0; }
+    50% { transform: scale(1); opacity: 0.5; }
+  }
+  .empty-center {
+    position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 48px; height: 48px; border-radius: 50%;
+    background: rgba(200,183,156,0.2);
+    display:flex; align-items:center; justify-content:center;
+    color: var(--gold); font-family: 'Playfair Display', serif; font-size: 22px; font-style: italic;
+  }
+  .empty h3 { font-size: 20px; color: rgba(245,243,239,0.7); margin-bottom: 6px; font-family: 'Playfair Display', serif; font-style: italic; font-weight: 500; }
+  .empty p { font-size: 13px; max-width: 280px; line-height: 1.55; margin: 0; }
+
+  /* Loading overlay */
+  .loader {
+    position: absolute; inset: 0;
+    display: none;
+    align-items: stretch; justify-content: center;
+    z-index: 4;
+    background: rgba(13,27,42,0.85);
+    backdrop-filter: blur(8px);
+  }
+  .loader.visible { display: flex; }
+  .loader-inner {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    width: 100%; max-width: 1000px;
+    align-self: center;
+    padding: 48px;
+  }
+  .loader-left { padding-top: 24px; }
+  .loader-kicker { font-size: 11px; color: var(--mint); letter-spacing: 0.22em; text-transform: uppercase; margin-bottom: 14px; }
+  .loader-title { font-size: 42px; line-height: 1.1; margin-bottom: 16px; font-family: 'Playfair Display', serif; }
+  .loader-title em { color: var(--gold); }
+  .loader-sub { color: rgba(245,243,239,0.55); font-size: 14px; line-height: 1.6; max-width: 380px; }
+
+  .progress-wrap { margin-top: 36px; }
+  .progress-bar {
+    height: 3px; background: var(--line-dark-2); border-radius: 2px; overflow: hidden;
+    margin-bottom: 10px;
+  }
+  .progress-fill { height: 100%; background: var(--gold); width: 0%; transition: width 0.5s ease; }
+  .progress-meta { display:flex; justify-content:space-between; font-size: 12px; color: rgba(245,243,239,0.5); }
+  .progress-meta b { color: var(--gold); font-weight: 500; }
+
+  .agent-log {
+    height: 320px;
+    overflow: hidden;
+    position: relative;
+    border-left: 1px solid var(--line-dark-2);
+    padding-left: 22px;
+    align-self: stretch;
+  }
+  .agent-log h4 { font-family: 'Inter', sans-serif; font-size: 11px; letter-spacing: 0.18em; color: rgba(245,243,239,0.4); font-weight: 600; text-transform: uppercase; margin-bottom: 16px; }
+  .agent-items {
+    display: flex; flex-direction: column; gap: 2px;
+    transition: transform 0.5s cubic-bezier(0.22,1,0.36,1);
+  }
+  .agent {
+    display:flex; align-items:center; gap: 10px;
+    padding: 9px 0;
+    font-size: 13px;
+    opacity: 0.25;
+    transition: opacity 0.3s ease, color 0.3s ease;
+  }
+  .agent .a-dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--steel);
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+  }
+  .agent .a-name { flex: 1; }
+  .agent .a-status { font-size: 11px; color: var(--steel); letter-spacing: 0.06em; font-family: 'JetBrains Mono', monospace; }
+  .agent.working {
+    opacity: 1; color: var(--cream);
+  }
+  .agent.working .a-dot {
+    background: var(--gold); box-shadow: 0 0 10px var(--gold);
+    animation: workPulse 1s ease-in-out infinite;
+  }
+  @keyframes workPulse { 0%,100% { opacity:1; } 50% { opacity: 0.4; } }
+  .agent.working .a-status { color: var(--gold); }
+  .agent.done {
+    opacity: 0.75; color: var(--cream);
+  }
+  .agent.done .a-dot { background: var(--mint); box-shadow: none; animation: none; }
+  .agent.done .a-status { color: var(--mint); }
+
+  /* Result success overlay */
+  .result-banner {
+    position: absolute; top: 20px; right: 20px;
+    display: none;
+    align-items: center; gap: 10px;
+    background: var(--navy-2);
+    border: 1px solid rgba(91,191,165,0.3);
+    padding: 10px 16px; border-radius: 10px;
+    font-size: 12px;
+    color: var(--mint); font-weight: 500;
+    z-index: 3;
+    animation: bannerIn 0.4s ease-out;
+  }
+  @keyframes bannerIn {
+    from { opacity: 0; transform: translateY(-8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .result-banner.visible { display: flex; }
+  .result-banner .check { color: var(--mint); font-weight: bold; }
+  .result-banner .timer { color: rgba(245,243,239,0.5); margin-left: 8px; border-left: 1px solid var(--line-dark-2); padding-left: 10px; }
+
+  /* Action bar on top of preview (after result) */
+  .action-bar {
+    position: absolute; bottom: 24px; left: 50%; transform: translateX(-50%);
+    display: none;
+    gap: 10px; align-items:center;
+    background: var(--navy-2);
+    padding: 10px; border-radius: 14px;
+    border: 1px solid var(--line-dark-2);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    z-index: 3;
+  }
+  .action-bar.visible { display: flex; }
+  .action-bar button {
+    border: 0; background: transparent;
+    color: rgba(245,243,239,0.7); font-family: 'Inter', sans-serif; font-size: 13px;
+    padding: 8px 14px; border-radius: 8px; cursor: pointer;
+    display: flex; align-items: center; gap: 7px;
+    transition: all .15s ease;
+  }
+  .action-bar button:hover { background: rgba(245,243,239,0.06); color: var(--cream); }
+  .action-bar button.primary {
+    background: var(--gold); color: var(--navy); font-weight: 600;
+  }
+  .action-bar button.primary:hover { background: var(--gold-2); }
+  .action-bar .sep { width: 1px; height: 20px; background: var(--line-dark-2); }
+
+  /* viewport states */
+  .frame-container[data-vp="mobile"] { max-width: 380px; }
+
+  /* Responsive — on narrow, collapse */
+  @media (max-width: 1000px) {
+    .stage { grid-template-columns: 1fr; grid-template-rows: auto 1fr; }
+    .form-pane { border-right: 0; border-bottom: 1px solid var(--line-dark-2); max-height: 50vh; }
+    .loader-inner { grid-template-columns: 1fr; gap: 28px; padding: 24px; }
+    .agent-log { border-left: 0; padding-left: 0; border-top: 1px solid var(--line-dark-2); padding-top: 20px; height: 240px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- top chrome -->
+<header class="chrome">
+  <div class="chrome-left">
+    <a class="chrome-back" href="pricing.html">← Назад</a>
+    <div class="chrome-brand">
+      <div class="avatar-sm"></div>
+      <span>natalia</span><small>Studio</small>
+    </div>
+  </div>
+  <div class="chrome-right">
+    <div class="chrome-plan">План · <b>Инструмент</b> · 6 из 7 дней</div>
+    <div class="chrome-acct">MB</div>
+  </div>
+</header>
+
+<div class="stage">
+  <!-- LEFT: form -->
+  <aside class="form-pane">
+    <div class="pane-kicker">Новый проект</div>
+    <h2 class="pane-title">Опиши <em>бизнес</em></h2>
+    <p class="pane-lede">16 агентов прочтут бриф и за&nbsp;60 секунд соберут лендинг на&nbsp;методологиях Ogilvy, Schwartz, Hopkins.</p>
+
+    <div class="field">
+      <label>URL существующего сайта <span style="color: rgba(245,243,239,0.3); text-transform: none; letter-spacing: 0;">(или оставьте пустым)</span></label>
+      <div class="url-input">
+        <div class="proto mono">https://</div>
+        <input id="url" type="text" placeholder="medea-dent.ru" value="medea-dent.ru">
+      </div>
+    </div>
+
+    <div class="field">
+      <label>Ниша</label>
+      <div class="chips" id="chips-niche">
+        <div class="chip active" data-v="Стоматология">Стоматология</div>
+        <div class="chip" data-v="Клиника">Клиника</div>
+        <div class="chip" data-v="Салон красоты">Салон красоты</div>
+        <div class="chip" data-v="Консалтинг">Консалтинг</div>
+        <div class="chip" data-v="E-commerce">E-commerce</div>
+        <div class="chip" data-v="SaaS">SaaS</div>
+        <div class="chip" data-v="Другое">Другое</div>
+      </div>
+    </div>
+
+    <div class="field">
+      <label>Что нужно сделать</label>
+      <textarea placeholder="Коротко: цель, целевая аудитория, что убрать/добавить">Переделать сайт: убрать Tilda-эстетику, вывести врачей и прозрачные цены вперёд, сделать форму записи в первом экране. ЦА — Москва, 30–55 лет, premium-сегмент.</textarea>
+    </div>
+
+    <div class="field">
+      <label>Режим работы агентов</label>
+      <div class="modes" id="modes">
+        <div class="mode" data-mode="solo">
+          <div class="mode-head">
+            <div class="mode-name">Solo <em>· один агент</em></div>
+            <div class="mode-badge" style="background:rgba(91,191,165,0.14); color: var(--mint);">быстро</div>
+          </div>
+          <div class="mode-desc">Главный агент-Ogilvy делает всё сам. Минимум токенов, максимум скорости.</div>
+          <div class="mode-agents">1 агент · ~30 сек</div>
+        </div>
+        <div class="mode active" data-mode="team">
+          <div class="mode-head">
+            <div class="mode-name">Team <em>· команда из 16</em></div>
+            <div class="mode-badge">рекомендую</div>
+          </div>
+          <div class="mode-desc">Все 16 агентов работают последовательно: копи, структура, SEO, UX, SMM. Финальная сборка.</div>
+          <div class="mode-agents">16 агентов · ~60 сек</div>
+        </div>
+        <div class="mode" data-mode="parallel">
+          <div class="mode-head">
+            <div class="mode-name">Parallel <em>· 4 версии</em></div>
+            <div class="mode-badge" style="background:rgba(107,122,143,0.2); color: var(--steel);">сравнение</div>
+          </div>
+          <div class="mode-desc">Параллельно 4 агента делают 4 версии лендинга — Ogilvy, Schwartz, Hopkins, Kennedy. Выбираешь лучший.</div>
+          <div class="mode-agents">4 агента параллельно · ~90 сек</div>
+        </div>
+      </div>
+    </div>
+
+    <button class="submit" id="btnSubmit">
+      <span id="btnText">Запустить агентов →</span>
+    </button>
+
+    <div class="form-hint">
+      <b>Подсказка.</b> Чем точнее бриф&nbsp;— тем меньше правок. Можно не писать ничего и&nbsp;просто нажать «Запустить»&nbsp;— агенты сами прочтут сайт по&nbsp;URL.
+    </div>
+  </aside>
+
+  <!-- RIGHT: preview -->
+  <section class="preview-pane">
+    <div class="preview-top">
+      <div class="preview-tabs">
+        <div class="ptab active">Превью</div>
+        <div class="ptab">Код HTML</div>
+        <div class="ptab">Бриф</div>
+        <div class="ptab">Лог агентов</div>
+      </div>
+      <div class="preview-right-tools">
+        <div id="domainLabel" class="mono">medea-dent.natalia.studio</div>
+        <div class="vp-switch">
+          <div class="vp active" data-vp="desktop">Desktop</div>
+          <div class="vp" data-vp="mobile">Mobile</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="preview-body">
+      <div class="frame-container" id="frame" data-vp="desktop">
+        <!-- Empty state -->
+        <div class="empty" id="empty">
+          <div class="empty-art">
+            <div class="empty-center">N</div>
+          </div>
+          <h3>Готов начать</h3>
+          <p>Заполни бриф слева и&nbsp;нажми «Запустить». Превью появится здесь через ~60&nbsp;секунд.</p>
+        </div>
+
+        <!-- Result iframe (hidden until done) -->
+        <iframe id="resultFrame" src="about:blank" style="display:none;"></iframe>
+      </div>
+
+      <!-- Loader overlay -->
+      <div class="loader" id="loader">
+        <div class="loader-inner">
+          <div class="loader-left">
+            <div class="loader-kicker">Агенты работают</div>
+            <h2 class="loader-title">Собираю <em>твой лендинг</em></h2>
+            <p class="loader-sub">Каждый агент делает один фрагмент и&nbsp;передаёт следующему. Можешь не&nbsp;ждать&nbsp;— я&nbsp;напишу в&nbsp;Telegram, когда будет готово.</p>
+
+            <div class="progress-wrap">
+              <div class="progress-bar"><div class="progress-fill" id="progFill"></div></div>
+              <div class="progress-meta">
+                <span id="progStep">Инициализация…</span>
+                <span><b id="progPct">0</b>%</span>
+              </div>
+            </div>
+          </div>
+          <div class="agent-log">
+            <h4>Активность · <span id="agentTimer" class="mono" style="color:rgba(245,243,239,0.5); letter-spacing:0.08em;">00:00</span></h4>
+            <div class="agent-items" id="agentItems">
+              <!-- populated by JS -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Success banner -->
+      <div class="result-banner" id="banner">
+        <span class="check">✓</span>
+        <span>Готово. 16 агентов, 0 ошибок.</span>
+        <span class="timer mono" id="finalTime">00:58</span>
+      </div>
+
+      <!-- Action bar after done -->
+      <div class="action-bar" id="actionBar">
+        <button class="primary">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 8l3 3 5-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Опубликовать на домен
+        </button>
+        <div class="sep"></div>
+        <button>
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1v9M3 7l4 4 4-4M2 13h10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Скачать HTML
+        </button>
+        <button>
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M8 2l4 4-4 4M12 6H2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Правки в агента
+        </button>
+        <button id="btnReset">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7a5 5 0 019-3l1-1v3H9M12 7a5 5 0 01-9 3l-1 1v-3h3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Ещё вариант
+        </button>
+      </div>
+    </div>
+  </section>
+</div>
+
+<script>
+  // === chips ===
+  document.getElementById('chips-niche').addEventListener('click', (e) => {
+    const chip = e.target.closest('.chip');
+    if (!chip) return;
+    chip.parentElement.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+    chip.classList.add('active');
+  });
+
+  // === modes ===
+  document.getElementById('modes').addEventListener('click', (e) => {
+    const mode = e.target.closest('.mode');
+    if (!mode) return;
+    mode.parentElement.querySelectorAll('.mode').forEach(m => m.classList.remove('active'));
+    mode.classList.add('active');
+  });
+
+  // === viewport switch ===
+  document.querySelectorAll('.vp').forEach(vp => {
+    vp.addEventListener('click', () => {
+      document.querySelectorAll('.vp').forEach(x => x.classList.remove('active'));
+      vp.classList.add('active');
+      document.getElementById('frame').dataset.vp = vp.dataset.vp;
+    });
+  });
+
+  // === agents list ===
+  const AGENTS = [
+    { n: 'Стратег', t: 'парсит URL' },
+    { n: 'Ogilvy · копирайтер', t: 'собирает нарратив' },
+    { n: 'Schwartz · заголовок', t: '12 вариантов H1' },
+    { n: 'Hopkins · доказательства', t: 'регалии, цифры' },
+    { n: 'UX · структура', t: 'иерархия блоков' },
+    { n: 'Kennedy · офферы', t: 'цены и гарантии' },
+    { n: 'SEO-агент', t: 'meta + semcore' },
+    { n: 'Брендинг', t: 'цвет + типографика' },
+    { n: 'Фотодиректор', t: 'подбор плейсхолдеров' },
+    { n: 'Вёрстка · HTML', t: 'семантика' },
+    { n: 'Вёрстка · CSS', t: 'grid + адаптив' },
+    { n: 'Мобильный агент', t: 'проверка 375px' },
+    { n: 'Форма-агент', t: 'валидация + UTM' },
+    { n: 'SMM · Telegram-пост', t: 'анонс готов' },
+    { n: 'Аудитор · a11y', t: 'контраст, aria' },
+    { n: 'Сборщик · финал', t: 'публикация' }
+  ];
+
+  const itemsEl = document.getElementById('agentItems');
+  AGENTS.forEach((a, i) => {
+    const el = document.createElement('div');
+    el.className = 'agent';
+    el.dataset.idx = i;
+    el.innerHTML = `<span class="a-dot"></span><span class="a-name">${a.n}</span><span class="a-status">idle</span>`;
+    itemsEl.appendChild(el);
+  });
+
+  // === run flow ===
+  const btn = document.getElementById('btnSubmit');
+  const btnText = document.getElementById('btnText');
+  const loader = document.getElementById('loader');
+  const progFill = document.getElementById('progFill');
+  const progPct = document.getElementById('progPct');
+  const progStep = document.getElementById('progStep');
+  const empty = document.getElementById('empty');
+  const resultFrame = document.getElementById('resultFrame');
+  const banner = document.getElementById('banner');
+  const actionBar = document.getElementById('actionBar');
+  const finalTime = document.getElementById('finalTime');
+  const agentTimer = document.getElementById('agentTimer');
+  const domainLabel = document.getElementById('domainLabel');
+
+  let running = false;
+  let timerInterval = null;
+
+  function fmtTime(sec) {
+    const m = String(Math.floor(sec / 60)).padStart(2, '0');
+    const s = String(Math.floor(sec % 60)).padStart(2, '0');
+    return `${m}:${s}`;
+  }
+
+  function resetView() {
+    running = false;
+    loader.classList.remove('visible');
+    banner.classList.remove('visible');
+    actionBar.classList.remove('visible');
+    resultFrame.style.display = 'none';
+    resultFrame.src = 'about:blank';
+    empty.style.display = 'flex';
+    btnText.textContent = 'Запустить агентов →';
+    btn.disabled = false;
+    document.querySelectorAll('.agent').forEach(a => {
+      a.className = 'agent';
+      a.querySelector('.a-status').textContent = 'idle';
+      a.querySelector('.a-status').style.color = '';
+    });
+    itemsEl.style.transform = 'translateY(0)';
+    progFill.style.width = '0%';
+    progPct.textContent = '0';
+    progStep.textContent = 'Инициализация…';
+    if (timerInterval) clearInterval(timerInterval);
+    agentTimer.textContent = '00:00';
+  }
+
+  async function run() {
+    if (running) return;
+    running = true;
+
+    // Update domain based on URL input
+    const urlVal = document.getElementById('url').value.trim() || 'studio-demo';
+    const slug = urlVal.replace(/^https?:\/\//, '').replace(/\..+$/, '').replace(/[^a-z0-9-]/gi, '-').toLowerCase() || 'project';
+    domainLabel.textContent = `${slug}.natalia.studio`;
+
+    empty.style.display = 'none';
+    loader.classList.add('visible');
+    btn.disabled = true;
+    btnText.textContent = 'Работаю…';
+
+    // Timer
+    let tStart = Date.now();
+    timerInterval = setInterval(() => {
+      agentTimer.textContent = fmtTime((Date.now() - tStart) / 1000);
+    }, 250);
+
+    const total = AGENTS.length;
+    const stepMs = 3200; // ~52s total
+    for (let i = 0; i < total; i++) {
+      const el = itemsEl.querySelector(`.agent[data-idx="${i}"]`);
+
+      // mark previous as done
+      if (i > 0) {
+        const prev = itemsEl.querySelector(`.agent[data-idx="${i - 1}"]`);
+        prev.classList.remove('working');
+        prev.classList.add('done');
+        prev.querySelector('.a-status').textContent = 'done';
+      }
+
+      // mark current as working
+      el.classList.add('working');
+      el.querySelector('.a-status').textContent = AGENTS[i].t;
+
+      // Scroll list
+      const itemH = 34;
+      const visible = 7;
+      const maxShift = Math.max(0, (i - Math.floor(visible / 2)) * itemH);
+      const clampedShift = Math.min(maxShift, (total - visible) * itemH);
+      itemsEl.style.transform = `translateY(-${clampedShift}px)`;
+
+      // Progress
+      const pct = Math.round(((i + 0.5) / total) * 100);
+      progFill.style.width = pct + '%';
+      progPct.textContent = pct;
+      progStep.textContent = `${i + 1}/${total} · ${AGENTS[i].n}`;
+
+      await new Promise(r => setTimeout(r, stepMs));
+    }
+
+    // Last agent done
+    const last = itemsEl.querySelector(`.agent[data-idx="${total - 1}"]`);
+    last.classList.remove('working');
+    last.classList.add('done');
+    last.querySelector('.a-status').textContent = 'done';
+    progFill.style.width = '100%';
+    progPct.textContent = '100';
+    progStep.textContent = 'Готово';
+
+    clearInterval(timerInterval);
+    const totalSec = (Date.now() - tStart) / 1000;
+    finalTime.textContent = fmtTime(totalSec);
+    agentTimer.textContent = fmtTime(totalSec);
+
+    // Small delay for satisfaction
+    await new Promise(r => setTimeout(r, 700));
+
+    // Show result
+    loader.classList.remove('visible');
+    resultFrame.src = 'demo/medea-after.html';
+    resultFrame.style.display = 'block';
+    banner.classList.add('visible');
+    actionBar.classList.add('visible');
+
+    btnText.textContent = 'Запустить агентов →';
+    btn.disabled = false;
+    running = false;
+  }
+
+  btn.addEventListener('click', run);
+  document.getElementById('btnReset').addEventListener('click', () => {
+    resetView();
+  });
+</script>
+</body>
+</html>
