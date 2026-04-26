@@ -1,5 +1,6 @@
 import Anthropic from "@anthropic-ai/sdk";
 import { NextRequest, NextResponse } from "next/server";
+import { checkLimit } from "@/app/lib/rate-limit";
 
 export const maxDuration = 60;
 
@@ -14,23 +15,10 @@ const LIMITS = {
   MAX_SCRAPE_URL_LEN: 500,
 } as const;
 
-const rateLimitMap = new Map<string, { count: number; resetAt: number }>();
 const FREE_LIMIT = 5;
-const WINDOW_MS = 24 * 60 * 60 * 1000;
-// ⚠️ rateLimitMap живёт только в одной serverless instance (cold start = reset).
-// Для production rate-limit нужен Vercel KV / Upstash Redis. См. DEPLOY-CHECKLIST.md.
-
-function checkRateLimit(ip: string): { ok: boolean; remaining: number } {
-  const now = Date.now();
-  const entry = rateLimitMap.get(ip);
-  if (!entry || entry.resetAt < now) {
-    rateLimitMap.set(ip, { count: 1, resetAt: now + WINDOW_MS });
-    return { ok: true, remaining: FREE_LIMIT - 1 };
-  }
-  entry.count += 1;
-  rateLimitMap.set(ip, entry);
-  return { ok: entry.count <= FREE_LIMIT, remaining: Math.max(0, FREE_LIMIT - entry.count) };
-}
+const WINDOW_SECONDS = 24 * 60 * 60;
+// rate-limit делегирован в app/lib/rate-limit.ts — Vercel KV если доступен,
+// иначе in-memory fallback. KV provisioning — см. DEPLOY-CHECKLIST.md.
 
 async function scrapeWithFirecrawl(url: string): Promise<string | null> {
   const fcKey = process.env.FIRECRAWL_API_KEY;
@@ -99,7 +87,7 @@ export async function POST(req: NextRequest) {
     const ip = req.headers.get("x-forwarded-for")?.split(",")[0]?.trim()
             || req.headers.get("x-real-ip")
             || "unknown";
-    const rl = checkRateLimit(ip);
+    const rl = await checkLimit(`chat:${ip}`, FREE_LIMIT, WINDOW_SECONDS);
     if (!rl.ok) {
       return NextResponse.json(
         { content: "Ты использовала 5 бесплатных запросов за сегодня. Введи свой API-ключ в настройках (🔑) — он хранится только у тебя в браузере, и тогда лимита не будет. Или возвращайся завтра." },
