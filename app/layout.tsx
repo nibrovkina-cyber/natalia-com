@@ -25,15 +25,22 @@ const jetbrains = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://natashabrovkina.com"),
   title: "Natalia Brovkina · AI Marketing Studio",
   description: "AI-команда из 16 специалистов на методологии Ogilvy, Schwartz и Hopkins. Собирает премиум-лендинги за 60 секунд из URL.",
   openGraph: {
-    title: "Natalia Brovkina · AI Marketing Studio",
-    description: "AI-команда из 16 специалистов — премиум-лендинги за 60 секунд",
+    title: "Удвоила выручку 20 малых бизнесов. Без команды.",
+    description: "16 AI-агентов на методологии Ogilvy / Schwartz / Hopkins. Премиум-лендинги за 60 секунд из URL.",
     url: "https://natashabrovkina.com",
     siteName: "natashabrovkina.com",
     locale: "ru_RU",
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Удвоила выручку 20 малых бизнесов. Без команды.",
+    description: "16 AI-агентов на методологии Ogilvy / Schwartz / Hopkins.",
+    creator: "@NATASHABROVKINA",
   },
 };
 
