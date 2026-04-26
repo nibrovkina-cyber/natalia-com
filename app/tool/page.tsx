@@ -664,6 +664,27 @@ export default function Home() {
     setMessages(newMessages);
     setInput("");
     setLoading(true);
+
+    // Demo-mode shortcut: если активен ?demo=<id> и есть pre-recorded ответ
+    // в /demo/agent-responses/<id>/<agent>.md — показываем его без API.
+    // Используется для записи ролика без баланса Anthropic.
+    if (demoMode) {
+      const params = new URLSearchParams(window.location.search);
+      const demoId = params.get("demo");
+      if (demoId) {
+        try {
+          const res = await fetch(`/demo/agent-responses/${demoId}/${activeAgent.id}.md`);
+          if (res.ok) {
+            const md = await res.text();
+            await new Promise((r) => setTimeout(r, 1800)); // лёгкая имитация задержки
+            setMessages([...newMessages, { role: "assistant", content: md }]);
+            setLoading(false);
+            return;
+          }
+        } catch {}
+      }
+    }
+
     try {
       const res = await fetch("/api/chat", {
         method: "POST",
