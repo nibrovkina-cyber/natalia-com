@@ -49,3 +49,8 @@ next-env.d.ts
 /temp_screenshots/
 /node_modules/
 /.vercel
+
+# Playwright auth state (persistent browser sessions)
+.playwright-auth.json
+/temp_wordstat/
+/temp_research/

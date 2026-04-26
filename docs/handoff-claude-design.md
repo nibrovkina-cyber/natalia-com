@@ -1,7 +1,7 @@
 # Claude Design → Content Factory · handoff для коворка
 
 Документ для **коворка**: как использовать Claude Design и готовые промты
-(отработанные на natalia.com) для создания дизайна «Контент Завода».
+(отработанные на natashabrovkina.com) для создания дизайна «Контент Завода».
 
 ---
 
@@ -50,7 +50,7 @@ send. Не переделывай всю страницу.
 
 ---
 
-## 📋 ПРОМТ 1 — Pricing (отработан на natalia.com)
+## 📋 ПРОМТ 1 — Pricing (отработан на natashabrovkina.com)
 
 **Референсы:** Lenny's Newsletter, Stratechery, Substack Pro, Pentagram case studies.
 **Signature moment:** цена Playfair 200-240px как hero.

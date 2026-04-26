@@ -217,7 +217,7 @@ export default function Home() {
                       marginBottom: 32,
                     }}
                   >
-                    <span>natalia.studio</span>
+                    <span>natashabrovkina.com</span>
                     <span style={{ color: "var(--mint)" }}>● готово к брифу</span>
                   </div>
                   <blockquote

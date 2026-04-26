@@ -410,7 +410,7 @@ export default function GalleryDetail({ params }: { params: Promise<{ slug: stri
                 }}
               >
                 <span>До · {item.originalUrl.replace(/^https?:\/\//, "").split("/")[0]}</span>
-                <span>После · natalia.com</span>
+                <span>После · natashabrovkina.com</span>
               </div>
             </div>
           </Reveal>

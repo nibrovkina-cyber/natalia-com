@@ -5,8 +5,8 @@ import Kicker from "../components/Kicker";
 import Reveal from "../components/Reveal";
 
 export const metadata = {
-  title: "Метод · natalia.com",
-  description: "Огилви, Шварц, Хопкинс — методологическая основа 16 AI-агентов natalia.com",
+  title: "Метод · natashabrovkina.com",
+  description: "Огилви, Шварц, Хопкинс — методологическая основа 16 AI-агентов natashabrovkina.com",
 };
 
 const SCHWARTZ_LEVELS = [
@@ -131,7 +131,7 @@ export default function MethodPage() {
               }}
             >
               На&nbsp;этой странице&nbsp;— не&nbsp;пересказ книг. Это&nbsp;— как именно каждый
-              принцип превращается в&nbsp;правило работы AI-агента в&nbsp;natalia.com. И&nbsp;как
+              принцип превращается в&nbsp;правило работы AI-агента в&nbsp;natashabrovkina.com. И&nbsp;как
               ты&nbsp;можешь проверить любой маркетинговый материал&nbsp;— твой или&nbsp;агентства&nbsp;—
               по&nbsp;тем&nbsp;же&nbsp;критериям.
             </p>
@@ -318,7 +318,7 @@ export default function MethodPage() {
                     marginBottom: 16,
                   }}
                 >
-                  Как это в natalia.com
+                  Как это в natashabrovkina.com
                 </div>
                 <p
                   style={{
@@ -534,7 +534,7 @@ export default function MethodPage() {
                     marginBottom: 16,
                   }}
                 >
-                  Как это в natalia.com
+                  Как это в natashabrovkina.com
                 </div>
                 <p
                   style={{
@@ -754,7 +754,7 @@ export default function MethodPage() {
                     marginBottom: 16,
                   }}
                 >
-                  Как это в natalia.com
+                  Как это в natashabrovkina.com
                 </div>
                 <p
                   style={{

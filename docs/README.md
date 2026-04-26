@@ -1,8 +1,8 @@
-# Handoff: natalia.com — AI-маркетинг SaaS для малого бизнеса
+# Handoff: natashabrovkina.com — AI-маркетинг SaaS для малого бизнеса
 
 ## Overview
 
-**natalia.com** — лендинг + SaaS-продукт от маркетолога Натальи Бровкиной. Суть продукта: 16 AI-агентов на методологиях Ogilvy, Schwartz, Hopkins, Kennedy — собирают премиум-лендинги за ~60 секунд из URL конкурента или брифа. Два тарифа: **Self-Serve** (2 990 ₽/мес — работаешь сама через инструмент) и **Personal** (49 000 ₽ разово — Наталья лично ведёт проект 30 дней).
+**natashabrovkina.com** — лендинг + SaaS-продукт от маркетолога Натальи Бровкиной. Суть продукта: 16 AI-агентов на методологиях Ogilvy, Schwartz, Hopkins, Kennedy — собирают премиум-лендинги за ~60 секунд из URL конкурента или брифа. Два тарифа: **Self-Serve** (2 990 ₽/мес — работаешь сама через инструмент) и **Personal** (49 000 ₽ разово — Наталья лично ведёт проект 30 дней).
 
 Этот handoff содержит дизайн-прототипы четырёх ключевых экранов:
 1. **Studio** — основной инструмент (форма брифа + live-превью + loader с 16 агентами)
@@ -124,7 +124,7 @@ background:
 
 **Preview pane.**
 
-- **Preview top (44px):** слева — 4 таба (Превью/Код HTML/Бриф/Лог агентов). Активный: navy-2 bg, gold text. Справа — domain label в JetBrains Mono (`{slug}.natalia.studio`) + viewport switch (Desktop/Mobile pill-group).
+- **Preview top (44px):** слева — 4 таба (Превью/Код HTML/Бриф/Лог агентов). Активный: navy-2 bg, gold text. Справа — domain label в JetBrains Mono (`{slug}.natashabrovkina.com`) + viewport switch (Desktop/Mobile pill-group).
 - **Preview body:** centered, `max-width: 1280px`, padding 40px. Frame container: white bg, `border-radius: 10px`, premium shadow. Internal iframe 100%/100%.
 - **Empty state:** центрированная композиция. 120×120 art-block с двумя пульсирующими gold-кольцами (animation `pulse 3s ease-in-out infinite`, delays 0 и 1.5s, scale 0.6→1.0, opacity 0→0.5→0), в центре 48px gold-circle с italic-буквой N (Playfair 22px). Ниже — Playfair italic `h3` (20px) «Готов начать» + body (13px, `rgba(cream, 0.35)`).
 
@@ -291,7 +291,7 @@ Header row: пустая ячейка + «Инструмент · 2 990₽» + �
 - **medea-before.html** — типичный Tilda 2022: кричащий градиент hero, пульсирующая кнопка, WhatsApp-виджет, прайс-таблица, cookie popup. Намеренно «уродливо».
 - **medea-after.html** — премиум-лендинг с nav bar, navy hero + mint accent, Playfair h1 с italic, форма записи в hero, 4 врача с регалиями, галерея работ, прозрачные цены «под ключ», FAQ accordion, 2 локации на карте, footer.
 
-Эти два файла **являются частью основного продукта** (natalia.com демонстрирует их внутри кейсов и Studio-превью), но **тоже являются дизайн-референсами** для production-имплементации.
+Эти два файла **являются частью основного продукта** (natashabrovkina.com демонстрирует их внутри кейсов и Studio-превью), но **тоже являются дизайн-референсами** для production-имплементации.
 
 ---
 
@@ -354,7 +354,7 @@ interface SliderState {
 
 - `POST /api/studio/generate` → `{ url, niche, brief, mode }` → возвращает `{ jobId }`
 - `GET /api/studio/stream/:jobId` → SSE stream с events: `{ agent: string, status: AgentStatus, progress: number }`, финальный event `{ type: 'done', html: string }`
-- `POST /api/studio/publish` → публикует HTML на `{slug}.natalia.studio`
+- `POST /api/studio/publish` → публикует HTML на `{slug}.natashabrovkina.com`
 
 ## Files in this handoff
 

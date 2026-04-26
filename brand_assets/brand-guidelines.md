@@ -1,12 +1,12 @@
-# natalia.com — Brand Guidelines
+# natashabrovkina.com — Brand Guidelines
 
-Брендинг natalia.com — AI-маркетинг студия с 16 AI-агентами на методологии
+Брендинг natashabrovkina.com — AI-маркетинг студия с 16 AI-агентами на методологии
 Ogilvy / Schwartz / Hopkins. Премиум-сегмент для SMB в России.
 
 ## Позиционирование
 
 **Имя:** Natalia Brovkina
-**Компания:** natalia.com — AI Marketing Studio
+**Компания:** natashabrovkina.com — AI Marketing Studio
 **Город:** Moscow · Los Angeles
 **Tone of voice:** редакторский, уверенный, без пафоса, без маркетингового жаргона.
 «Журнал Kinfolk», а не «SaaS pricing».
@@ -57,7 +57,7 @@ Ogilvy / Schwartz / Hopkins. Премиум-сегмент для SMB в Рос�
 ### JetBrains Mono — technical meta
 - Переменная: `var(--font-mono)`
 - Weights: 400, 500, 600
-- **Для:** таймеры, domain labels (`.natalia.studio`), метаданные, "1 агент · 30 сек"
+- **Для:** таймеры, domain labels (`.natashabrovkina.com`), метаданные, "1 агент · 30 сек"
 - Создаёт ощущение IDE / режиссёрского инструмента
 
 ## Spacing (editorial, не SaaS)
@@ -75,7 +75,7 @@ Ogilvy / Schwartz / Hopkins. Премиум-сегмент для SMB в Рос�
 
 **Логотип:** текстовый — "natalia" в Playfair Display 600 + "AI · MARKETING STUDIO" в Inter 500 uppercase letter-spacing 0.12em.
 
-## Signature moments — что делает natalia.com editorial
+## Signature moments — что делает natashabrovkina.com editorial
 
 В каждой важной странице должна быть **одна** визуальная фишка, которую запоминают:
 - `/` — hero-видео с 16 точками-агентами (abstract loop)

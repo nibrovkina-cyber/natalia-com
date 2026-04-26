@@ -62,7 +62,7 @@ vercel
 - [ ] Студия генерирует на проде?
 
 **Domain (опционально):**
-- [ ] Купить `natalia.com` (или `brovkina.ai`) на reg.ru или Namecheap
+- [ ] Купить `natashabrovkina.com` (или `brovkina.ai`) на reg.ru или Namecheap
 - [ ] В Vercel → Settings → Domains → добавить свой
 - [ ] DNS прописать по инструкции Vercel
 
@@ -80,7 +80,7 @@ vercel
 - [ ] Опубликовать `article-vc.md`
 - [ ] Время: вторник-среда, 10-12 МСК (пик делового трафика)
 - [ ] Seed-комменты подготовлены (см. конец файла VC)
-- [ ] Ссылка на инструмент: https://natalia.com (уже работает на Vercel)
+- [ ] Ссылка на инструмент: https://natashabrovkina.com (уже работает на Vercel)
 
 ### Дни -4 и -3: мониторинг
 - [ ] Ответить на все комментарии на VC и Дзен

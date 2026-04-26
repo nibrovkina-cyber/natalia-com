@@ -21,7 +21,7 @@ export default function SiteFooter() {
           gap: 12,
         }}
       >
-        <div>© 2026 natalia.com · ИП Бровкина&nbsp;Н.</div>
+        <div>© 2026 natashabrovkina.com · ИП Бровкина&nbsp;Н.</div>
         <div style={{ display: "flex", gap: 18, flexWrap: "wrap" }}>
           <Link href="/method" style={{ color: "inherit", textDecoration: "none" }}>Метод</Link>
           <Link href="/gallery" style={{ color: "inherit", textDecoration: "none" }}>Кейсы</Link>

@@ -697,7 +697,7 @@ export default function Home() {
   const addFooter = (html: string): string => {
     const footer = `
 <div style="text-align:center;padding:14px 20px;background:#0D1B2A;color:#C8B79C;font-family:system-ui,-apple-system,sans-serif;font-size:12px;letter-spacing:1px;border-top:1px solid rgba(200,183,156,0.2)">
-  Сделано через <a href="https://natalia.com?utm_source=export" style="color:#C8B79C;text-decoration:none;border-bottom:1px dotted #C8B79C" target="_blank" rel="noopener">natalia.com</a> — AI-команда маркетологов из 16 специалистов за 2&nbsp;990&nbsp;₽/мес
+  Сделано через <a href="https://natashabrovkina.com?utm_source=export" style="color:#C8B79C;text-decoration:none;border-bottom:1px dotted #C8B79C" target="_blank" rel="noopener">natashabrovkina.com</a> — AI-команда маркетологов из 16 специалистов за 2&nbsp;990&nbsp;₽/мес
 </div>`;
     if (html.includes("</body>")) return html.replace("</body>", `${footer}</body>`);
     return html + footer;
@@ -1370,7 +1370,7 @@ export default function Home() {
             gap: 12,
           }}
         >
-          <div>© 2026 natalia.com · ИП Бровкина&nbsp;Н.</div>
+          <div>© 2026 natashabrovkina.com · ИП Бровкина&nbsp;Н.</div>
           <div style={{ display: "flex", gap: 18, flexWrap: "wrap" }}>
             <Link href="/method" style={{ color: "inherit", textDecoration: "none" }}>Метод</Link>
             <Link href="/gallery" style={{ color: "inherit", textDecoration: "none" }}>Кейсы</Link>

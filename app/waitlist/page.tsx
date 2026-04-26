@@ -3,7 +3,7 @@ import SiteFooter from "../components/SiteFooter";
 import WaitlistForm from "./WaitlistForm";
 
 export const metadata = {
-  title: "Лист ожидания · natalia.com",
+  title: "Лист ожидания · natashabrovkina.com",
   description: "Hosted-инструмент с 16 AI-агентами скоро. Запишись — пришлю первой.",
 };
 

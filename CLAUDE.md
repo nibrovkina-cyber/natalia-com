@@ -1,10 +1,10 @@
 @AGENTS.md
 
-# natalia.com — правила для Claude Code
+# natashabrovkina.com — правила для Claude Code
 
 ## 🎯 Цель проекта
 
-Editorial-уровень премиум-сайт для AI-маркетинг студии natalia.com.
+Editorial-уровень премиум-сайт для AI-маркетинг студии natashabrovkina.com.
 **Референсы:** Aesop, Kinfolk, Pentagram, Substack Pro, SSENSE.
 **НЕ референсы:** Stripe, Linear, Vercel, типовой SaaS.
 

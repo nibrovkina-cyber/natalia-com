@@ -30,8 +30,8 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Natalia Brovkina · AI Marketing Studio",
     description: "AI-команда из 16 специалистов — премиум-лендинги за 60 секунд",
-    url: "https://natalia.com",
-    siteName: "natalia.com",
+    url: "https://natashabrovkina.com",
+    siteName: "natashabrovkina.com",
     locale: "ru_RU",
     type: "website",
   },

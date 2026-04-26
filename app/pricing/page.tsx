@@ -8,7 +8,7 @@ import { ProcessPhase } from "../components/ui/ProcessPhase";
 import { RiskItem } from "../components/ui/RiskItem";
 
 export const metadata = {
-  title: "Тарифы · natalia.com",
+  title: "Тарифы · natashabrovkina.com",
   description: "Три способа работать со мной — Бесплатно (open source), 2 990 ₽/мес или 49 000 ₽ под ключ",
 };
 
@@ -108,7 +108,7 @@ const MATRIX_ROWS: { feat: string; sub?: string; vals: [string, string, string];
   { feat: "AI-агенты", sub: "На методологии Огилви, Шварца, Хопкинса", vals: ["16 · open source", "16 · hosted безлимит", "16 + я делаю сама"], full: [true, true, true] },
   { feat: "Хостинг", vals: ["твой ключ Anthropic", "наш hosted UI", "наш hosted UI"], full: [false, true, true] },
   { feat: "Лендинги в месяц", vals: ["безлимит локально", "безлимит", "1 под ключ + безлимит сама"], full: [true, true, true] },
-  { feat: "Watermark natalia.com", vals: ["—", "—", "—"], full: [false, true, true] },
+  { feat: "Watermark natashabrovkina.com", vals: ["—", "—", "—"], full: [false, true, true] },
   { feat: "Brand Memory + Team Mode", vals: ["—", "да", "да"], full: [false, true, true] },
   { feat: "Аудит и позиционирование", sub: "2 созвона по 90 минут лично со мной", vals: ["—", "—", "да"], full: [false, false, true] },
   { feat: "Лендинг под ключ", sub: "Копирайт + дизайн + вёрстка моими руками", vals: ["—", "—", "да"], full: [false, false, true] },
