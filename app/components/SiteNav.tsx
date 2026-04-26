@@ -58,6 +58,7 @@ export default function SiteNav({
       }}
     >
       <div
+        className="nav-row"
         style={{
           maxWidth: 1240,
           margin: "0 auto",
@@ -83,6 +84,7 @@ export default function SiteNav({
           <div style={{ fontFamily: "var(--font-serif)", fontSize: 21, fontWeight: 600, lineHeight: 1.1 }}>
             natalia
             <small
+              className="nav-subtitle"
               style={{
                 display: "block",
                 fontFamily: "var(--font-sans)",
@@ -144,6 +146,7 @@ export default function SiteNav({
 
           <Link
             href={ctaHref}
+            className="nav-cta"
             style={{
               display: showSticky && showStickyPrice ? "none" : "inline-flex",
               background: variant === "dark" ? "var(--gold)" : "var(--navy)",
@@ -155,12 +158,27 @@ export default function SiteNav({
               textDecoration: "none",
               transition: "transform .2s ease",
               flexShrink: 0,
+              whiteSpace: "nowrap",
             }}
           >
-            {ctaLabel}
+            <span className="nav-cta-full">{ctaLabel}</span>
+            <span className="nav-cta-short" aria-hidden="true">Студия →</span>
           </Link>
         </div>
       </div>
+      <style>{`
+        .nav-cta-short { display: none; }
+        @media (max-width: 640px) {
+          .nav-row {
+            padding: 12px 18px !important;
+            gap: 12px !important;
+          }
+          .nav-subtitle { display: none !important; }
+          .nav-cta { padding: 9px 16px !important; font-size: 13px !important; }
+          .nav-cta-full { display: none; }
+          .nav-cta-short { display: inline; }
+        }
+      `}</style>
     </header>
   );
 }

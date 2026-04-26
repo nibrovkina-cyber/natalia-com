@@ -99,9 +99,9 @@ const PHASES = [
 ];
 
 const RISK_ITEMS = [
-  { num: "01", title: "Open source бесплатно", sub: "16 агентов на GitHub, MIT лицензия" },
-  { num: "02", title: "Без карты на trial", sub: "7 дней безлимита Self-serve, потом сама решаешь" },
-  { num: "03", title: "Возврат 14 дней", sub: "Не подошло — верну деньги без вопросов" },
+  { num: "01", title: "Open source · MIT", sub: "16 агентов на GitHub бесплатно. Форкай, адаптируй, делись" },
+  { num: "02", title: "Запуск скоро", sub: "Self-serve в активной разработке · −20% для первых 50 в waitlist" },
+  { num: "03", title: "Без карты при подписке", sub: "Email и Telegram — этого достаточно. Списания после релиза" },
 ];
 
 const MATRIX_ROWS: { feat: string; sub?: string; vals: [string, string, string]; full?: [boolean, boolean, boolean] }[] = [

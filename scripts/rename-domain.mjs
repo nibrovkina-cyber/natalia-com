@@ -1,7 +1,11 @@
 #!/usr/bin/env node
 /**
- * rename-domain.mjs — массовая замена natashabrovkina.com / natashabrovkina.com → natashabrovkina.com
- * по обоим репозиториям. Исторические design-snapshots пропускаются.
+ * rename-domain.mjs — массовая замена старого домена на новый по обоим репо.
+ * Исторические design-snapshots пропускаются.
+ *
+ * Конфиг — переменные `NEW` и `OLD_PATTERNS` ниже. Текущий запуск (2026-04-25)
+ * заменил natalia.studio + natalia.com → natashabrovkina.com (самосломал
+ * комментарии при первом проходе — они теперь зачищены).
  *
  * Использование:
  *   node scripts/rename-domain.mjs --dry    # показать что изменится
@@ -101,7 +105,7 @@ for (const repo of REPOS) {
 console.log(`\n${dryRun ? "[DRY RUN] " : ""}Просканировано файлов: ${filesScanned}`);
 console.log(`${dryRun ? "Будет изменено" : "Изменено"} файлов: ${filesChanged}`);
 console.log(`${dryRun ? "Будет заменено" : "Заменено"} вхождений: ${totalReplacements}`);
-console.log(`Замена: natashabrovkina.com | natashabrovkina.com → ${NEW}\n`);
+console.log(`Замена: ${OLD_PATTERNS.map((p) => p.source.replace(/\\\./g, ".")).join(" | ")} → ${NEW}\n`);
 
 changeLog
   .sort((a, b) => b.replacements - a.replacements)

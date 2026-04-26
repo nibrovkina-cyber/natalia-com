@@ -3,6 +3,39 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import { Compass, PenTool, Magnet, FileText, Mail, Atom, Smartphone, Target, Search, Eye, GitBranch, Rocket, Briefcase, Newspaper, Palette, FileSignature } from "lucide-react";
 
+// Demo URLs — для записи ролика без баланса API. Когда пользователь вводит
+// один из этих URL в Студии (или открывает /tool?demo=<id>), мы подгружаем
+// готовый HTML из public/demo/ вместо вызова /api/chat → Anthropic.
+// Это не подделка — это закешированный РЕАЛЬНЫЙ output из прошлой генерации.
+const DEMO_URLS: Record<string, { url: string; file: string; aliases: string[] }> = {
+  simbios: {
+    url: "https://simbios-marketing.ru",
+    file: "/demo/simbios-after.html",
+    aliases: ["simbios-marketing.ru", "simbios-marketing", "simbios.ru", "simbios"],
+  },
+  medea: {
+    url: "http://medeadent.tilda.ws",
+    file: "/demo/medea-after.html",
+    aliases: ["medeadent.tilda.ws", "medeadent", "medea-dent", "medea"],
+  },
+};
+
+function matchDemoUrl(input: string): { url: string; file: string } | null {
+  if (!input) return null;
+  const cleaned = input
+    .toLowerCase()
+    .replace(/^https?:\/\//, "")
+    .replace(/^www\./, "")
+    .replace(/\/$/, "")
+    .trim();
+  for (const demo of Object.values(DEMO_URLS)) {
+    if (demo.aliases.some((alias) => cleaned === alias || cleaned.includes(alias))) {
+      return { url: demo.url, file: demo.file };
+    }
+  }
+  return null;
+}
+
 const AGENT_ICONS: Record<string, React.ReactNode> = {
   positioning: <Compass size={18} strokeWidth={1.8} />,
   copy: <PenTool size={18} strokeWidth={1.8} />,
@@ -548,13 +581,7 @@ export default function Home() {
     const params = new URLSearchParams(window.location.search);
     const demoId = params.get("demo");
     if (demoId) {
-      const demoMap: Record<string, { url: string; file: string }> = {
-        simbios: { url: "https://simbios-marketing.ru", file: "/demo/simbios-after.html" },
-        medea: { url: "http://medeadent.tilda.ws", file: "/demo/medea-after.html" },
-        backup1: { url: "https://example.com", file: "/demo/backup1-after.html" },
-        backup2: { url: "https://example.com", file: "/demo/backup2-after.html" },
-      };
-      const demo = demoMap[demoId];
+      const demo = DEMO_URLS[demoId];
       if (demo) {
         fetch(demo.file)
           .then(r => r.ok ? r.text() : Promise.reject())
@@ -662,6 +689,27 @@ export default function Home() {
     setPreviewHtml(null);
     if (studioUrl) setOriginalSiteUrl(studioUrl);
     const stepTimer = setInterval(() => setStudioStep(s => Math.min(s + 1, 3)), 4000);
+
+    // Magic URLs — для записи ролика без API. Если введён URL из DEMO_URLS,
+    // подгружаем готовый HTML из public/demo/ вместо вызова /api/chat. На
+    // камере выглядит как живая генерация (16-секундный delay имитирует 4 шага).
+    const demoMatch = matchDemoUrl(studioUrl);
+    if (demoMatch) {
+      try {
+        await new Promise((r) => setTimeout(r, 16000));
+        const res = await fetch(demoMatch.file);
+        if (res.ok) {
+          clearInterval(stepTimer);
+          setStudioStep(4);
+          setPreviewHtml(await res.text());
+          setIsDemoMode(true);
+          setStudioLoading(false);
+          return;
+        }
+      } catch {}
+      // если demo-файл не нашёлся — продолжаем к обычному API-пути ниже
+    }
+
     const userContent = [
       studioUrl && `URL их текущего сайта: ${studioUrl}`,
       studioName && `Название бизнеса: ${studioName}`,

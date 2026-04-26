@@ -80,11 +80,14 @@ export default function Home() {
                   className="hero-h1"
                   style={{
                     fontFamily: "var(--font-serif)",
-                    fontSize: "clamp(48px, 7vw, 104px)",
+                    fontSize: "clamp(34px, 7vw, 104px)",
                     lineHeight: 0.98,
                     letterSpacing: "-0.025em",
                     fontWeight: 500,
                     marginTop: 28,
+                    overflowWrap: "break-word",
+                    wordBreak: "normal",
+                    hyphens: "auto",
                   }}
                 >
                   Удвоила выручку<br />

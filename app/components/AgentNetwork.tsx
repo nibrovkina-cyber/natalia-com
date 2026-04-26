@@ -23,10 +23,12 @@ export default function AgentNetwork({
   const rafRef = useRef<number | null>(null);
 
   useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext("2d");
-    if (!ctx) return;
+    const canvasEl = canvasRef.current;
+    if (!canvasEl) return;
+    const ctxEl = canvasEl.getContext("2d");
+    if (!ctxEl) return;
+    const canvas: HTMLCanvasElement = canvasEl;
+    const ctx: CanvasRenderingContext2D = ctxEl;
 
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
     let w = 0;
