@@ -3,9 +3,22 @@ import { NextRequest, NextResponse } from "next/server";
 
 export const maxDuration = 60;
 
+// Лимиты на запрос для cost-amplification DoS защиты.
+// Атакующий мог отправить maxTokens: 200000 + 1000 messages — слил бы наш
+// ANTHROPIC_API_KEY за минуты. Жёсткие границы:
+const LIMITS = {
+  MAX_MESSAGES: 30,
+  MAX_TOTAL_CHARS: 60_000,
+  MAX_SYSTEM_PROMPT_CHARS: 10_000,
+  MAX_OUTPUT_TOKENS: 4_096,
+  MAX_SCRAPE_URL_LEN: 500,
+} as const;
+
 const rateLimitMap = new Map<string, { count: number; resetAt: number }>();
 const FREE_LIMIT = 5;
 const WINDOW_MS = 24 * 60 * 60 * 1000;
+// ⚠️ rateLimitMap живёт только в одной serverless instance (cold start = reset).
+// Для production rate-limit нужен Vercel KV / Upstash Redis. См. DEPLOY-CHECKLIST.md.
 
 function checkRateLimit(ip: string): { ok: boolean; remaining: number } {
   const now = Date.now();
@@ -42,12 +55,47 @@ async function scrapeWithFirecrawl(url: string): Promise<string | null> {
 }
 
 export async function POST(req: NextRequest) {
-  const { messages, systemPrompt, apiKey, scrapeUrl, maxTokens } = await req.json();
-  const key = apiKey || process.env.ANTHROPIC_API_KEY;
-  if (!key) return NextResponse.json({ content: "API-ключ не найден." }, { status: 400 });
+  const body = await req.json();
+  const { messages, systemPrompt, apiKey, scrapeUrl, maxTokens } = body;
 
-  // Rate-limit только для запросов без BYOK
-  if (!apiKey) {
+  // === Input validation — cost-amplification DoS защита ===
+  if (!Array.isArray(messages) || messages.length === 0) {
+    return NextResponse.json({ content: "messages должен быть непустым массивом" }, { status: 400 });
+  }
+  if (messages.length > LIMITS.MAX_MESSAGES) {
+    return NextResponse.json(
+      { content: `Слишком много сообщений (>${LIMITS.MAX_MESSAGES}). Начни новый чат.` },
+      { status: 400 }
+    );
+  }
+  const totalChars = messages.reduce(
+    (acc: number, m: unknown) => acc + (typeof (m as { content?: unknown })?.content === "string" ? ((m as { content: string }).content.length) : 0),
+    0
+  );
+  if (totalChars > LIMITS.MAX_TOTAL_CHARS) {
+    return NextResponse.json(
+      { content: `Сообщения слишком длинные (${totalChars} > ${LIMITS.MAX_TOTAL_CHARS} знаков).` },
+      { status: 400 }
+    );
+  }
+  const safeSystemPrompt = String(systemPrompt || "").slice(0, LIMITS.MAX_SYSTEM_PROMPT_CHARS);
+  const safeMaxTokens = Math.min(
+    Math.max(parseInt(String(maxTokens), 10) || 4096, 256),
+    LIMITS.MAX_OUTPUT_TOKENS
+  );
+  const safeScrapeUrl =
+    typeof scrapeUrl === "string" && scrapeUrl.length <= LIMITS.MAX_SCRAPE_URL_LEN
+      ? scrapeUrl
+      : undefined;
+
+  // === Auth: BYOK strict (защита от forking exploit) ===
+  // Атакующий мог форкнуть фронт, не передавать apiKey, и тратить наш бюджет.
+  // Free fallback на process.env.ANTHROPIC_API_KEY работает ТОЛЬКО когда:
+  // (а) пользователь не передал свой ключ И (б) IP не превысил daily limit.
+  const userKey = typeof apiKey === "string" && apiKey.startsWith("sk-ant-") ? apiKey : null;
+  let key: string | undefined = userKey || undefined;
+
+  if (!userKey) {
     const ip = req.headers.get("x-forwarded-for")?.split(",")[0]?.trim()
             || req.headers.get("x-real-ip")
             || "unknown";
@@ -58,18 +106,25 @@ export async function POST(req: NextRequest) {
         { status: 429 }
       );
     }
+    key = process.env.ANTHROPIC_API_KEY;
+    if (!key) {
+      return NextResponse.json(
+        { content: "Сервер временно не настроен. Введи свой API-ключ в настройках (🔑)." },
+        { status: 503 }
+      );
+    }
   }
 
   let enhancedMessages = messages;
   let scrapeWarning = "";
-  if (scrapeUrl) {
-    const scraped = await scrapeWithFirecrawl(scrapeUrl);
+  if (safeScrapeUrl) {
+    const scraped = await scrapeWithFirecrawl(safeScrapeUrl);
     if (scraped) {
       const lastMsg = messages[messages.length - 1];
       const truncated = scraped.slice(0, 14000);
       enhancedMessages = [
         ...messages.slice(0, -1),
-        { ...lastMsg, content: `${lastMsg.content}\n\nСОДЕРЖИМОЕ ИХ САЙТА (${scrapeUrl}):\n${truncated}` },
+        { ...lastMsg, content: `${lastMsg.content}\n\nСОДЕРЖИМОЕ ИХ САЙТА (${safeScrapeUrl}):\n${truncated}` },
       ];
     } else {
       scrapeWarning = "Не удалось прочитать сайт (таймаут или сайт блокирует скрейпинг). Работаю по описанию.";
@@ -80,8 +135,8 @@ export async function POST(req: NextRequest) {
   try {
     const response = await client.messages.create({
       model: "claude-sonnet-4-6",
-      max_tokens: maxTokens || 4096,
-      system: systemPrompt,
+      max_tokens: safeMaxTokens,
+      system: safeSystemPrompt,
       messages: enhancedMessages,
     });
     const content = response.content[0].type === "text" ? response.content[0].text : "";

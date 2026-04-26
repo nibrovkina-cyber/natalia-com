@@ -72,115 +72,108 @@ export default function Home() {
             }}
           >
             <div>
-              <Reveal>
-                <Kicker withDot>AI Marketing Studio · Moscow</Kicker>
-              </Reveal>
-              <Reveal delay={80}>
-                <h1
-                  className="hero-h1"
+              {/* Above-the-fold контент БЕЗ Reveal — Lighthouse LCP / SEO crawler */}
+              <Kicker withDot>AI Marketing Studio · Moscow</Kicker>
+              <h1
+                className="hero-h1"
+                style={{
+                  fontFamily: "var(--font-serif)",
+                  fontSize: "clamp(34px, 7vw, 104px)",
+                  lineHeight: 0.98,
+                  letterSpacing: "-0.025em",
+                  fontWeight: 500,
+                  marginTop: 28,
+                  overflowWrap: "break-word",
+                  wordBreak: "normal",
+                  hyphens: "auto",
+                }}
+              >
+                Удвоила выручку<br />
+                20&nbsp;малых&nbsp;бизнесов.
+                <span
                   style={{
-                    fontFamily: "var(--font-serif)",
-                    fontSize: "clamp(34px, 7vw, 104px)",
-                    lineHeight: 0.98,
-                    letterSpacing: "-0.025em",
+                    display: "block",
+                    fontStyle: "italic",
+                    color: "var(--steel)",
                     fontWeight: 500,
-                    marginTop: 28,
-                    overflowWrap: "break-word",
-                    wordBreak: "normal",
-                    hyphens: "auto",
+                    marginTop: 8,
                   }}
                 >
-                  Удвоила выручку<br />
-                  20&nbsp;малых&nbsp;бизнесов.
-                  <span
-                    style={{
-                      display: "block",
-                      fontStyle: "italic",
-                      color: "var(--steel)",
-                      fontWeight: 500,
-                      marginTop: 8,
-                    }}
-                  >
-                    Без команды.
-                  </span>
-                </h1>
-              </Reveal>
-              <Reveal delay={160}>
-                <p
-                  style={{
-                    fontFamily: "var(--font-sans)",
-                    fontSize: 19,
-                    lineHeight: 1.55,
-                    color: "var(--steel)",
-                    maxWidth: 540,
-                    marginTop: 32,
-                    fontWeight: 400,
+                  Без команды.
+                </span>
+              </h1>
+              <p
+                style={{
+                  fontFamily: "var(--font-sans)",
+                  fontSize: 19,
+                  lineHeight: 1.55,
+                  color: "var(--steel)",
+                  maxWidth: 540,
+                  marginTop: 32,
+                  fontWeight: 400,
                   }}
                 >
                   16&nbsp;AI-агентов на&nbsp;методологии Ogilvy, Schwartz и&nbsp;Hopkins.
                   Работают за&nbsp;копирайтера, дизайнера, SEO и&nbsp;таргетолога&nbsp;—
                   одновременно.
                 </p>
-              </Reveal>
-              <Reveal delay={240}>
-                <div
-                  className="hero-cta"
+              <div
+                className="hero-cta"
+                style={{
+                  display: "flex",
+                  gap: 20,
+                  marginTop: 44,
+                  alignItems: "center",
+                  flexWrap: "wrap",
+                }}
+              >
+                <a
+                  href="https://github.com/nibrovkina-cyber/natalia-marketing-department"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   style={{
-                    display: "flex",
-                    gap: 20,
-                    marginTop: 44,
+                    display: "inline-flex",
                     alignItems: "center",
-                    flexWrap: "wrap",
+                    gap: 10,
+                    background: "var(--ink)",
+                    color: "var(--bg)",
+                    padding: "16px 26px",
+                    borderRadius: 14,
+                    fontSize: 15,
+                    fontWeight: 500,
+                    textDecoration: "none",
+                    transition: "transform .2s ease, background .2s ease",
+                    boxShadow: "0 8px 24px -12px rgba(31,27,22,0.4)",
                   }}
                 >
-                  <a
-                    href="https://github.com/nibrovkina-cyber/natalia-marketing-department"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={{
-                      display: "inline-flex",
-                      alignItems: "center",
-                      gap: 10,
-                      background: "var(--ink)",
-                      color: "var(--bg)",
-                      padding: "16px 26px",
-                      borderRadius: 14,
-                      fontSize: 15,
-                      fontWeight: 500,
-                      textDecoration: "none",
-                      transition: "transform .2s ease, background .2s ease",
-                      boxShadow: "0 8px 24px -12px rgba(31,27,22,0.4)",
-                    }}
-                  >
-                    Скачать бесплатно на GitHub →
-                  </a>
-                  <Link
-                    href="/tool"
-                    style={{
-                      fontSize: 15,
-                      fontWeight: 500,
-                      color: "var(--ink)",
-                      textDecoration: "none",
-                      borderBottom: "1.5px solid var(--hairline)",
-                      paddingBottom: 3,
-                    }}
-                  >
-                    Открыть hosted-инструмент →
-                  </Link>
-                </div>
-                <div
+                  Скачать бесплатно на GitHub →
+                </a>
+                <Link
+                  href="/tool"
                   style={{
-                    fontFamily: "var(--font-mono)",
-                    fontSize: 11,
-                    color: "var(--steel)",
-                    marginTop: 24,
-                    letterSpacing: "0.1em",
-                    textTransform: "uppercase",
+                    fontSize: 15,
+                    fontWeight: 500,
+                    color: "var(--ink)",
+                    textDecoration: "none",
+                    borderBottom: "1.5px solid var(--hairline)",
+                    paddingBottom: 3,
                   }}
                 >
-                  без регистрации · первые 3 лендинга бесплатно
-                </div>
-              </Reveal>
+                  Открыть hosted-инструмент →
+                </Link>
+              </div>
+              <div
+                style={{
+                  fontFamily: "var(--font-mono)",
+                  fontSize: 11,
+                  color: "var(--steel)",
+                  marginTop: 24,
+                  letterSpacing: "0.1em",
+                  textTransform: "uppercase",
+                }}
+              >
+                без регистрации · первые 3 лендинга бесплатно
+              </div>
             </div>
 
             {/* Product preview card — editorial tool empty-state mockup */}

@@ -44,9 +44,72 @@ export const metadata: Metadata = {
   },
 };
 
+// JSON-LD для AI-краулеров и Google Knowledge Graph.
+// Помогает Google/Yandex/ChatGPT/Claude/Perplexity правильно атрибутировать
+// информацию о Наталье и продукте при ответах на вопросы пользователей.
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://natashabrovkina.com/#person",
+      name: "Наталья Бровкина",
+      alternateName: "Natalia Brovkina",
+      url: "https://natashabrovkina.com",
+      jobTitle: "Founder, AI Marketing Studio",
+      sameAs: [
+        "https://t.me/NATASHABROVKINA",
+        "https://github.com/nibrovkina-cyber",
+      ],
+      knowsAbout: [
+        "AI-маркетинг",
+        "Direct response copywriting",
+        "Конверсия лендингов",
+        "Методология David Ogilvy",
+        "Eugene Schwartz Breakthrough Advertising",
+        "Claude Hopkins Scientific Advertising",
+      ],
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://natashabrovkina.com/#org",
+      name: "natashabrovkina.com",
+      legalName: "ИП Бровкина Н.",
+      url: "https://natashabrovkina.com",
+      founder: { "@id": "https://natashabrovkina.com/#person" },
+      areaServed: ["RU", "US"],
+      logo: "https://natashabrovkina.com/assets/portrait.png",
+      sameAs: [
+        "https://github.com/nibrovkina-cyber/natalia-marketing-department",
+        "https://github.com/nibrovkina-cyber/natalia-com",
+      ],
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://natashabrovkina.com/#tool",
+      name: "AI Marketing Studio · 16 агентов",
+      applicationCategory: "BusinessApplication",
+      operatingSystem: "Web",
+      url: "https://natashabrovkina.com/tool",
+      offers: [
+        { "@type": "Offer", name: "Free", price: "0", priceCurrency: "RUB" },
+        { "@type": "Offer", name: "Self-Serve", price: "2990", priceCurrency: "RUB", priceSpecification: { "@type": "UnitPriceSpecification", unitCode: "MON" } },
+        { "@type": "Offer", name: "Personal", price: "49000", priceCurrency: "RUB" },
+      ],
+      author: { "@id": "https://natashabrovkina.com/#person" },
+    },
+  ],
+};
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="ru" className={`${inter.variable} ${playfair.variable} ${jetbrains.variable} h-full`}>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <body className="min-h-full">{children}</body>
     </html>
   );
