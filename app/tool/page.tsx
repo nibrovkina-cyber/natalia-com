@@ -18,6 +18,14 @@ const DEMO_URLS: Record<string, { url: string; file: string; aliases: string[] }
     file: "/demo/medea-after.html",
     aliases: ["medeadent.tilda.ws", "medeadent", "medea-dent", "medea"],
   },
+  // Demo-кейс «Клиника Дента» — fallback без привязки к реальной клинике.
+  // Используется в YouTube-ролике если consent от MEDEA не получен.
+  // Использует тот же HTML что medea (имена врачей и отзывы — плейсхолдеры).
+  "clinic-demo": {
+    url: "http://clinic-demo.example",
+    file: "/demo/medea-after.html",
+    aliases: ["clinic-demo", "clinic-demo.example", "клиника-дента", "klinika-denta"],
+  },
 };
 
 function matchDemoUrl(input: string): { url: string; file: string } | null {
