@@ -29,7 +29,7 @@ export const metadata: Metadata = {
   title: "Natalia Brovkina · AI Marketing Studio",
   description: "AI-команда из 16 специалистов на методологии Ogilvy, Schwartz и Hopkins. Собирает премиум-лендинги за 60 секунд из URL.",
   openGraph: {
-    title: "Удвоила выручку 20 малых бизнесов. Без команды.",
+    title: "Маркетинг по Огилви. Запускает один человек.",
     description: "16 AI-агентов на методологии Ogilvy / Schwartz / Hopkins. Премиум-лендинги за 60 секунд из URL.",
     url: "https://natashabrovkina.com",
     siteName: "natashabrovkina.com",
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Удвоила выручку 20 малых бизнесов. Без команды.",
+    title: "Маркетинг по Огилви. Запускает один человек.",
     description: "16 AI-агентов на методологии Ogilvy / Schwartz / Hopkins.",
     creator: "@NATASHABROVKINA",
   },

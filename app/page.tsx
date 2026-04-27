@@ -88,8 +88,7 @@ export default function Home() {
                   hyphens: "auto",
                 }}
               >
-                Удвоила выручку<br />
-                20&nbsp;малых&nbsp;бизнесов.
+                Маркетинг по&nbsp;Огилви.<br />
                 <span
                   style={{
                     display: "block",
@@ -99,7 +98,7 @@ export default function Home() {
                     marginTop: 8,
                   }}
                 >
-                  Без команды.
+                  Запускает один человек.
                 </span>
               </h1>
               <p
@@ -569,7 +568,7 @@ export default function Home() {
                       letterSpacing: "0.08em",
                     }}
                   >
-                    AI Marketing Studio · Moscow · Los Angeles
+                    AI Marketing Studio · Москва
                   </div>
                 </div>
                 <Link
@@ -1252,13 +1251,13 @@ export default function Home() {
                 }}
               >
                 Все 16 промптов для ChatGPT или&nbsp;Claude с&nbsp;объяснением
-                «почему так». Плюс Brand Memory template в&nbsp;JSON. Приходит
-                в&nbsp;Telegram за&nbsp;секунду.
+                «почему так». Плюс Brand Memory template в&nbsp;JSON. Открытый
+                MIT-репозиторий на&nbsp;GitHub.
               </p>
             </Reveal>
             <Reveal delay={200}>
               <a
-                href="https://t.me/natalia_agents_bot"
+                href="https://github.com/nibrovkina-cyber/natalia-marketing-department"
                 target="_blank"
                 rel="noopener noreferrer"
                 style={{
@@ -1272,7 +1271,7 @@ export default function Home() {
                   paddingBottom: 4,
                 }}
               >
-                Открыть в Telegram →
+                Открыть на GitHub →
               </a>
             </Reveal>
           </div>

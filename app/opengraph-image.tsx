@@ -61,18 +61,7 @@ export default async function OpengraphImage() {
               fontFamily: "serif",
             }}
           >
-            Удвоила выручку
-          </div>
-          <div
-            style={{
-              fontSize: 88,
-              lineHeight: 1.0,
-              fontWeight: 600,
-              letterSpacing: "-0.025em",
-              fontFamily: "serif",
-            }}
-          >
-            20 малых бизнесов.
+            Маркетинг по Огилви.
           </div>
           <div
             style={{
@@ -86,7 +75,7 @@ export default async function OpengraphImage() {
               marginTop: 8,
             }}
           >
-            Без команды.
+            Запускает один человек.
           </div>
         </div>
 

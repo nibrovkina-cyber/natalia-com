@@ -1,9 +1,9 @@
+import Link from "next/link";
 import SiteNav from "../components/SiteNav";
 import SiteFooter from "../components/SiteFooter";
 import Reveal from "../components/Reveal";
 import { SectionHead } from "../components/ui/SectionHead";
 import { PricingCard } from "../components/ui/PricingCard";
-import { TestimonialCard } from "../components/ui/TestimonialCard";
 import { ProcessPhase } from "../components/ui/ProcessPhase";
 import { RiskItem } from "../components/ui/RiskItem";
 
@@ -80,15 +80,6 @@ const TIERS = [
     fineprint: "Перед записью — короткий звонок. Если задача не моя, скажу честно.",
     featured: false,
   },
-];
-
-const TESTIMONIALS = [
-  { quote: "За 30 дней с Натальей я закрыла продаж на 1.4 млн. До этого полгода крутила ту же воронку с агентством — ноль. Разница — в копирайте и структуре оффера.", initials: "МК", name: "Мария К.", role: "Школа маникюра · 12 мастеров" },
-  { quote: "Self-serve окупил себя на третьем лендинге. Раньше платила копирайтеру по 25 000 за текст, теперь делаю сама за 20 минут. И тексты лучше.", initials: "АС", name: "Андрей С.", role: "B2B-консалтинг · Москва" },
-  { quote: "Наталья не учит «как надо». Она садится рядом и делает с тобой. Через две недели я понимала почему мой прошлый лендинг не работал.", initials: "ЕП", name: "Елена П.", role: "Психолог · частная практика" },
-  { quote: "Бесплатные агенты — это не приманка, это полноценный инструмент. Я месяц на них прожила прежде чем оплатить. Тут нет жадности.", initials: "ИВ", name: "Игорь В.", role: "Курсы английского · 4 филиала" },
-  { quote: "16 агентов звучало как маркетинг. На третий день перестало звучать. Они правда разные, и каждый делает свою работу.", initials: "ОФ", name: "Ольга Ф.", role: "Бренд одежды · Санкт-Петербург" },
-  { quote: "Personal — дорого, но я считала. Если бы я нанимала маркетолога на 30 дней с таким же результатом, ушло бы минимум 200 000. Это бизнес-решение.", initials: "ДТ", name: "Дмитрий Т.", role: "Производство мебели" },
 ];
 
 const PHASES = [
@@ -224,26 +215,68 @@ export default function PricingPage() {
           </div>
         </section>
 
-        {/* TESTIMONIALS */}
+        {/* CASES — honest pre-launch state */}
         <section id="cases" style={{ maxWidth: 1280, margin: "0 auto", padding: "60px 48px 120px" }}>
           <SectionHead
-            eyebrow="/ Клиенты"
-            title={<>Что говорят те, кто уже <span className="italic-display">сделал</span></>}
-            description="Шесть голосов из последних трёх месяцев. Все согласовали публикацию, имена настоящие."
+            eyebrow="/ Кейсы"
+            title={<>Два разбора. <span className="italic-display">С цифрами</span> и до/после.</>}
+            description="Продукт в pre-launch — отзывы клиентов появятся после первых платных подписок. Пока — два открытых кейса с реальными метриками."
           />
-          <div
-            className="twall"
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(3, 1fr)",
-              border: "1px solid var(--hairline)",
-            }}
-          >
-            {TESTIMONIALS.map((t, i) => (
-              <Reveal key={i} delay={80 + (i % 3) * 60}>
-                <TestimonialCard {...t} index={i} borderRight={(i + 1) % 3 !== 0} borderTop={i >= 3} />
-              </Reveal>
-            ))}
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 40, marginTop: 48 }} className="cases-grid">
+            <Reveal delay={80}>
+              <Link
+                href="/gallery/medea-dent-moscow"
+                style={{
+                  display: "block",
+                  textDecoration: "none",
+                  color: "inherit",
+                  border: "1px solid var(--hairline)",
+                  padding: "40px 36px",
+                  background: "var(--bg-card)",
+                  transition: "transform .35s ease",
+                }}
+              >
+                <div style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: "var(--ink-3)", letterSpacing: "0.16em", textTransform: "uppercase" }}>
+                  01 · СТОМАТОЛОГИЯ · МОСКВА
+                </div>
+                <div style={{ fontFamily: "var(--font-serif)", fontSize: 88, fontWeight: 500, letterSpacing: "-0.025em", color: "var(--accent)", marginTop: 24, lineHeight: 1 }}>
+                  ×3.4
+                </div>
+                <div style={{ fontFamily: "var(--font-serif)", fontStyle: "italic", fontSize: 18, color: "var(--ink-2)", marginTop: 8 }}>
+                  заявок в&nbsp;месяц после AI-редизайна — за&nbsp;90&nbsp;дней
+                </div>
+                <div style={{ fontSize: 14, fontWeight: 500, color: "var(--ink)", marginTop: 32, borderBottom: "1.5px solid var(--ink)", paddingBottom: 3, display: "inline-block" }}>
+                  Полный разбор →
+                </div>
+              </Link>
+            </Reveal>
+            <Reveal delay={140}>
+              <Link
+                href="/gallery/simbios-marketing-moscow"
+                style={{
+                  display: "block",
+                  textDecoration: "none",
+                  color: "inherit",
+                  border: "1px solid var(--hairline)",
+                  padding: "40px 36px",
+                  background: "var(--bg-card)",
+                  transition: "transform .35s ease",
+                }}
+              >
+                <div style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: "var(--ink-3)", letterSpacing: "0.16em", textTransform: "uppercase" }}>
+                  02 · АГЕНТСТВО · МОСКВА
+                </div>
+                <div style={{ fontFamily: "var(--font-serif)", fontSize: 88, fontWeight: 500, letterSpacing: "-0.025em", color: "var(--accent)", marginTop: 24, lineHeight: 1 }}>
+                  +58%
+                </div>
+                <div style={{ fontFamily: "var(--font-serif)", fontStyle: "italic", fontSize: 18, color: "var(--ink-2)", marginTop: 8 }}>
+                  конверсия в&nbsp;заявку — за&nbsp;60&nbsp;дней
+                </div>
+                <div style={{ fontSize: 14, fontWeight: 500, color: "var(--ink)", marginTop: 32, borderBottom: "1.5px solid var(--ink)", paddingBottom: 3, display: "inline-block" }}>
+                  Полный разбор →
+                </div>
+              </Link>
+            </Reveal>
           </div>
         </section>
 
