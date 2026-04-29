@@ -1,10 +1,12 @@
-# RECORDING SCRIPT (EN)
+# RECORDING SCRIPT (EN) — v4.1
 
 **Title:** "Quality service. No leads. Here's the fix."
 **Length:** 10:00
 **Format:** screen-share 90% + talking head 10%
 
 > Open this in fullscreen. Lines = what you say. Frame = what's on screen. No annotation blocks, no warnings. Clean teleprompter.
+
+> v4.1 changes vs v4: pre-revenue admission moved to first minute as positive frame; outro now carries a concrete next-video promise; 3 CTAs collapsed to 1 in voice (GitHub + waitlist live in pinned comment); Schwartz block now cites the original source for the ×2-×4 lift range.
 
 ---
 
@@ -32,7 +34,21 @@
 
 ---
 
-## 0:15-0:55 — PROBLEM (40 seconds)
+## 0:15-0:45 — HONEST FRAME (pre-revenue, positive)
+
+**SCREEN:** talking head, eye contact. One shot, no cuts.
+
+**SAY:**
+
+> "Up front, so there's no surprise. This is a public experiment. The product is in pre-launch. Zero paying customers yet. Hosted version ships in a few weeks.
+>
+> I open-sourced the code first because I want the first hundred people learning with me, not on me. And because I believe a methodology this old shouldn't cost $5,000 a month to apply.
+>
+> What follows works today. Free. On GitHub."
+
+---
+
+## 0:45-1:25 — PROBLEM (40 seconds)
 
 **SCREEN:** screen-share — generic dental site before AI. Cursor scrolls top to bottom. Hero "quality service," template testimonials, services listed without prices, "submit request" button.
 
@@ -52,7 +68,7 @@
 
 ---
 
-## 0:55-1:15 — SETUP (Copywriter agent)
+## 1:25-1:45 — SETUP (Copywriter agent)
 
 **SCREEN:** screen-share, opening natashabrovkina.com/tool
 
@@ -64,7 +80,7 @@
 
 ---
 
-## 1:15-1:45 — Brand Memory
+## 1:45-2:15 — Brand Memory
 
 **SCREEN:** screen-share, Brand Memory form.
 
@@ -78,7 +94,7 @@
 
 ---
 
-## 1:45-2:15 — Brief
+## 2:15-2:45 — Brief
 
 **SCREEN:** Copywriter chat window.
 
@@ -93,7 +109,7 @@ Hit Enter.
 
 ---
 
-## 2:15-3:00 — Real response (live in demo mode)
+## 2:45-3:30 — Real response (live in demo mode)
 
 **SCREEN:** Copywriter response appears in chat. Cursor scrolls through.
 
@@ -109,12 +125,12 @@ Hit Enter.
 
 ---
 
-## 3:00-3:25 — Studio launch
+## 3:30-3:55 — Studio launch
 
 **SCREEN:** screen-share, switch to Studio (Webdesign agent).
 
 **ACTION:**
-- Paste demo-clinic Tilda URL
+- Paste demo-clinic Squarespace URL
 - Click "Generate"
 - Loader: "Reading site. Applying Ogilvy+Hopkins. Building HTML. Animating."
 - **Fast-forward 5×** on 16-second processing
@@ -125,7 +141,7 @@ Hit Enter.
 
 ---
 
-## 3:25-4:15 — Landing walkthrough
+## 3:55-4:45 — Landing walkthrough
 
 **SCREEN:** generated AI landing page renders in right window. Cursor scrolls top to bottom.
 
@@ -142,7 +158,7 @@ Hit Enter.
 
 ---
 
-## 4:15-4:45 — Schwartz 5 levels
+## 4:45-5:15 — Schwartz 5 levels (with source citation)
 
 **SCREEN:** animated pyramid of 5 levels.
 
@@ -152,11 +168,13 @@ Hit Enter.
 >
 > Doesn't know they have a problem. Knows the pain. Knows solutions exist. Knows your product. Ready to buy.
 >
-> The hero changes for each level. At Level 2, you name the pain. At Level 5, you just write the price. 80% of small business sites in the US write at Level 3. But their visitors are at Level 2. Mismatch. Conversion 0.4%."
+> The hero changes for each level. At Level 2, you name the pain. At Level 5, you just write the price. 80% of small business sites in the US write at Level 3. But their visitors are at Level 2. Mismatch.
+>
+> Per Schwartz's original studies, getting the level match right delivers a conversion lift in the ×2 to ×4 range. That's his data, not mine. My own real numbers — I'll show those in a month, on data from the first hundred users."
 
 ---
 
-## 4:45-5:15 — Ogilvy + Hopkins
+## 5:15-5:45 — Ogilvy + Hopkins
 
 **SCREEN:** book covers on shelf.
 
@@ -170,7 +188,7 @@ Hit Enter.
 
 ---
 
-## 5:15-5:45 — Proposal
+## 5:45-6:15 — Proposal
 
 **SCREEN:** screen-share, click on 📋 Client Proposal, response loads.
 
@@ -180,7 +198,7 @@ Hit Enter.
 
 ---
 
-## 5:45-6:15 — SEO
+## 6:15-6:45 — SEO
 
 **SCREEN:** screen-share, click 🔍 SEO, response.
 
@@ -190,7 +208,7 @@ Hit Enter.
 
 ---
 
-## 6:15-7:00 — Atomizer
+## 6:45-7:30 — Atomizer
 
 **SCREEN:** screen-share, opened `natalia-atomizer/SKILL.md` on GitHub.
 
@@ -204,25 +222,13 @@ Hit Enter.
 
 ---
 
-## 7:00-7:30 — Pre-revenue admission
-
-**SCREEN:** talking head, eye contact.
-
-**SAY:**
-
-> "Be straight with you. The product is pre-launch. Not making money from this yet. Zero paying customers. The hosted version launches in a few weeks.
->
-> What that means. Open-source works today. Here's what you can do with it right now."
-
----
-
 ## 7:30-8:00 — Small business
 
 **SCREEN:** screen-share, GitHub repo.
 
 **SAY:**
 
-> "If you run a small business. Dental, salon, school, restaurant. Clone the repo. Anthropic API key, $5 a month. Run your own site through the Copywriter. Get 3 hero variants by Schwartz. One landing page for a client, $1000 saved on the copywriter. Pays for itself on first use."
+> "If you run a small business. Dental, salon, school, restaurant. Clone the repo. Anthropic API key, $5 a month. Run your own site through the Copywriter. Get 3 hero variants by Schwartz. One landing page for a client, $1,000 saved on the copywriter. Pays for itself on first use."
 
 ---
 
@@ -232,31 +238,25 @@ Hit Enter.
 
 **SAY:**
 
-> "Solo marketing freelancer or agency owner. This is your force-multiplier. One full client site audit through the tool, packaged for $500. That's the funnel I'll work myself once I close my own first deals.
->
-> Hosted version $30 a month, no API key hassle, at natashabrovkina.com slash waitlist. First 50 get 20% off forever.
->
-> Open-sourced the code because I want the first 100 users learning with me, not on me. When I close my own first deals, I'll update with real numbers in the next video."
+> "Solo marketing freelancer or agency owner. This is your force-multiplier. One full client site audit through the tool, packaged for $500. That's the funnel I'll work myself once I close my own first deals."
 
 **B-roll:** simple text on screen: "$500 ≈ one client site audit (OSH methodology + AI tool)."
 
 ---
 
-## 8:30-9:00 — Three CTAs
+## 8:30-9:00 — ONE CTA (comment only)
 
-**SCREEN:** talking head + large text overlays.
+**SCREEN:** talking head + a single text overlay, centered.
 
 **SAY:**
 
-> "Three things you can do right now.
+> "One thing for you to do right now. The most important one.
 >
-> First. GitHub link in description. 21 SKILL.md. MIT license. Free.
+> Drop in the comments. What phrase on your site sounds like 'quality service'? Top three I'll break down in a reply right here. Right now. Free.
 >
-> Second. Hosted version. natashabrovkina.com slash waitlist. First 50 get 20% off forever.
->
-> Third. Most important. Drop in the comments. What phrase on your site sounds like 'quality service'? Top three I'll break down in a reply right here. No 'next video.' Right here. In the comments."
+> GitHub, repo, tool, waitlist — everything in the description and pinned comment. Not repeating it here. One CTA. One step. Comment."
 
-**B-roll overlays:** "1" / "2" / "3" appear sequentially.
+**B-roll overlay:** one large caption: "👇 Drop your 'quality service' phrase in the comments."
 
 ---
 
@@ -274,7 +274,7 @@ Hit Enter.
 
 ---
 
-## 9:30-10:00 — Outro
+## 9:30-10:00 — Outro (with concrete next-video promise)
 
 **SCREEN:** talking head, direct to camera. No music.
 
@@ -282,7 +282,9 @@ Hit Enter.
 
 > "Code is commoditized. Ideas are commoditized. What's left is your voice, your customers, your methodology. The methodology I gave away free. Voice and customers are on you.
 >
-> If this video gave you one working idea, hit like. If you want to follow how the product grows from zero, subscribe.
+> Next video drops in a month. I'll show real numbers from the first hundred users. Before and after. Unfiltered. If you want to see honest data before anyone else does, subscribe.
+>
+> Like if it landed. Subscribe if you want to follow how the product grows from zero to first hundred.
 >
 > I'm Natalia. See you next time."
 
@@ -338,7 +340,7 @@ Reply within 24h 🧡
 ## Pre-recording checklist
 
 1. **Read entire script aloud once.** Mark stumbles.
-2. **Read hook 3× aloud.** Should sound conversational. Not read off paper.
+2. **Read hook + HONEST FRAME 3× aloud.** Should sound conversational. Not read off paper. Pre-revenue admission — neutral-positive tone, no apology.
 3. **Demo mode tested?** Open `/tool?demo=clinic-demo` in browser. Verify drag-slider runs smooth. Studio loads HTML.
 4. **DnD on.** Notifications off.
 5. **Window light from left, 9-11 AM.** No evening recording — skin looks tired.
