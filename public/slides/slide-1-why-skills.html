@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Slide 1 — Why Skills</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #F7F4EE;
+  --bg-card: #FBF9F4;
+  --ink: #1F1B16;
+  --ink-2: #4A4339;
+  --ink-3: #8A8175;
+  --accent: #D9542B;
+  --mint: #5BBFA5;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body {
+  width: 1920px;
+  height: 1080px;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'Inter', sans-serif;
+  overflow: hidden;
+}
+.slide {
+  width: 1920px;
+  height: 1080px;
+  padding: 120px 160px;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  position: relative;
+}
+.kicker {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 22px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+}
+.kicker::before {
+  content: '';
+  width: 14px;
+  height: 14px;
+  background: var(--mint);
+  border-radius: 50%;
+  display: inline-block;
+}
+.headline {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 200px;
+  line-height: 0.95;
+  letter-spacing: -0.025em;
+  color: var(--ink);
+  align-self: center;
+  max-width: 1500px;
+}
+.headline em {
+  font-style: italic;
+  color: var(--accent);
+}
+.headline .not {
+  font-style: normal;
+  font-weight: 400;
+  color: var(--ink-3);
+  text-decoration: line-through;
+  text-decoration-color: var(--accent);
+  text-decoration-thickness: 2px;
+}
+.split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 100px;
+  margin-top: 60px;
+  max-width: 1500px;
+}
+.split-block {
+  border-top: 2px solid var(--ink);
+  padding-top: 32px;
+}
+.split-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 18px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  margin-bottom: 16px;
+}
+.split-text {
+  font-family: 'Playfair Display', serif;
+  font-weight: 400;
+  font-size: 38px;
+  line-height: 1.25;
+  color: var(--ink);
+}
+.split-text strong {
+  font-weight: 700;
+  color: var(--accent);
+}
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 20px;
+  color: var(--ink-3);
+  letter-spacing: 0.08em;
+}
+.footer-left {
+  font-style: italic;
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  color: var(--ink-2);
+}
+.footer-right {
+  text-transform: uppercase;
+}
+</style>
+</head>
+<body>
+<div class="slide">
+
+  <div class="kicker">Slide 01 / 03</div>
+
+  <h1 class="headline">
+    Skills — это <em>экспертиза</em>.<br>
+    Agents — это команда.
+  </h1>
+
+  <div class="split">
+    <div class="split-block">
+      <div class="split-label">Skill</div>
+      <div class="split-text">SOP. Фреймворк. Голос бренда. <strong>Знание</strong>, которое повторяется.</div>
+    </div>
+    <div class="split-block">
+      <div class="split-label">Agent</div>
+      <div class="split-text">Член команды, который этим знанием <strong>пользуется</strong>.</div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="footer-left">«Учишь раз — повторяет каждый раз»</div>
+    <div class="footer-right">natashabrovkina.com</div>
+  </div>
+
+</div>
+</body>
+</html>

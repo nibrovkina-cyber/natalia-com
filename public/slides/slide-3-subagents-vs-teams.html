@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Slide 3 — Sub-agents vs Agent Teams</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #F7F4EE;
+  --bg-card: #FBF9F4;
+  --ink: #1F1B16;
+  --ink-2: #4A4339;
+  --ink-3: #8A8175;
+  --accent: #D9542B;
+  --mint: #5BBFA5;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body {
+  width: 1920px;
+  height: 1080px;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'Inter', sans-serif;
+  overflow: hidden;
+}
+.slide {
+  width: 1920px;
+  height: 1080px;
+  padding: 100px 160px;
+  display: grid;
+  grid-template-rows: auto auto 1fr auto;
+  gap: 50px;
+  position: relative;
+}
+.kicker {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 22px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+}
+.kicker::before {
+  content: '';
+  width: 14px;
+  height: 14px;
+  background: var(--mint);
+  border-radius: 50%;
+  display: inline-block;
+}
+.headline {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 130px;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+.headline .vs {
+  font-style: normal;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 60px;
+  color: var(--accent);
+  margin: 0 24px;
+  vertical-align: 12px;
+}
+.headline em {
+  font-style: italic;
+  color: var(--accent);
+}
+.compare-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: stretch;
+}
+.col {
+  background: var(--bg-card);
+  border-top: 3px solid var(--ink);
+  padding: 48px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  position: relative;
+}
+.col.recommended::before {
+  content: 'РЕКОМЕНДУЮ';
+  position: absolute;
+  top: 24px;
+  right: 32px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 14px;
+  letter-spacing: 0.16em;
+  color: var(--mint);
+  background: rgba(91, 191, 165, 0.12);
+  padding: 6px 14px;
+  border-radius: 4px;
+}
+.col-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 18px;
+  color: var(--accent);
+  letter-spacing: 0.12em;
+}
+.col-name {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 56px;
+  line-height: 1;
+  color: var(--ink);
+}
+.col-rules {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 8px;
+}
+.rule {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  font-family: 'Inter', sans-serif;
+  font-size: 22px;
+  line-height: 1.4;
+  color: var(--ink-2);
+}
+.rule::before {
+  content: '—';
+  color: var(--ink-3);
+  flex-shrink: 0;
+  margin-top: -2px;
+}
+.rule strong {
+  font-weight: 600;
+  color: var(--ink);
+}
+.col-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 15px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--ink-3);
+  border-top: 1px solid rgba(31, 27, 22, 0.1);
+  padding-top: 18px;
+  margin-top: auto;
+}
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 20px;
+  color: var(--ink-3);
+  letter-spacing: 0.08em;
+  margin-top: 30px;
+}
+.footer-left {
+  font-style: italic;
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  color: var(--ink-2);
+}
+.footer-right {
+  text-transform: uppercase;
+}
+</style>
+</head>
+<body>
+<div class="slide">
+
+  <div class="kicker">Slide 03 / 03</div>
+
+  <h1 class="headline">
+    Sub-Agents <span class="vs">/</span> <em>Agent Teams</em>
+  </h1>
+
+  <div class="compare-grid">
+
+    <div class="col recommended">
+      <div class="col-num">01</div>
+      <div class="col-name">Sub-Agents</div>
+      <div class="col-rules">
+        <div class="rule"><span>Клод — главный агент. Создаёт под-агентов и раздаёт задачи.</span></div>
+        <div class="rule"><span>Под-агенты <strong>отчитываются ему</strong>. Между собой не общаются.</span></div>
+        <div class="rule"><span>Параллельные ветки. Независимые задачи.</span></div>
+        <div class="rule"><span>Меньше токенов. Быстрее результат.</span></div>
+      </div>
+      <div class="col-tag">≈ 90% реальных кейсов</div>
+    </div>
+
+    <div class="col">
+      <div class="col-num">02</div>
+      <div class="col-name">Agent Teams</div>
+      <div class="col-rules">
+        <div class="rule"><span>Клод собирает команду из специализированных агентов.</span></div>
+        <div class="rule"><span>Они <strong>шарят список задач</strong> и общаются до финализации.</span></div>
+        <div class="rule"><span>Каждый агент — отдельная сессия в Claude Code.</span></div>
+        <div class="rule"><span>Сильно больше токенов. Только когда нужно согласование.</span></div>
+      </div>
+      <div class="col-tag">Сложные кампании · кросс-ревью</div>
+    </div>
+
+  </div>
+
+  <div class="footer">
+    <div class="footer-left">«Сначала спроси Клода дать high-level план — потом запускай»</div>
+    <div class="footer-right">natashabrovkina.com</div>
+  </div>
+
+</div>
+</body>
+</html>
