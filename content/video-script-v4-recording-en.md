@@ -1,10 +1,12 @@
-# RECORDING SCRIPT (EN) — v4.1
+# RECORDING SCRIPT (EN) — v4.2
 
 **Title:** "Quality service. No leads. Here's the fix."
 **Length:** 10:00
 **Format:** screen-share 90% + talking head 10%
 
 > Open this in fullscreen. Lines = what you say. Frame = what's on screen. No annotation blocks, no warnings. Clean teleprompter.
+
+> v4.2 changes vs v4.1: removed "11 minutes" in hook + walkthrough (video is 10:00); jargon-bomb in Real Response deferred to Schwartz block; "year 1966/1963/1923" → "1966/1963/1923" (natural English); 80% sourced as "I'd estimate 80% from auditing"; AEO defined inline; "SKILL.md files" → "modules"; SMB and freelancer ICPs cleanly separated; Hopkins quote flows inline without "quote:"; pricing made concrete (cleaning $30 / implants $1,200); empirical bait restored in PROBLEM ("open any 10 sites, count"); "Up front, so there's no surprise" → "Quick disclaimer up front."
 
 > v4.1 changes vs v4: pre-revenue admission moved to first minute as positive frame; outro now carries a concrete next-video promise; 3 CTAs collapsed to 1 in voice (GitHub + waitlist live in pinned comment); Schwartz block now cites the original source for the ×2-×4 lift range.
 
@@ -30,7 +32,7 @@
 
 **SAY:**
 
-> "Your site says 'quality service'? You won't get leads. I'll explain why. And show you how AI fixes it in 11 minutes."
+> "Your site says 'quality service'? You won't get leads. I'll explain why. And show you how AI fixes it in this video."
 
 ---
 
@@ -40,9 +42,9 @@
 
 **SAY:**
 
-> "Up front, so there's no surprise. This is a public experiment. The product is in pre-launch. Zero paying customers yet. Hosted version ships in a few weeks.
+> "Quick disclaimer up front. This is a public experiment. The product is in pre-launch. Zero paying customers yet. Hosted version ships in a few weeks.
 >
-> I open-sourced the code first because I want the first hundred people learning with me, not on me. And because I believe a methodology this old shouldn't cost $5,000 a month to apply.
+> I open-sourced the code first because I want the first hundred people learning with me, not on me. [micro-pause] And because I believe a methodology this old shouldn't cost $5,000 a month to apply.
 >
 > What follows works today. Free. On GitHub."
 
@@ -56,7 +58,7 @@
 
 **SAY:**
 
-> "Showing you a composite demo case. Numbers are within real US small-business market ranges. No specific clinic named.
+> "Open any 10 small-business sites right now. Count how many say 'quality service.' Most of them. That's the problem. I'll show you why on a composite demo case. Numbers within real US small-business market ranges. No specific clinic named.
 >
 > Squarespace site for $1,000. Hero says 'Quality dental services from experienced specialists.' That's Schwartz Level 3. But the patient is at Level 2. Pain. Fear of the needle.
 >
@@ -119,7 +121,7 @@ Hit Enter.
 >
 > Variant A names the fear directly. 'Afraid of the needle? Modern anesthesia and sedation. Most patients only need one shot.' No fabricated statistic. Verifiable claim. The clinic checks it on their own practice.
 >
-> Below each variant, a 'Why I did this' block. This is unique. ChatGPT doesn't do this by default. Ogilvy school. Schwartz level. Hopkins-verifiable fact. Each answer methodologically grounded."
+> Below each variant, a 'Why I did this' block. This is unique. ChatGPT doesn't do this by default. Each variant grounded in classic copywriting methodology I'll explain in a minute."
 
 **B-roll:** zoom on "🧠 Why I did this" block with trigger highlights.
 
@@ -147,9 +149,9 @@ Hit Enter.
 
 **SAY:**
 
-> "Hero: 'Dental care without fear, in city center.' Doctors section with placeholders for names and experience. The clinic fills these in with real data. Transparent pricing from $30. Zero-interest financing. FAQ closes the 6 main objections.
+> "Hero: 'Dental care without fear, in city center.' Doctors section with placeholders for names and experience. The clinic fills these in with real data. Transparent pricing. Cleaning from $30. Implants from $1,200. Numbers, not 'contact for quote.' Zero-interest financing. FAQ closes the 6 main objections.
 >
-> This is a day's work by hand. AI does it in 11 minutes."
+> This is a day's work by hand. The tool just did it in front of you."
 
 **B-roll overlays:**
 - On hero: "✅ Schwartz L2: fear named directly"
@@ -164,13 +166,13 @@ Hit Enter.
 
 **SAY:**
 
-> "Eugene Schwartz, year 1966. Every visitor lands on your site at one of 5 awareness levels.
+> "Eugene Schwartz, 1966. Every visitor lands on your site at one of 5 awareness levels.
 >
 > Doesn't know they have a problem. Knows the pain. Knows solutions exist. Knows your product. Ready to buy.
 >
-> The hero changes for each level. At Level 2, you name the pain. At Level 5, you just write the price. 80% of small business sites in the US write at Level 3. But their visitors are at Level 2. Mismatch.
+> The hero changes for each level. At Level 2, you name the pain. At Level 5, you just write the price. Most small business sites in the US — I'd estimate 80% from auditing — write at Level 3. But their visitors are at Level 2. Mismatch.
 >
-> Per Schwartz's original studies, getting the level match right delivers a conversion lift in the ×2 to ×4 range. That's his data, not mine. My own real numbers — I'll show those in a month, on data from the first hundred users."
+> Per Schwartz's original studies, getting the level match right delivers a conversion lift in the ×2 to ×4 range. That's his data, not mine. My own real numbers, I'll show those in a month, on data from the first hundred users."
 
 ---
 
@@ -180,11 +182,11 @@ Hit Enter.
 
 **SAY:**
 
-> "David Ogilvy, year 1963. Said the headline is the most important thing in the ad. The rest follows. Every headline equals promise plus audience plus timeframe.
+> "David Ogilvy. 1963. Said the headline is the most important thing in the ad. The rest follows. Every headline equals promise plus audience plus timeframe.
 >
-> Claude Hopkins, year 1923. Quote: 'Advertising is salesmanship in print.' No 'quality service.' Only numbers, names, dates, verifiable facts.
+> Claude Hopkins. 1923. He said advertising is salesmanship in print. No 'quality service.' Only numbers, names, dates, verifiable facts.
 >
-> Three books. Seventy years. Wired into 21 SKILL.md files in the repo. 16 functional agents plus 5 methodology foundations."
+> Three books. Seventy years. Built into 21 modules in the repo. 16 functional agents plus 5 methodology foundations."
 
 ---
 
@@ -204,7 +206,7 @@ Hit Enter.
 
 **SAY:**
 
-> "SEO agent. Knows the difference between Google ranking and AI Overview citations. Writes Schema markup for medical practices. Explains AEO. How to get cited by ChatGPT and Perplexity. New channel. Zero competition for small business."
+> "SEO agent. Knows the difference between Google ranking and AI Overview citations. Writes Schema markup for medical practices. Explains AEO — answer engine optimization, the new SEO. How to get cited by ChatGPT and Perplexity. New channel. Zero competition for small business."
 
 ---
 
@@ -228,7 +230,7 @@ Hit Enter.
 
 **SAY:**
 
-> "If you run a small business. Dental, salon, school, restaurant. Clone the repo. Anthropic API key, $5 a month. Run your own site through the Copywriter. Get 3 hero variants by Schwartz. One landing page for a client, $1,000 saved on the copywriter. Pays for itself on first use."
+> "If you run a small business. Dental, salon, school, restaurant. Clone the repo. Anthropic API key, $5 a month. Run your own site through the Copywriter. Get 3 hero variants by Schwartz. Done in an hour. Pays for itself on the first hero you ship."
 
 ---
 
@@ -238,7 +240,7 @@ Hit Enter.
 
 **SAY:**
 
-> "Solo marketing freelancer or agency owner. This is your force-multiplier. One full client site audit through the tool, packaged for $500. That's the funnel I'll work myself once I close my own first deals."
+> "Solo marketing freelancer or agency owner. This is your force-multiplier. One full client site audit through the tool, packaged for $500 — that's $1,000 saved on the copywriter you'd otherwise hire. That's the funnel I'll work myself once I close my own first deals."
 
 **B-roll:** simple text on screen: "$500 ≈ one client site audit (OSH methodology + AI tool)."
 
