@@ -5,8 +5,64 @@ import Kicker from "../components/Kicker";
 import Reveal from "../components/Reveal";
 
 export const metadata = {
-  title: "Метод · natashabrovkina.com",
-  description: "Огилви, Шварц, Хопкинс — методологическая основа 16 AI-агентов natashabrovkina.com",
+  title: "Метод · Ogilvy / Schwartz / Hopkins · natashabrovkina.com",
+  description: "Методология direct response школы которой 70 лет. David Ogilvy (заголовки решают 80%), Eugene Schwartz (5 уровней осознанности), Claude Hopkins (Scientific Advertising). Применена к 16 AI-агентам.",
+  keywords: ["David Ogilvy", "Eugene Schwartz", "Claude Hopkins", "Breakthrough Advertising", "Scientific Advertising", "уровни осознанности", "direct response", "методология копирайтинга"],
+  alternates: { canonical: "https://natashabrovkina.com/method" },
+  openGraph: {
+    title: "Метод · Ogilvy / Schwartz / Hopkins",
+    description: "Direct response школа которой 70 лет — применена к AI-маркетингу для малого бизнеса.",
+    url: "https://natashabrovkina.com/method",
+    type: "article",
+    locale: "ru_RU",
+  },
+};
+
+const FAQ_SCHEMA = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "Что такое 5 уровней осознанности по Eugene Schwartz?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Eugene Schwartz в книге Breakthrough Advertising (1966) выделил 5 уровней: Most Aware (готов покупать), Product Aware (знает продукт, сомневается), Solution Aware (выбирает между решениями), Problem Aware (знает боль, не знает решений), Unaware (не знает даже о проблеме). Каждый уровень требует своего текста, своего хука, своего CTA.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Что говорит David Ogilvy про заголовки?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "David Ogilvy в Confessions of an Advertising Man (1963): заголовок читают в 5 раз больше людей чем основной текст. Поэтому заголовок решает 80% успеха рекламы. Правила: называй аудиторию прямо, используй слово 'как', добавляй конкретику, тестируй негативные заголовки.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Что такое verifiable claims по Claude Hopkins?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Claude Hopkins в Scientific Advertising (1923): каждое утверждение должно быть проверяемым. Не 'высокое качество' — а '847 клиентов, 92% вернулись'. Не 'удваиваем продажи' — а '+43% к конверсии за 14 дней'. Конкретика вместо общих слов.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Чем AI-маркетинг по этой методологии отличается от ChatGPT?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "ChatGPT — универсальный AI без методологии. AI-агенты с встроенной методологией Ogilvy/Schwartz/Hopkins всегда: спрашивают на каком уровне осознанности находится аудитория перед написанием, дают 3-5 вариантов заголовка (а не один), блокируют попытки написать 'качественный' или 'эффективный' без verifiable claim.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Можно ли применить методологию без AI?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Да. Методология самодостаточна — её используют маркетологи 70 лет до появления AI. AI-агенты просто делают её применение быстрее: бриф клиента за 15 минут вместо 3 часов, лендинг за 60 секунд из URL.",
+      },
+    },
+  ],
 };
 
 const SCHWARTZ_LEVELS = [
@@ -76,6 +132,10 @@ const HOPKINS_PAIRS = [
 export default function MethodPage() {
   return (
     <div style={{ background: "var(--cream)", color: "var(--navy)", minHeight: "100vh" }}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(FAQ_SCHEMA) }}
+      />
       <SiteNav variant="light" />
 
       <main>

@@ -65,6 +65,43 @@ export default function GalleryDetail({ params }: { params: Promise<{ slug: stri
       .catch(() => setAfterHtml(""));
   }, [item]);
 
+  const breadcrumbSchema = item ? {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Главная", item: "https://natashabrovkina.com/" },
+      { "@type": "ListItem", position: 2, name: "Кейсы", item: "https://natashabrovkina.com/gallery" },
+      { "@type": "ListItem", position: 3, name: item.title, item: `https://natashabrovkina.com/gallery/${item.slug}` },
+    ],
+  } : null;
+
+  const articleSchema = item ? {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: item.title,
+    description: item.description,
+    datePublished: item.date,
+    dateModified: item.date,
+    image: `https://natashabrovkina.com${item.beforeScreenshot}`,
+    author: {
+      "@type": "Person",
+      name: "Наталья Бровкина",
+      url: "https://natashabrovkina.com",
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "natashabrovkina.com",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://natashabrovkina.com/assets/portrait.png",
+      },
+    },
+    about: {
+      "@type": "Thing",
+      name: item.nicheLabel,
+    },
+  } : null;
+
   if (!item) {
     return (
       <div style={{ background: "var(--cream)", color: "var(--navy)", minHeight: "100vh" }}>
@@ -95,6 +132,18 @@ export default function GalleryDetail({ params }: { params: Promise<{ slug: stri
 
   return (
     <div style={{ background: "var(--cream)", color: "var(--navy)", minHeight: "100vh" }}>
+      {breadcrumbSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+        />
+      )}
+      {articleSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+        />
+      )}
       <SiteNav variant="light" />
 
       <main>
@@ -354,7 +403,7 @@ export default function GalleryDetail({ params }: { params: Promise<{ slug: stri
                     itemOne={
                       <ReactCompareSliderImage
                         src={item.beforeScreenshot}
-                        alt="До"
+                        alt={`${item.title} — оригинальный сайт до переделки AI-командой natashabrovkina.com`}
                         style={{ objectPosition: "top", objectFit: "cover" }}
                       />
                     }
@@ -362,6 +411,7 @@ export default function GalleryDetail({ params }: { params: Promise<{ slug: stri
                       afterHtml ? (
                         <iframe
                           srcDoc={afterHtml}
+                          title={`${item.title} — переписанный лендинг AI-командой по методологии Ogilvy/Schwartz/Hopkins`}
                           sandbox="allow-scripts allow-same-origin"
                           style={{ width: "100%", height: "100%", border: 0, pointerEvents: "none", background: "var(--cream)" }}
                         />

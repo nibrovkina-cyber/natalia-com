@@ -1,9 +1,24 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import SiteNav from "./components/SiteNav";
 import SiteFooter from "./components/SiteFooter";
 import Kicker from "./components/Kicker";
 import Reveal from "./components/Reveal";
 import galleryData from "../content/gallery.json";
+
+export const metadata: Metadata = {
+  title: "Маркетинг по Огилви. Запускает один человек · natashabrovkina.com",
+  description: "AI-команда из 16 агентов на методологии Ogilvy/Schwartz/Hopkins для малого бизнеса в РФ. Премиум-лендинги за 60 секунд из URL. Реальные кейсы: MEDEA Dent ×3.4 заявок, Simbios +58% конверсии.",
+  keywords: ["AI маркетинг", "AI копирайтинг", "Claude AI", "переделать сайт нейросетью", "лендинг бесплатно AI", "маркетинг малый бизнес Россия", "Ogilvy", "Schwartz", "Hopkins", "direct response"],
+  alternates: { canonical: "https://natashabrovkina.com/" },
+  openGraph: {
+    title: "Маркетинг по Огилви. Запускает один человек.",
+    description: "16 AI-агентов на методологии Ogilvy/Schwartz/Hopkins. Премиум-лендинги за 60 секунд из URL.",
+    url: "https://natashabrovkina.com/",
+    type: "website",
+    locale: "ru_RU",
+  },
+};
 
 type GalleryItem = {
   slug: string; title: string; niche: string; nicheLabel: string; city: string;
