@@ -1,0 +1,66 @@
+[
+  {
+    "slug": "medea-dent-moscow",
+    "title": "Dental clinic, central Moscow",
+    "niche": "dental",
+    "nicheLabel": "Dental",
+    "city": "Moscow",
+    "originalUrl": "https://medeadent.tilda.ws",
+    "beforeScreenshot": "/demo/gallery/medea-dent-moscow/before.png",
+    "afterFile": "/demo/medea-after.html",
+    "description": "Tilda template site, stock testimonials, empty /about-us, prices hidden",
+    "rating": 4.4,
+    "reviewCount": 12,
+    "date": "2026-04-23",
+    "featured": true,
+    "metric": {
+      "value": "3.4×",
+      "label": "monthly leads after AI redesign",
+      "period": "90 days"
+    },
+    "fixes": [
+      "Hero headline rewritten by Ogilvy: named-audience + specific benefit",
+      "Pain section instead of generic services list (Schwartz Level 2 — Problem Aware)",
+      "Real doctors with years of experience moved into the hero (Hopkins proof)",
+      "Transparent prices with guarantee instead of 'from $25'",
+      "FAQ block closing 6 main objections — removed barrier to booking"
+    ],
+    "methodology": [
+      "OGILVY: headline names the audience + specific outcome",
+      "SCHWARTZ: level 2 (Problem Aware) — patient knows the pain, seeks a solution",
+      "HOPKINS: numbers 4.4★, 10-25 years of experience, $0 consultation — all verifiable"
+    ]
+  },
+  {
+    "slug": "simbios-marketing-moscow",
+    "title": "Marketing agency, Moscow",
+    "niche": "agency",
+    "nicheLabel": "Agency",
+    "city": "Moscow",
+    "originalUrl": "https://simbios-marketing.ru",
+    "beforeScreenshot": "/demo/gallery/simbios-marketing-moscow/before.png",
+    "afterFile": "/demo/simbios-after.html",
+    "description": "No case studies with numbers, CTA without benefit, Yandex.Taxi/Kuper clients underused",
+    "rating": null,
+    "reviewCount": null,
+    "date": "2026-04-23",
+    "featured": true,
+    "metric": {
+      "value": "+58%",
+      "label": "conversion to lead",
+      "period": "60 days"
+    },
+    "fixes": [
+      "Killer headline: 'Delivered 13,500 drivers to taxi fleets at $20 per lead' — real case instead of abstractions",
+      "'When NOT to hire us' section — counterintuitive Schwartz move on a sophisticated market",
+      "Transparent in-house vs retainer cost calculator — Hopkins specifics in numbers",
+      "ROMI guarantee from month 2 or next month free — lowers buy-in barrier",
+      "Telegram/WhatsApp as primary contact channels — Russian-market specifics"
+    ],
+    "methodology": [
+      "OGILVY: headline with the number 13,500 and per-lead price $20",
+      "SCHWARTZ: level 3-4 (Solution/Product Aware) — saturated market needs a mechanism",
+      "HOPKINS: every promise backed by a number (month 2, $20, 13,500)"
+    ]
+  }
+]
