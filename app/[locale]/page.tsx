@@ -292,7 +292,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
                   textTransform: "uppercase",
                 }}
               >
-                Эссе · Натальи Бровкиной · Апрель 2026
+                {dict.home.essay.kicker}
               </div>
             </Reveal>
             <Reveal delay={80}>
@@ -306,9 +306,9 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
                   marginTop: 28,
                 }}
               >
-                Почему я собрала AI-команду из&nbsp;шестнадцати агентов{" "}
+                {dict.home.essay.h2Main}{" "}
                 <span style={{ fontStyle: "italic", color: "var(--steel)" }}>
-                  вместо найма маркетологов.
+                  {dict.home.essay.h2Italic}
                 </span>
               </h2>
             </Reveal>
@@ -341,12 +341,9 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
                     letterSpacing: "-0.04em",
                   }}
                 >
-                  П
+                  {dict.home.essay.ledeFirstLetter}
                 </span>
-                ять&nbsp;лет веду маркетинг для предпринимателей в&nbsp;России&nbsp;—
-                от&nbsp;стоматологов в&nbsp;Подмосковье до&nbsp;SaaS-основателей, которые
-                продают в&nbsp;США и&nbsp;Европу. За&nbsp;это время я&nbsp;увидела две
-                закономерности, которые не&nbsp;уходят никуда.
+                {dict.home.essay.ledeRest}
               </p>
             </Reveal>
 
@@ -360,12 +357,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
                   marginTop: 32,
                 }}
               >
-                Первая: самые красивые сайты не&nbsp;продают. Клиент приходит
-                с&nbsp;Tilda за&nbsp;80&nbsp;тысяч, которая визуально выглядит
-                на&nbsp;три миллиона, и&nbsp;спрашивает&nbsp;— «почему не&nbsp;звонят?».
-                Потому что сайт не&nbsp;был задачей. Задачей была продажа. Никто
-                не&nbsp;спросил, кому это продаётся, какое возражение закрывает,
-                почему заголовок читается таким равнодушным.
+                {dict.home.essay.p1}
               </p>
             </Reveal>
 
@@ -379,11 +371,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
                   marginTop: 28,
                 }}
               >
-                Вторая: большинство маркетологов работает по&nbsp;чувству. Они
-                не&nbsp;знают правил Огилви, не&nbsp;читали Шварца, не&nbsp;видели
-                архив Хопкинса. Они пишут «качественные услуги от&nbsp;профессиональной
-                команды», называют это «продающим текстом» и&nbsp;удивляются,
-                что конверсия 0,4%.
+                {dict.home.essay.p2}
               </p>
             </Reveal>
 
@@ -404,9 +392,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
                   maxWidth: 680,
                 }}
               >
-                Методология&nbsp;— это контракт с&nbsp;AI. Без&nbsp;правил
-                ChatGPT даёт пресный корпоративный текст. С&nbsp;правилами
-                Огилви и&nbsp;Шварца&nbsp;— продаёт.
+                {dict.home.essay.pullQuote}
               </blockquote>
             </Reveal>
 
@@ -420,12 +406,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
                   marginTop: 28,
                 }}
               >
-                Когда появились серьёзные LLM&nbsp;— GPT-4, Claude&nbsp;— я&nbsp;поняла
-                простую вещь. Работу исполнительного маркетолога AI&nbsp;может
-                делать в&nbsp;десять раз быстрее. Но&nbsp;только если&nbsp;ты знаешь,
-                что просить. Если идёшь в&nbsp;ChatGPT с&nbsp;фразой «напиши мне
-                лендинг»,&nbsp;— получаешь пресный корпоративный текст, который
-                никого ни&nbsp;в&nbsp;чём не&nbsp;убеждает.
+                {dict.home.essay.p3}
               </p>
             </Reveal>
 
@@ -439,15 +420,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
                   marginTop: 28,
                 }}
               >
-                Я&nbsp;взяла три библиотеки правил, которые работают семьдесят&nbsp;лет.
-                Огилви&nbsp;— на&nbsp;заголовки и&nbsp;правило 80/20. Шварц&nbsp;—
-                на&nbsp;пять уровней осознанности аудитории. Хопкинс&nbsp;—
-                на&nbsp;цифры вместо прилагательных. Собрала&nbsp;16 специализированных
-                AI-агентов. Каждый не&nbsp;просто подсказывает текст. Он&nbsp;следует
-                конкретным правилам. Копирайтер не&nbsp;пишет «лучшее качество»&nbsp;—
-                он&nbsp;пишет «92% вернулись в&nbsp;течение года». Позиционерщик
-                не&nbsp;даёт абстракцию «для всех»&nbsp;— сужает до&nbsp;конкретного
-                сегмента, где продукт реально выигрывает.
+                {dict.home.essay.p4}
               </p>
             </Reveal>
 
@@ -461,12 +434,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
                   marginTop: 28,
                 }}
               >
-                Это не&nbsp;ChatGPT с&nbsp;системным промптом. Это тридцать лет
-                маркетинговой дисциплины, зашитые в&nbsp;инструмент. Я&nbsp;не&nbsp;продаю
-                AI-хайп. Я&nbsp;продаю систему, которая работает, потому что
-                не&nbsp;я&nbsp;её&nbsp;придумала. Я&nbsp;только собрала её&nbsp;для
-                русского маркетингового рынка, где 80% агентств и&nbsp;фрилансеров
-                работают по&nbsp;наитию.
+                {dict.home.essay.p5}
               </p>
             </Reveal>
 
@@ -480,15 +448,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
                   marginTop: 28,
                 }}
               >
-                Если&nbsp;ты читаешь это сейчас и&nbsp;у&nbsp;тебя бизнес
-                в&nbsp;России&nbsp;— твоя проблема не&nbsp;в&nbsp;отсутствии
-                красивого сайта. Твоя проблема в&nbsp;том, что сайт написан
-                человеком, который не&nbsp;знает правил. Покажи этот текст тому,
-                кто делал твой текущий маркетинг, и&nbsp;спроси: на&nbsp;каком
-                уровне осознанности Шварца была аудитория, когда писали hero?
-                Какой приём Огилви использован в&nbsp;заголовке? Сравнима
-                ли&nbsp;цифра в&nbsp;буллетах с&nbsp;бенчмарком, или&nbsp;она
-                абстрактна?
+                {dict.home.essay.p6}
               </p>
             </Reveal>
 
@@ -502,7 +462,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
                   marginTop: 28,
                 }}
               >
-                Если ответа нет&nbsp;— ты&nbsp;понимаешь, почему конверсия 0,4%.
+                {dict.home.essay.p7}
               </p>
             </Reveal>
 
@@ -537,7 +497,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
                       fontWeight: 500,
                     }}
                   >
-                    — Наталья Бровкина
+                    {dict.home.essay.signatureName}
                   </div>
                   <div
                     style={{
@@ -548,7 +508,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
                       letterSpacing: "0.08em",
                     }}
                   >
-                    AI Marketing Studio · Москва
+                    {dict.home.essay.signatureTitle}
                   </div>
                 </div>
                 <Link
@@ -564,7 +524,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
                     paddingBottom: 3,
                   }}
                 >
-                  Методология подробнее →
+                  {dict.home.essay.methodLink}
                 </Link>
               </div>
             </Reveal>
