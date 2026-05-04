@@ -102,5 +102,66 @@
     "linksHeading": "Navigation",
     "contactsHeading": "Contact",
     "rights": "All rights reserved"
+  },
+  "waitlist": {
+    "metaTitle": "Waitlist · natashabrovkina.com",
+    "metaDescription": "Hosted tool with 21 AI agents launching soon. Get early access.",
+    "kicker": "Hosted tool · launching soon",
+    "h1Main": "Get on the list —",
+    "h1Italic": "I'll email you first",
+    "h1Tail": "when it's live.",
+    "subhead": "Hosted tool with 21 AI agents — no fiddling with API keys, with Brand Memory and Team Mode. Launching in the coming weeks.",
+    "benefitsHeading": "What you get as an early subscriber",
+    "benefits": [
+      "An email 7 days before launch with priority access",
+      "−20% off the first month (first 50 subscribers)",
+      "Private Telegram chat with other early customers",
+      "A say in what we ship before release"
+    ],
+    "whileWaitingHeading": "While you wait",
+    "openSourceLine": "The open-source version is already live. 21 agents run locally in Claude Code with your own Anthropic key —",
+    "openSourceLink": "download on GitHub",
+    "personalLine": "If you'd like me to personally build marketing for your business in 30 days —",
+    "personalLink": "@NATASHABROVKINA on Telegram",
+    "form": {
+      "tierLabel": "Tier",
+      "tiers": {
+        "self-serve": {
+          "name": "II — Tool · Self-serve",
+          "price": "$29 / month",
+          "what": "21 AI agents in hosted UI · no API key needed · unlimited"
+        },
+        "personal": {
+          "name": "III — With me · Personal",
+          "price": "$540 one-time",
+          "what": "I personally build for 30 days · 3 spots per month"
+        }
+      },
+      "fields": {
+        "name": "Name",
+        "namePlaceholder": "Natalia",
+        "email": "Email",
+        "emailPlaceholder": "natalia@example.com",
+        "telegram": "Telegram",
+        "telegramHint": "Optional — I'll send your personal early-access code",
+        "business": "What's the business",
+        "businessHint": "Optional — I'll tune the agents to your niche",
+        "businessPlaceholder": "Dental clinic in Moscow, avg ticket $200, 4 doctors."
+      },
+      "submit": "Join the waitlist →",
+      "submitting": "Saving…",
+      "errorNetwork": "Network error. Please try again.",
+      "errorDefault": "Submission failed",
+      "footnote": "I'll send one email when the tool is ready. No newsletters, no spam. Your data stays with me.",
+      "successKicker": "✓ You're in",
+      "successHeading": "You're",
+      "successHeadingSuffix": "on the waitlist",
+      "successText": "When the tool launches I'll email you first with early access and a −20% discount for the first 50 subscribers.",
+      "successFreeText": "Meanwhile you can",
+      "successFreeLink": "download the free version on GitHub",
+      "successFreeAfter": "— it runs locally with your own Anthropic key.",
+      "successHomeLink": "Back home →",
+      "successMethodLink": "Read the method →"
+    }
   }
 }

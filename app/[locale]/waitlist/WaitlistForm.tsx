@@ -3,21 +3,48 @@
 import { useState } from "react";
 import Link from "next/link";
 
-const TIER_LABELS: Record<string, { name: string; price: string; what: string }> = {
-  "self-serve": {
-    name: "II — Инструмент · Self-serve",
-    price: "2 990 ₽ / месяц",
-    what: "16 AI-агентов в hosted-UI без своего API ключа · безлимит",
-  },
-  personal: {
-    name: "III — Со мной · Personal",
-    price: "49 000 ₽ разово",
-    what: "Я лично 30 дней под ключ · 3 места в месяц",
-  },
+type FormDict = {
+  tierLabel: string;
+  tiers: Record<string, { name: string; price: string; what: string }>;
+  fields: {
+    name: string;
+    namePlaceholder: string;
+    email: string;
+    emailPlaceholder: string;
+    telegram: string;
+    telegramHint: string;
+    business: string;
+    businessHint: string;
+    businessPlaceholder: string;
+  };
+  submit: string;
+  submitting: string;
+  errorNetwork: string;
+  errorDefault: string;
+  footnote: string;
+  successKicker: string;
+  successHeading: string;
+  successHeadingSuffix: string;
+  successText: string;
+  successFreeText: string;
+  successFreeLink: string;
+  successFreeAfter: string;
+  successHomeLink: string;
+  successMethodLink: string;
 };
 
-export default function WaitlistForm({ tier }: { tier: string }) {
-  const meta = TIER_LABELS[tier] || TIER_LABELS["self-serve"];
+export default function WaitlistForm({
+  tier,
+  dict,
+  homeHref,
+  methodHref,
+}: {
+  tier: string;
+  dict: FormDict;
+  homeHref: string;
+  methodHref: string;
+}) {
+  const meta = dict.tiers[tier] || dict.tiers["self-serve"];
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [telegram, setTelegram] = useState("");
@@ -38,12 +65,12 @@ export default function WaitlistForm({ tier }: { tier: string }) {
       });
       const data = await res.json();
       if (!res.ok) {
-        setError(data.error || "Ошибка отправки");
+        setError(data.error || dict.errorDefault);
       } else {
         setSuccess({ position: data.position });
       }
     } catch {
-      setError("Ошибка сети. Попробуй ещё раз.");
+      setError(dict.errorNetwork);
     }
     setLoading(false);
   }
@@ -61,7 +88,7 @@ export default function WaitlistForm({ tier }: { tier: string }) {
             marginBottom: 24,
           }}
         >
-          ✓ Записано
+          {dict.successKicker}
         </div>
         <h2
           style={{
@@ -73,43 +100,26 @@ export default function WaitlistForm({ tier }: { tier: string }) {
             marginBottom: 24,
           }}
         >
-          Ты <span className="italic-display">№{success.position}</span> в листе ожидания
+          {dict.successHeading} <span className="italic-display">№{success.position}</span> {dict.successHeadingSuffix}
         </h2>
-        <p
-          style={{
-            fontSize: 17,
-            lineHeight: 1.65,
-            color: "var(--ink-2)",
-            marginBottom: 36,
-            maxWidth: 560,
-          }}
-        >
-          Когда инструмент будет готов — пришлю первой по&nbsp;email с&nbsp;ранним
-          доступом и&nbsp;скидкой −20% для&nbsp;первых&nbsp;50 подписчиков.
+        <p style={{ fontSize: 17, lineHeight: 1.65, color: "var(--ink-2)", marginBottom: 36, maxWidth: 560 }}>
+          {dict.successText}
         </p>
-        <p
-          style={{
-            fontSize: 15,
-            lineHeight: 1.65,
-            color: "var(--ink-3)",
-            marginBottom: 36,
-            maxWidth: 560,
-          }}
-        >
-          Пока могу{" "}
+        <p style={{ fontSize: 15, lineHeight: 1.65, color: "var(--ink-3)", marginBottom: 36, maxWidth: 560 }}>
+          {dict.successFreeText}{" "}
           <a
             href="https://github.com/nibrovkina-cyber/natalia-marketing-department"
             target="_blank"
             rel="noopener noreferrer"
             style={{ color: "var(--ink)", textDecoration: "underline" }}
           >
-            скачать бесплатную версию на&nbsp;GitHub
+            {dict.successFreeLink}
           </a>{" "}
-          — всё работает локально со&nbsp;своим Anthropic-ключом.
+          {dict.successFreeAfter}
         </p>
         <div style={{ display: "flex", gap: 16, flexWrap: "wrap" }}>
           <Link
-            href="/"
+            href={homeHref}
             style={{
               display: "inline-flex",
               alignItems: "center",
@@ -122,10 +132,10 @@ export default function WaitlistForm({ tier }: { tier: string }) {
               textDecoration: "none",
             }}
           >
-            На главную →
+            {dict.successHomeLink}
           </Link>
           <Link
-            href="/method"
+            href={methodHref}
             style={{
               display: "inline-flex",
               alignItems: "center",
@@ -138,7 +148,7 @@ export default function WaitlistForm({ tier }: { tier: string }) {
               textDecoration: "none",
             }}
           >
-            Читать метод →
+            {dict.successMethodLink}
           </Link>
         </div>
       </div>
@@ -148,7 +158,7 @@ export default function WaitlistForm({ tier }: { tier: string }) {
   return (
     <form onSubmit={submit} style={{ marginTop: 56, maxWidth: 560 }}>
       <div style={{ marginBottom: 8, fontFamily: "var(--font-mono)", fontSize: 11, color: "var(--ink-3)", letterSpacing: "0.14em", textTransform: "uppercase" }}>
-        Тариф · {meta.name}
+        {dict.tierLabel} · {meta.name}
       </div>
       <div
         style={{
@@ -163,29 +173,29 @@ export default function WaitlistForm({ tier }: { tier: string }) {
         <div>{meta.what}</div>
       </div>
 
-      <Field label="Имя" required>
+      <Field label={dict.fields.name} required>
         <input
           required
           type="text"
           value={name}
           onChange={(e) => setName(e.target.value)}
-          placeholder="Наталья"
+          placeholder={dict.fields.namePlaceholder}
           style={inputStyle}
         />
       </Field>
 
-      <Field label="Email" required>
+      <Field label={dict.fields.email} required>
         <input
           required
           type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          placeholder="naталья@example.com"
+          placeholder={dict.fields.emailPlaceholder}
           style={inputStyle}
         />
       </Field>
 
-      <Field label="Telegram" hint="Опционально — пришлю личный код раннего доступа">
+      <Field label={dict.fields.telegram} hint={dict.fields.telegramHint}>
         <input
           type="text"
           value={telegram}
@@ -195,11 +205,11 @@ export default function WaitlistForm({ tier }: { tier: string }) {
         />
       </Field>
 
-      <Field label="Что за бизнес" hint="Опционально — настрою агентов под твою нишу">
+      <Field label={dict.fields.business} hint={dict.fields.businessHint}>
         <textarea
           value={business}
           onChange={(e) => setBusiness(e.target.value)}
-          placeholder="Стоматология в Москве, средний чек 18 000 ₽, 4 врача."
+          placeholder={dict.fields.businessPlaceholder}
           rows={3}
           style={{ ...inputStyle, resize: "vertical", minHeight: 80 }}
         />
@@ -236,7 +246,7 @@ export default function WaitlistForm({ tier }: { tier: string }) {
           transition: "background .2s ease",
         }}
       >
-        {loading ? "Записываю…" : "Записаться в лист ожидания →"}
+        {loading ? dict.submitting : dict.submit}
       </button>
 
       <div
@@ -247,8 +257,7 @@ export default function WaitlistForm({ tier }: { tier: string }) {
           lineHeight: 1.5,
         }}
       >
-        Пришлю один email когда инструмент будет готов. Без рассылок и спама.
-        Никому не передаю данные.
+        {dict.footnote}
       </div>
     </form>
   );

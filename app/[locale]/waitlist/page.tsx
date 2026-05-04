@@ -1,19 +1,38 @@
+import type { Metadata } from "next";
 import SiteNav from "../../components/SiteNav";
 import SiteFooter from "../../components/SiteFooter";
 import WaitlistForm from "./WaitlistForm";
+import { getDictionary } from "../../i18n/get-dictionary";
+import { type Locale, isLocale } from "../../i18n/config";
 
-export const metadata = {
-  title: "Лист ожидания · natashabrovkina.com",
-  description: "Hosted-инструмент с 16 AI-агентами скоро. Запишись — пришлю первой.",
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const safe: Locale = isLocale(locale) ? locale : "ru";
+  const dict = await getDictionary(safe);
+  return {
+    title: dict.waitlist.metaTitle,
+    description: dict.waitlist.metaDescription,
+    alternates: { canonical: `https://natashabrovkina.com/${safe}/waitlist` },
+  };
+}
 
 type SearchParams = { tier?: string };
 
 export default async function WaitlistPage({
+  params,
   searchParams,
 }: {
+  params: Promise<{ locale: string }>;
   searchParams: Promise<SearchParams>;
 }) {
+  const { locale: rawLocale } = await params;
+  const locale: Locale = isLocale(rawLocale) ? rawLocale : "ru";
+  const dict = await getDictionary(locale);
+  const t = dict.waitlist;
   const { tier = "self-serve" } = await searchParams;
 
   return (
@@ -43,7 +62,7 @@ export default async function WaitlistPage({
               background: "var(--accent)",
             }}
           />
-          <span>Hosted-инструмент · скоро</span>
+          <span>{t.kicker}</span>
         </div>
 
         <h1
@@ -56,9 +75,9 @@ export default async function WaitlistPage({
             maxWidth: 760,
           }}
         >
-          Запишись —{" "}
-          <span className="italic-display">пришлю первой</span>{" "}
-          когда будет готово.
+          {t.h1Main}{" "}
+          <span className="italic-display">{t.h1Italic}</span>{" "}
+          {t.h1Tail}
         </h1>
 
         <p
@@ -71,8 +90,7 @@ export default async function WaitlistPage({
             marginTop: 28,
           }}
         >
-          Hosted-инструмент с&nbsp;16 AI-агентами без&nbsp;возни с&nbsp;API ключами,
-          с&nbsp;Brand Memory и&nbsp;Team Mode. Запускаю в&nbsp;ближайшие недели.
+          {t.subhead}
         </p>
 
         <div
@@ -94,7 +112,7 @@ export default async function WaitlistPage({
               marginBottom: 10,
             }}
           >
-            Что получишь как ранний подписчик
+            {t.benefitsHeading}
           </div>
           <ul
             style={{
@@ -109,14 +127,18 @@ export default async function WaitlistPage({
               color: "var(--ink-2)",
             }}
           >
-            <li>— Письмо за 7 дней до запуска с приоритетным доступом</li>
-            <li>— Скидка −20% на первую подписку (для первых 50)</li>
-            <li>— Закрытый Telegram-чат с другими ранними клиентами</li>
-            <li>— Возможность сказать что добавить в инструмент до релиза</li>
+            {t.benefits.map((b: string, i: number) => (
+              <li key={i}>— {b}</li>
+            ))}
           </ul>
         </div>
 
-        <WaitlistForm tier={tier} />
+        <WaitlistForm
+          tier={tier}
+          dict={t.form}
+          homeHref={`/${locale}`}
+          methodHref={`/${locale}/method`}
+        />
 
         <div
           style={{
@@ -135,7 +157,7 @@ export default async function WaitlistPage({
               marginBottom: 16,
             }}
           >
-            Пока ждёшь
+            {t.whileWaitingHeading}
           </div>
           <p
             style={{
@@ -145,8 +167,7 @@ export default async function WaitlistPage({
               marginBottom: 16,
             }}
           >
-            Open-source версия инструмента уже работает. 16 агентов запускаются
-            локально в&nbsp;Claude Code со&nbsp;своим Anthropic-ключом —{" "}
+            {t.openSourceLine}{" "}
             <a
               href="https://github.com/nibrovkina-cyber/natalia-marketing-department"
               target="_blank"
@@ -158,12 +179,12 @@ export default async function WaitlistPage({
                 paddingBottom: 2,
               }}
             >
-              скачать на GitHub
+              {t.openSourceLink}
             </a>
             .
           </p>
           <p style={{ fontSize: 16, lineHeight: 1.65, color: "var(--ink-2)" }}>
-            Если хочешь чтобы я лично собрала маркетинг под твой бизнес за 30 дней —{" "}
+            {t.personalLine}{" "}
             <a
               href="https://t.me/NATASHABROVKINA"
               target="_blank"
@@ -175,7 +196,7 @@ export default async function WaitlistPage({
                 paddingBottom: 2,
               }}
             >
-              @NATASHABROVKINA в&nbsp;Telegram
+              {t.personalLink}
             </a>
             .
           </p>

@@ -102,5 +102,66 @@
     "linksHeading": "Навигация",
     "contactsHeading": "Связь",
     "rights": "Все права защищены"
+  },
+  "waitlist": {
+    "metaTitle": "Лист ожидания · natashabrovkina.com",
+    "metaDescription": "Hosted-инструмент с 21 AI-агентом скоро. Запишись — пришлю первой.",
+    "kicker": "Hosted-инструмент · скоро",
+    "h1Main": "Запишись —",
+    "h1Italic": "пришлю первой",
+    "h1Tail": "когда будет готово.",
+    "subhead": "Hosted-инструмент с 21 AI-агентом без возни с API-ключами, с Brand Memory и Team Mode. Запускаю в ближайшие недели.",
+    "benefitsHeading": "Что получишь как ранний подписчик",
+    "benefits": [
+      "Письмо за 7 дней до запуска с приоритетным доступом",
+      "Скидка −20% на первую подписку (для первых 50)",
+      "Закрытый Telegram-чат с другими ранними клиентами",
+      "Возможность сказать что добавить в инструмент до релиза"
+    ],
+    "whileWaitingHeading": "Пока ждёшь",
+    "openSourceLine": "Open-source версия инструмента уже работает. 21 агент запускается локально в Claude Code со своим Anthropic-ключом —",
+    "openSourceLink": "скачать на GitHub",
+    "personalLine": "Если хочешь чтобы я лично собрала маркетинг под твой бизнес за 30 дней —",
+    "personalLink": "@NATASHABROVKINA в Telegram",
+    "form": {
+      "tierLabel": "Тариф",
+      "tiers": {
+        "self-serve": {
+          "name": "II — Инструмент · Self-serve",
+          "price": "2 990 ₽ / месяц",
+          "what": "21 AI-агент в hosted-UI без своего API ключа · безлимит"
+        },
+        "personal": {
+          "name": "III — Со мной · Personal",
+          "price": "49 000 ₽ разово",
+          "what": "Я лично 30 дней под ключ · 3 места в месяц"
+        }
+      },
+      "fields": {
+        "name": "Имя",
+        "namePlaceholder": "Наталья",
+        "email": "Email",
+        "emailPlaceholder": "natalia@example.com",
+        "telegram": "Telegram",
+        "telegramHint": "Опционально — пришлю личный код раннего доступа",
+        "business": "Что за бизнес",
+        "businessHint": "Опционально — настрою агентов под твою нишу",
+        "businessPlaceholder": "Стоматология в Москве, средний чек 18 000 ₽, 4 врача."
+      },
+      "submit": "Записаться в лист ожидания →",
+      "submitting": "Записываю…",
+      "errorNetwork": "Ошибка сети. Попробуй ещё раз.",
+      "errorDefault": "Ошибка отправки",
+      "footnote": "Пришлю один email когда инструмент будет готов. Без рассылок и спама. Никому не передаю данные.",
+      "successKicker": "✓ Записано",
+      "successHeading": "Ты",
+      "successHeadingSuffix": "в листе ожидания",
+      "successText": "Когда инструмент будет готов — пришлю первой по email с ранним доступом и скидкой −20% для первых 50 подписчиков.",
+      "successFreeText": "Пока могу",
+      "successFreeLink": "скачать бесплатную версию на GitHub",
+      "successFreeAfter": "— всё работает локально со своим Anthropic-ключом.",
+      "successHomeLink": "На главную →",
+      "successMethodLink": "Читать метод →"
+    }
   }
 }
