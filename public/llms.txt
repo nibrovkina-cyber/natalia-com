@@ -1,5 +1,7 @@
 # natashabrovkina.com — AI Marketing Studio
 
+> Last updated: 2026-05-04. Hosted on Cloudflare Pages, built from open-source repo nibrovkina-cyber/natalia-com.
+
 > Бесплатная open-source альтернатива маркетинговому отделу для малого бизнеса в РФ. 21 Claude Skill (open-source, MIT) + hosted UI запускается летом 2026. Методология: Ogilvy / Schwartz / Hopkins — направление direct response.
 
 ## Что внутри сайта

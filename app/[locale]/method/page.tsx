@@ -18,6 +18,39 @@ export const metadata = {
   },
 };
 
+// HowTo Schema — Google may render as step-by-step rich result on /method SERP.
+// Three foundational rules of Ogilvy/Schwartz/Hopkins as a how-to.
+const HOW_TO_SCHEMA = {
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  name: "Как написать продающий маркетинговый текст по методологии Ogilvy/Schwartz/Hopkins",
+  description: "Три проверенных временем принципа direct response — применённые к AI-генерации копирайтинга в 2026.",
+  totalTime: "PT15M",
+  step: [
+    {
+      "@type": "HowToStep",
+      position: 1,
+      name: "Определи уровень осознанности аудитории по Schwartz",
+      text: "Перед написанием идентифицируй уровень (1–5): Unaware → Problem Aware → Solution Aware → Product Aware → Most Aware. Текст радикально меняется под уровень: для Unaware — история, для Most Aware — оффер и цена.",
+      url: "https://natashabrovkina.com/method#schwartz",
+    },
+    {
+      "@type": "HowToStep",
+      position: 2,
+      name: "Тестируй 3–5 заголовков по Ogilvy",
+      text: "Заголовок читают в 5 раз больше людей чем основной текст. Поэтому заголовок = 80% бюджета. Magnetic words: 'как', 'бесплатно', 'новый', 'раскрытый'. Включай named-audience и конкретный benefit.",
+      url: "https://natashabrovkina.com/method#ogilvy",
+    },
+    {
+      "@type": "HowToStep",
+      position: 3,
+      name: "Замени прилагательные на цифры по Hopkins",
+      text: "Каждое утверждение должно быть verifiable. Не 'высокое качество' — а '92% вернулись из 847 клиентов'. Конкретика, имена, временные рамки, сравнения.",
+      url: "https://natashabrovkina.com/method#hopkins",
+    },
+  ],
+};
+
 const FAQ_SCHEMA = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -135,6 +168,10 @@ export default function MethodPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(FAQ_SCHEMA) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(HOW_TO_SCHEMA) }}
       />
       <SiteNav variant="light" />
 

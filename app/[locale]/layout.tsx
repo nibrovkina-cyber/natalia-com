@@ -51,6 +51,24 @@ function buildJsonLd(locale: Locale) {
     "@context": "https://schema.org",
     "@graph": [
       {
+        // WebSite + SearchAction — enables Google Sitelinks Search Box on
+        // brand SERP, lets AI engines route queries to /search?q= (future-ready).
+        "@type": "WebSite",
+        "@id": "https://natashabrovkina.com/#website",
+        url: "https://natashabrovkina.com",
+        name: locale === "ru" ? "natashabrovkina.com — AI Marketing Studio" : "natashabrovkina.com — AI Marketing Studio",
+        inLanguage: locale === "ru" ? "ru-RU" : "en-US",
+        publisher: { "@id": "https://natashabrovkina.com/#org" },
+        potentialAction: {
+          "@type": "SearchAction",
+          target: {
+            "@type": "EntryPoint",
+            urlTemplate: `https://natashabrovkina.com/${locale}/gallery?q={search_term_string}`,
+          },
+          "query-input": "required name=search_term_string",
+        },
+      },
+      {
         "@type": "Person",
         "@id": "https://natashabrovkina.com/#person",
         name: locale === "ru" ? "Наталья Бровкина" : "Natalia Brovkina",

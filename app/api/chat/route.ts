@@ -2,6 +2,10 @@ import Anthropic from "@anthropic-ai/sdk";
 import { NextRequest, NextResponse } from "next/server";
 import { checkLimit } from "@/app/lib/rate-limit";
 
+// Edge runtime for Cloudflare Workers / Vercel Edge compatibility.
+// Anthropic SDK and fetch() are edge-safe. maxDuration is Vercel-only;
+// on Cloudflare each Worker invocation has its own platform timeout.
+export const runtime = "edge";
 export const maxDuration = 60;
 
 // Лимиты на запрос для cost-amplification DoS защиты.
