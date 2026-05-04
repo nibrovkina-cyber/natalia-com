@@ -1,0 +1,6 @@
+Contact: mailto:n.i.brovkina@gmail.com
+Contact: https://t.me/NATASHABROVKINA
+Expires: 2027-05-04T00:00:00.000Z
+Preferred-Languages: ru, en
+Canonical: https://natashabrovkina.com/.well-known/security.txt
+Policy: https://github.com/nibrovkina-cyber/natalia-com/security/policy

@@ -1,0 +1,23 @@
+/* TEAM */
+Founder: Natalia Brovkina
+Site: https://natashabrovkina.com
+Telegram: @NATASHABROVKINA
+GitHub: nibrovkina-cyber
+Location: Moscow, Russia · Los Angeles, USA
+
+/* SITE */
+Last update: 2026-05-04
+Language: Russian, English
+Doctype: HTML5
+IDE: Cursor, VS Code
+Framework: Next.js 16, React 19
+Hosting: Cloudflare Pages
+Domain: natashabrovkina.com
+Repo: github.com/nibrovkina-cyber/natalia-com
+Open-source toolkit: github.com/nibrovkina-cyber/natalia-marketing-department
+
+/* THANKS */
+- David Ogilvy (1911–1999) — for headlines that decide 80%
+- Eugene Schwartz (1927–1995) — for Breakthrough Advertising 1966
+- Claude Hopkins (1866–1932) — for Scientific Advertising 1923
+- Anthropic team — for Claude Skills (October 2025) that made this possible
