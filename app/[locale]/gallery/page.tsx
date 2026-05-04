@@ -1,11 +1,11 @@
 "use client";
 import Link from "next/link";
 import { useState } from "react";
-import SiteNav from "../components/SiteNav";
-import SiteFooter from "../components/SiteFooter";
-import Kicker from "../components/Kicker";
-import Reveal from "../components/Reveal";
-import galleryData from "../../content/gallery.json";
+import SiteNav from "../../components/SiteNav";
+import SiteFooter from "../../components/SiteFooter";
+import Kicker from "../../components/Kicker";
+import Reveal from "../../components/Reveal";
+import galleryData from "../../../content/gallery.json";
 
 type GalleryItem = {
   slug: string;

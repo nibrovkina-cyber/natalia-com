@@ -2,11 +2,11 @@
 import Link from "next/link";
 import { useEffect, useState, use } from "react";
 import { ReactCompareSlider, ReactCompareSliderImage } from "react-compare-slider";
-import SiteNav from "../../components/SiteNav";
-import SiteFooter from "../../components/SiteFooter";
-import Kicker from "../../components/Kicker";
-import Reveal from "../../components/Reveal";
-import galleryData from "../../../content/gallery.json";
+import SiteNav from "../../../components/SiteNav";
+import SiteFooter from "../../../components/SiteFooter";
+import Kicker from "../../../components/Kicker";
+import Reveal from "../../../components/Reveal";
+import galleryData from "../../../../content/gallery.json";
 
 type GalleryItem = {
   slug: string;
@@ -47,7 +47,7 @@ const METHODOLOGY_QUOTES = [
   },
 ];
 
-export default function GalleryDetail({ params }: { params: Promise<{ slug: string }> }) {
+export default function GalleryDetail({ params }: { params: Promise<{ slug: string; locale: string }> }) {
   const { slug } = use(params);
   const item = gallery.find(g => g.slug === slug);
   const [afterHtml, setAfterHtml] = useState<string | null>(null);

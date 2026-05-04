@@ -1,8 +1,8 @@
 import Link from "next/link";
-import SiteNav from "../components/SiteNav";
-import SiteFooter from "../components/SiteFooter";
-import Kicker from "../components/Kicker";
-import Reveal from "../components/Reveal";
+import SiteNav from "../../components/SiteNav";
+import SiteFooter from "../../components/SiteFooter";
+import Kicker from "../../components/Kicker";
+import Reveal from "../../components/Reveal";
 
 export const metadata = {
   title: "Метод · Ogilvy / Schwartz / Hopkins · natashabrovkina.com",

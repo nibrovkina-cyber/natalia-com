@@ -1,5 +1,5 @@
-import SiteNav from "../components/SiteNav";
-import SiteFooter from "../components/SiteFooter";
+import SiteNav from "../../components/SiteNav";
+import SiteFooter from "../../components/SiteFooter";
 import WaitlistForm from "./WaitlistForm";
 
 export const metadata = {

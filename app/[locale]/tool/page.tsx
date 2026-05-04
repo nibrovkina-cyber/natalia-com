@@ -410,6 +410,16 @@ RU-специфика: для B2B в России — формат PDF лучш�
   },
 ];
 
+// Buyer-journey order for sidebar display: research → positioning → copy → assemble → distribute
+const AGENT_DISPLAY_ORDER = [
+  "competitors", "positioning", "copy", "landing", "leadmagnet",
+  "email", "atomizer", "social", "ads", "seo",
+  "funnel", "launch", "brand", "newsletter", "webdesign", "proposal",
+];
+const AGENTS_ORDERED = AGENT_DISPLAY_ORDER
+  .map((id) => AGENTS.find((a) => a.id === id))
+  .filter((a): a is typeof AGENTS[number] => a !== undefined);
+
 const BUSINESS_TYPES: { id: string; label: string; icon: string; context: string }[] = [
   { id: "restaurant", label: "Ресторан / Кафе", icon: "🍽️", context: "RU-специфика HoReCa: средний чек, LTV, доставка через Яндекс.Еда/Delivery Club, резервы, отзывы на Яндекс.Картах критичны для SEO-позиций. ЦА — локальная, радиус 2-5 км. Каналы: Яндекс.Карты, VK, Telegram, Инстаграм (через VPN)." },
   { id: "beauty", label: "Салон красоты", icon: "💅", context: "Индустрия бьюти: мастера как бренд внутри бренда, YCLIENTS для записи, Instagram/VK для портфолио работ. Ключевые KPI: LTV, возврат клиента. Конкуренция за мастеров важнее чем за клиентов." },
@@ -894,16 +904,54 @@ export default function Home() {
       {/* Gold divider */}
       <div style={{ height: 1, background: "var(--gold)" }} />
 
+      {/* Hero badge — Schwartz Lvl 2 + Hopkins arbitrage */}
+      <div style={{
+        background: "var(--cream)",
+        borderBottom: "1px solid var(--line-2, #e5e0d8)",
+        padding: "16px 24px",
+      }}>
+        <div className="max-w-5xl mx-auto" style={{ fontFamily: "var(--font-serif)", color: "var(--navy)" }}>
+          <div style={{ fontSize: 18, fontWeight: 600, lineHeight: 1.3 }}>
+            Лендинг за <span style={{ color: "var(--gold)" }}>11 минут</span> вместо 11 дней.
+          </div>
+          <div style={{ fontFamily: "var(--font-sans)", fontSize: 13, color: "var(--steel)", marginTop: 4, lineHeight: 1.4 }}>
+            brand-memory не даст написать «качественные услуги».
+            16 скиллов читают правила клиента до того как ты начнёшь писать.
+          </div>
+        </div>
+      </div>
+
+      {/* Brand-memory persistent badge */}
+      {brandFilled && (
+        <div style={{
+          background: "rgba(127,165,152,0.08)",
+          borderBottom: "1px solid rgba(127,165,152,0.25)",
+          padding: "10px 24px",
+        }}>
+          <div className="max-w-5xl mx-auto flex items-center gap-3 flex-wrap" style={{ fontFamily: "var(--font-mono, 'JetBrains Mono', monospace)", fontSize: 12, color: "var(--navy)" }}>
+            <span style={{ fontSize: 16 }}>🧠</span>
+            <span style={{ fontWeight: 600 }}>Memory loaded:</span>
+            <span style={{ color: "var(--gold)" }}>{brand.name || "brand-memory"}.json</span>
+            <span style={{ color: "var(--steel)" }}>·</span>
+            <span style={{ color: "var(--steel)" }}>
+              {[brand.name, brand.what, brand.who, brand.usp, brand.voice, brand.cases, brand.competitors].filter(Boolean).length} полей
+            </span>
+            <span style={{ color: "var(--steel)" }}>·</span>
+            <span style={{ color: "var(--steel)" }}>правила запретов активны</span>
+          </div>
+        </div>
+      )}
+
       <main className={`flex flex-col md:flex-row flex-1 min-h-0 ${demoMode ? "max-w-7xl" : "max-w-5xl"} mx-auto w-full px-3 md:px-6 py-4 md:py-8 gap-3 md:gap-6`}>
         {/* Left: Agents */}
-        {!demoMode && (
+        {(true) && (
         <aside className="w-full md:w-72 flex-shrink-0 md:overflow-y-auto">
           <h2 style={{ color: "var(--navy)", fontFamily: "var(--font-serif)", fontSize: 18, fontWeight: 700, marginBottom: 6 }} className="hidden md:block">
             Ваша AI-команда
           </h2>
           <p style={{ color: "var(--steel)", fontSize: 12, marginBottom: 20, letterSpacing: 0.5 }} className="hidden md:block">YOUR AI MARKETING TEAM · ON DEMAND</p>
           <div className="flex flex-row md:flex-col gap-2 md:gap-3 overflow-x-auto md:overflow-x-visible pb-2 md:pb-0 -mx-3 md:mx-0 px-3 md:px-0">
-            {AGENTS.map((agent) => (
+            {AGENTS_ORDERED.map((agent) => (
               <button
                 key={agent.id}
                 onClick={() => selectAgent(agent)}

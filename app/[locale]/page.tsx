@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import SiteNav from "./components/SiteNav";
-import SiteFooter from "./components/SiteFooter";
-import Kicker from "./components/Kicker";
-import Reveal from "./components/Reveal";
-import galleryData from "../content/gallery.json";
+import SiteNav from "../components/SiteNav";
+import SiteFooter from "../components/SiteFooter";
+import Kicker from "../components/Kicker";
+import Reveal from "../components/Reveal";
+import galleryData from "../../content/gallery.json";
 
 export const metadata: Metadata = {
   title: "Маркетинг по Огилви. Запускает один человек · natashabrovkina.com",
@@ -63,7 +63,8 @@ const FAQS = [
   { q: "Как оплатить из России?", a: "ЮKassa — карты Мир, Visa Russia, ЮMoney, СБП. В рублях, без иностранных посредников." },
 ];
 
-export default function Home() {
+export default async function Home({ params }: { params: Promise<{ locale: string }> }) {
+  await params;
   return (
     <div style={{ background: "var(--cream)", color: "var(--navy)", minHeight: "100vh" }}>
       <SiteNav variant="light" />

@@ -1,11 +1,11 @@
 import Link from "next/link";
-import SiteNav from "../components/SiteNav";
-import SiteFooter from "../components/SiteFooter";
-import Reveal from "../components/Reveal";
-import { SectionHead } from "../components/ui/SectionHead";
-import { PricingCard } from "../components/ui/PricingCard";
-import { ProcessPhase } from "../components/ui/ProcessPhase";
-import { RiskItem } from "../components/ui/RiskItem";
+import SiteNav from "../../components/SiteNav";
+import SiteFooter from "../../components/SiteFooter";
+import Reveal from "../../components/Reveal";
+import { SectionHead } from "../../components/ui/SectionHead";
+import { PricingCard } from "../../components/ui/PricingCard";
+import { ProcessPhase } from "../../components/ui/ProcessPhase";
+import { RiskItem } from "../../components/ui/RiskItem";
 
 export const metadata = {
   title: "Тарифы · natashabrovkina.com",

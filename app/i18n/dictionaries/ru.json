@@ -1,0 +1,28 @@
+{
+  "meta": {
+    "title": "Маркетинг по Огилви. Запускает один человек · natashabrovkina.com",
+    "description": "AI-команда из 21 агента на методологии Ogilvy/Schwartz/Hopkins для малого бизнеса в РФ. Премиум-лендинги за 60 секунд из URL. Реальные кейсы: MEDEA Dent ×3.4 заявок, Simbios +58% конверсии.",
+    "ogTitle": "Маркетинг по Огилви. Запускает один человек.",
+    "ogDescription": "21 AI-агент на методологии Ogilvy/Schwartz/Hopkins. Премиум-лендинги за 60 секунд из URL."
+  },
+  "nav": {
+    "method": "Метод",
+    "pricing": "Тарифы",
+    "gallery": "Кейсы",
+    "tool": "Студия",
+    "switchLanguage": "EN"
+  },
+  "home": {
+    "kicker": "AI Marketing Studio · Москва",
+    "h1Line1": "Маркетинг по Огилви.",
+    "h1Line2": "Запускает один человек.",
+    "subhead": "21 AI-агент на методологии Ogilvy, Schwartz и Hopkins. Работают за копирайтера, дизайнера, SEO и таргетолога — одновременно.",
+    "ctaPrimary": "Скачать бесплатно на GitHub →",
+    "ctaSecondary": "Открыть hosted-инструмент →",
+    "ctaNote": "без регистрации · первые 3 лендинга бесплатно"
+  },
+  "footer": {
+    "tagline": "AI Marketing Studio. Москва · Лос-Анджелес.",
+    "rights": "Все права защищены"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "client": "MEDEA Dent",
+  "address": "ул. Покровка, д. 1/13с1, Москва",
+  "metro": "Китай-город",
+  "working_hours": "пн-вс 9:00-22:00",
+  "doctors_count": 4,
+  "experience_range": "10-25 лет",
+  "yandex_rating": 4.4,
+  "yandex_reviews": 12,
+  "consultation_price_rub": 0,
+  "min_treatment_rub": 2000,
+  "installment_zero_percent": true,
+  "main_objections": [
+    "боюсь боли при лечении",
+    "непрозрачные цены",
+    "недоверие после плохого опыта"
+  ],
+  "voice": {
+    "say": ["Без боли", "Прозрачные цены", "4 врача 10-25 лет", "Консультация 0 ₽", "Рассрочка 0%"],
+    "dont_say": ["элитная", "лучшая клиника", "опытные специалисты (без числа)", "качественные услуги"]
+  }
+}
