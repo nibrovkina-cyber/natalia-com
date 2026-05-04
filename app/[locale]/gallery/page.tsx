@@ -1,11 +1,15 @@
 "use client";
 import Link from "next/link";
 import { useState } from "react";
+import { useParams } from "next/navigation";
 import SiteNav from "../../components/SiteNav";
 import SiteFooter from "../../components/SiteFooter";
 import Kicker from "../../components/Kicker";
 import Reveal from "../../components/Reveal";
-import galleryData from "../../../content/gallery.json";
+import galleryDataRu from "../../../content/gallery.json";
+import galleryDataEn from "../../../content/gallery.en.json";
+import dictRu from "../../i18n/dictionaries/ru.json";
+import dictEn from "../../i18n/dictionaries/en.json";
 
 type GalleryItem = {
   slug: string;
@@ -26,9 +30,21 @@ type GalleryItem = {
   methodology: string[];
 };
 
-const gallery = galleryData as GalleryItem[];
+// Russian-grammar pluralisation for "кейс" (1) / "кейса" (2-4) / "кейсов" (0, 5-20)
+function pluralRu(n: number, dict: { kickerSingular: string; kickerFew: string; kickerMany: string }): string {
+  const mod10 = n % 10;
+  const mod100 = n % 100;
+  if (mod10 === 1 && mod100 !== 11) return dict.kickerSingular;
+  if (mod10 >= 2 && mod10 <= 4 && (mod100 < 12 || mod100 > 14)) return dict.kickerFew;
+  return dict.kickerMany;
+}
 
 export default function GalleryIndex() {
+  const params = useParams();
+  const locale = (Array.isArray(params?.locale) ? params.locale[0] : params?.locale) === "en" ? "en" : "ru";
+  const dict = (locale === "en" ? dictEn : dictRu).gallery;
+  const gallery = (locale === "en" ? galleryDataEn : galleryDataRu) as GalleryItem[];
+
   const niches = Array.from(new Set(gallery.map(g => g.niche)));
   const [filter, setFilter] = useState<string>("all");
   const filtered = filter === "all" ? gallery : gallery.filter(g => g.niche === filter);
@@ -41,7 +57,7 @@ export default function GalleryIndex() {
         {/* ============ HERO ============ */}
         <section style={{ maxWidth: 1280, margin: "0 auto", padding: "120px 48px 80px" }}>
           <Reveal>
-            <Kicker>Галерея · {gallery.length}&nbsp;{gallery.length === 1 ? "кейс" : "кейса"}</Kicker>
+            <Kicker>{dict.kickerPrefix} · {gallery.length}&nbsp;{locale === "ru" ? pluralRu(gallery.length, dict) : (gallery.length === 1 ? dict.kickerSingular : dict.kickerFew)}</Kicker>
           </Reveal>
           <Reveal delay={80}>
             <h1
@@ -55,9 +71,9 @@ export default function GalleryIndex() {
                 maxWidth: 1080,
               }}
             >
-              Разборы{" "}
+              {dict.h1Main}{" "}
               <span style={{ fontStyle: "italic", color: "var(--steel)" }}>
-                реальных бизнесов
+                {dict.h1Italic}
               </span>
             </h1>
           </Reveal>
@@ -73,9 +89,7 @@ export default function GalleryIndex() {
                 fontStyle: "italic",
               }}
             >
-              Каждый кейс&nbsp;— реальная компания из&nbsp;Яндекс.Карт. Методология
-              Ogilvy, Schwartz и&nbsp;Hopkins применена к&nbsp;живому сайту. Drag-slider
-              показывает «до» и&nbsp;«после».
+              {dict.subhead}
             </p>
           </Reveal>
 
@@ -109,7 +123,7 @@ export default function GalleryIndex() {
                     textTransform: "inherit",
                   }}
                 >
-                  все · {gallery.length}
+                  {dict.filterAll} · {gallery.length}
                 </button>
                 {niches.map(n => {
                   const items = gallery.filter(g => g.niche === n);
@@ -161,7 +175,7 @@ export default function GalleryIndex() {
                   fontSize: 20,
                 }}
               >
-                В&nbsp;этой категории пока нет кейсов.
+                {dict.emptyState}
               </div>
             ) : (
               <div
@@ -175,7 +189,7 @@ export default function GalleryIndex() {
                 {filtered.map((item, i) => (
                   <Reveal key={item.slug} delay={60 + i * 80}>
                     <Link
-                      href={`/gallery/${item.slug}`}
+                      href={`/${locale}/gallery/${item.slug}`}
                       style={{
                         display: "block",
                         textDecoration: "none",
@@ -308,7 +322,7 @@ export default function GalleryIndex() {
                               paddingBottom: 3,
                             }}
                           >
-                            Полный разбор →
+                            {dict.caseLink}
                           </span>
                           {item.rating && (
                             <span

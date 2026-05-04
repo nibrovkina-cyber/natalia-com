@@ -103,6 +103,20 @@
     "contactsHeading": "Связь",
     "rights": "Все права защищены"
   },
+  "gallery": {
+    "metaTitle": "Кейсы · natashabrovkina.com",
+    "metaDescription": "Реальные кейсы переделки сайтов малого бизнеса AI-командой. До/после с drag-слайдером. Методология Ogilvy/Schwartz/Hopkins.",
+    "kickerSingular": "кейс",
+    "kickerFew": "кейса",
+    "kickerMany": "кейсов",
+    "kickerPrefix": "Галерея",
+    "h1Main": "Разборы",
+    "h1Italic": "реальных бизнесов",
+    "subhead": "Каждый кейс — реальная компания. Методология Ogilvy, Schwartz и Hopkins применена к живому сайту. Drag-slider показывает «до» и «после».",
+    "filterAll": "все",
+    "emptyState": "В этой категории пока нет кейсов.",
+    "caseLink": "Полный разбор →"
+  },
   "waitlist": {
     "metaTitle": "Лист ожидания · natashabrovkina.com",
     "metaDescription": "Hosted-инструмент с 21 AI-агентом скоро. Запишись — пришлю первой.",

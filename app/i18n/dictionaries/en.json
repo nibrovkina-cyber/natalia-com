@@ -103,6 +103,20 @@
     "contactsHeading": "Contact",
     "rights": "All rights reserved"
   },
+  "gallery": {
+    "metaTitle": "Cases · natashabrovkina.com",
+    "metaDescription": "Real small-business landing-page redesigns by an AI team. Before/after drag slider. Ogilvy/Schwartz/Hopkins methodology applied.",
+    "kickerSingular": "case",
+    "kickerFew": "cases",
+    "kickerMany": "cases",
+    "kickerPrefix": "Gallery",
+    "h1Main": "Real businesses,",
+    "h1Italic": "rewritten",
+    "subhead": "Every case is a real company. Ogilvy, Schwartz, and Hopkins methodology applied to a live site. Drag-slider shows before and after.",
+    "filterAll": "all",
+    "emptyState": "No cases in this category yet.",
+    "caseLink": "Full breakdown →"
+  },
   "waitlist": {
     "metaTitle": "Waitlist · natashabrovkina.com",
     "metaDescription": "Hosted tool with 21 AI agents launching soon. Get early access.",
