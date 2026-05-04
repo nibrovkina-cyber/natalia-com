@@ -53,6 +53,29 @@
       "h2Italic": "для реальных бизнесов",
       "viewMore": "Все кейсы →"
     },
+    "agentsSection": {
+      "kicker": "Шестнадцать ролей в одной студии",
+      "h2": "Каждый агент знает свою библиотеку правил",
+      "subhead": "Не один универсальный чат-бот. Шестнадцать узких специалистов, каждый натренирован на конкретной школе direct response.",
+      "list": [
+        { "n": "I",    "role": "Позиционирование",    "note": "Находит угол, который отличает от всех",  "method": "Ogilvy" },
+        { "n": "II",   "role": "Копирайтер",          "note": "Прямой отклик по Schwartz и Hopkins",     "method": "Schwartz" },
+        { "n": "III",  "role": "Лендинг / CRO",       "note": "Аудит и переписка страниц",               "method": "Hopkins" },
+        { "n": "IV",   "role": "Лид-магнит",          "note": "Оффер который скачивают + BUILD MODE",    "method": "Ogilvy" },
+        { "n": "V",    "role": "SEO-специалист",      "note": "Яндекс · Google · GEO для AI-поиска",     "method": "Hopkins" },
+        { "n": "VI",   "role": "Таргетолог",          "note": "VK Ads + Яндекс.Директ креативы",         "method": "Schwartz" },
+        { "n": "VII",  "role": "Telegram / VK",       "note": "Контент-план 30 дней + маркировка",       "method": "Ogilvy" },
+        { "n": "VIII", "role": "Email-маркетолог",    "note": "Welcome, nurture, запуск — серии",        "method": "Hopkins" },
+        { "n": "IX",   "role": "Атомайзер",           "note": "1 пост → 15 форматов для всех платформ",  "method": "Ogilvy" },
+        { "n": "X",    "role": "Аналитик конкурентов","note": "Разведка по 10 пунктам + позиционирование","method": "Schwartz" },
+        { "n": "XI",   "role": "Funnel-стратег",      "note": "Карта воронки: где теряют, где растут",   "method": "Schwartz" },
+        { "n": "XII",  "role": "Launch-плейбук",      "note": "Запуск продукта по фазам 30-60-90",       "method": "Ogilvy" },
+        { "n": "XIII", "role": "Бренд-войс",          "note": "Tone of voice + гайдлайны письма",        "method": "Ogilvy" },
+        { "n": "XIV",  "role": "Newsletter-редактор", "note": "Издательская подача для подписок",        "method": "Schwartz" },
+        { "n": "XV",   "role": "Веб-дизайнер",        "note": "Премиум-лендинг за 60 секунд из URL",     "method": "Hopkins" },
+        { "n": "XVI",  "role": "Коммерческий",        "note": "Предложения и договоры для клиентов",     "method": "Hopkins" }
+      ]
+    },
     "faq": {
       "kicker": "FAQ",
       "h2": "Что обычно спрашивают",

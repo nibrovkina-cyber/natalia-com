@@ -53,6 +53,29 @@
       "h2Italic": "for real businesses",
       "viewMore": "All cases →"
     },
+    "agentsSection": {
+      "kicker": "Sixteen roles in one studio",
+      "h2": "Each agent knows its own library of rules",
+      "subhead": "Not one universal chatbot. Sixteen narrow specialists, each trained on a specific direct-response school.",
+      "list": [
+        { "n": "I",    "role": "Positioning",         "note": "Find the angle that sets you apart from everyone",        "method": "Ogilvy" },
+        { "n": "II",   "role": "Copywriter",          "note": "Direct response by Schwartz and Hopkins",                  "method": "Schwartz" },
+        { "n": "III",  "role": "Landing / CRO",       "note": "Audit and rewrite of pages",                               "method": "Hopkins" },
+        { "n": "IV",   "role": "Lead magnet",         "note": "An offer people download + BUILD MODE",                    "method": "Ogilvy" },
+        { "n": "V",    "role": "SEO specialist",      "note": "Google · Yandex · GEO for AI search",                      "method": "Hopkins" },
+        { "n": "VI",   "role": "Paid traffic",        "note": "Meta Ads + Google Ads + VK creatives",                     "method": "Schwartz" },
+        { "n": "VII",  "role": "Social media",        "note": "30-day content plan + RU ad-marking",                      "method": "Ogilvy" },
+        { "n": "VIII", "role": "Email marketer",      "note": "Welcome, nurture, launch — sequences",                     "method": "Hopkins" },
+        { "n": "IX",   "role": "Atomizer",            "note": "1 post → 15 formats for every platform",                   "method": "Ogilvy" },
+        { "n": "X",    "role": "Competitor analyst",  "note": "10-point recon + positioning",                             "method": "Schwartz" },
+        { "n": "XI",   "role": "Funnel strategist",   "note": "Funnel map: where they leak, where they grow",             "method": "Schwartz" },
+        { "n": "XII",  "role": "Launch playbook",     "note": "Product launch in 30-60-90 phases",                        "method": "Ogilvy" },
+        { "n": "XIII", "role": "Brand voice",         "note": "Tone of voice + writing guidelines",                       "method": "Ogilvy" },
+        { "n": "XIV",  "role": "Newsletter editor",   "note": "Editorial framing for subscribers",                        "method": "Schwartz" },
+        { "n": "XV",   "role": "Web designer",        "note": "Premium landing in 60 seconds from a URL",                 "method": "Hopkins" },
+        { "n": "XVI",  "role": "B2B proposals",       "note": "Proposals and contracts that close",                       "method": "Hopkins" }
+      ]
+    },
     "faq": {
       "kicker": "FAQ",
       "h2": "What people usually ask",
