@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 
 type Variant = "light" | "dark";
 
@@ -11,6 +12,37 @@ type Props = {
   ctaHref?: string;
   ctaLabel?: string;
 };
+
+// Inline language switcher — kept as a tiny private component so SiteNav
+// retains its own footprint and we don't add yet another import boundary.
+function NavLanguageSwitcher({ textColor }: { textColor: string }) {
+  const pathname = usePathname() || "/";
+  const segments = pathname.split("/").filter(Boolean);
+  const current = segments[0] === "en" ? "en" : "ru";
+  const next = current === "ru" ? "en" : "ru";
+  const tail = segments.slice(1).join("/");
+  const href = tail ? `/${next}/${tail}` : `/${next}`;
+
+  return (
+    <Link
+      href={href}
+      aria-label={`Switch to ${next.toUpperCase()}`}
+      style={{
+        fontFamily: "var(--font-mono, monospace)",
+        fontSize: 11,
+        letterSpacing: "0.18em",
+        color: textColor,
+        textDecoration: "none",
+        padding: "6px 10px",
+        borderRadius: 2,
+        opacity: 0.7,
+        transition: "opacity 200ms",
+      }}
+    >
+      {next.toUpperCase()}
+    </Link>
+  );
+}
 
 export default function SiteNav({
   variant = "light",
@@ -102,6 +134,7 @@ export default function SiteNav({
         </Link>
 
         <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
+          <NavLanguageSwitcher textColor={textColor} />
           {showStickyPrice && (
             <Link
               href="/pricing"
