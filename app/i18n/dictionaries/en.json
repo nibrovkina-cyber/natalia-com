@@ -13,16 +13,71 @@
     "switchLanguage": "RU"
   },
   "home": {
-    "kicker": "AI Marketing Studio · Moscow + LA",
-    "h1Line1": "Ogilvy-grade marketing.",
-    "h1Line2": "From a team of one.",
-    "subhead": "21 AI agents built on Ogilvy, Schwartz, and Hopkins methodology. They handle copywriting, design, SEO, and ads — at once.",
-    "ctaPrimary": "Download free on GitHub →",
-    "ctaSecondary": "Open hosted Studio →",
-    "ctaNote": "no signup · first 3 landings free"
+    "hero": {
+      "kicker": "AI Marketing Studio · Moscow + LA",
+      "h1Line1": "Ogilvy-grade marketing.",
+      "h1Line2": "From a team of one.",
+      "subhead": "21 AI agents built on Ogilvy, Schwartz, and Hopkins methodology. They handle copywriting, design, SEO, and ads — at once.",
+      "ctaPrimary": "Download free on GitHub →",
+      "ctaSecondary": "Open hosted Studio →",
+      "ctaNote": "no signup · first 3 landings free"
+    },
+    "preview": {
+      "domainLabel": "natashabrovkina.com",
+      "statusLabel": "● ready for brief",
+      "quote": "\"First impressions are the only impressions.\"",
+      "quoteAuthor": "— David Ogilvy, 1963",
+      "agentsLabel": "21 agents · ready"
+    },
+    "essay": {
+      "kicker": "Essay · By Natalia Brovkina · April 2026",
+      "h2Main": "Why I built an AI team of twenty-one agents",
+      "h2Italic": "instead of hiring marketers.",
+      "ledeFirstLetter": "F",
+      "ledeRest": "ive years running marketing for entrepreneurs in Russia — from dental clinics outside Moscow to SaaS founders selling into the US and EU. Two patterns kept showing up that don't go away.",
+      "p1": "First: the most beautiful sites don't sell. A client comes in with an 80,000-ruble Tilda template that looks like a three-million-ruble brand and asks why nobody calls. Because the site wasn't the task. Selling was. Nobody asked who this is for, what objection it closes, why the headline reads so politely indifferent.",
+      "p2": "Second: most marketers work on instinct. They don't know Ogilvy's rules, haven't read Schwartz, never opened the Hopkins archive. They write \"quality services from a professional team,\" call it sales copy, and wonder why conversion sits at 0.4%.",
+      "pullQuote": "Methodology is the contract with the AI. Without rules, ChatGPT writes bland corporate text. With Ogilvy and Schwartz, it sells.",
+      "p3": "When the serious LLMs arrived — GPT-4, Claude — one thing became clear. AI can do the executional marketer's job ten times faster. But only if you know what to ask for. Walk into ChatGPT with \"write me a landing page\" and you get bland corporate copy that convinces no one of anything.",
+      "p4": "I took three libraries of rules that have worked for seventy years. Ogilvy — for headlines and the 80/20 law. Schwartz — for the five awareness levels of the audience. Hopkins — for numbers instead of adjectives. I built 21 specialized AI agents. Each one doesn't just suggest copy. It follows specific rules. The copywriter doesn't write \"highest quality\" — it writes \"92% returned within a year.\" The positioner doesn't hand you the abstraction \"for everyone\" — it narrows down to the specific segment where the product actually wins.",
+      "p5": "This isn't ChatGPT with a system prompt. It's thirty years of marketing discipline encoded into a tool. I'm not selling AI hype. I'm selling a system that works because I didn't invent it. I only assembled it for the marketing market where 80% of agencies and freelancers work on instinct.",
+      "p6": "If you're reading this and you run a business — your problem isn't the absence of a beautiful site. Your problem is that the site was written by someone who doesn't know the rules. Show this text to whoever did your current marketing and ask: which Schwartz awareness level was the audience on when the hero was written? Which Ogilvy rule is in the headline? Is the bullet number comparable to a benchmark, or is it abstract?",
+      "p7": "If there's no answer — you know why conversion is 0.4%.",
+      "signatureName": "— Natalia Brovkina",
+      "signatureTitle": "AI Marketing Studio · Moscow + LA",
+      "methodLink": "Read the full methodology →"
+    },
+    "cases": {
+      "kicker": "Cases",
+      "h2Main": "What the AI team has already done",
+      "h2Italic": "for real businesses",
+      "viewMore": "All cases →"
+    },
+    "faq": {
+      "kicker": "FAQ",
+      "h2": "What people usually ask",
+      "items": [
+        { "q": "How long until the first result?", "a": "90 seconds from URL paste to a finished landing page. The other 15 agents respond in 5–20 seconds." },
+        { "q": "How is this different from ChatGPT Plus at $20?", "a": "21 agents with Ogilvy/Schwartz/Hopkins methodology and Brand Memory. ChatGPT forgets context between sessions — my tool remembers the business across every task." },
+        { "q": "Do I need technical skills?", "a": "No. Paste a URL — get the result in the browser — download the HTML. Works with any builder: Tilda, Framer, WordPress, Webflow." },
+        { "q": "What if my niche isn't on the list?", "a": "You pick \"Other.\" Ogilvy/Schwartz/Hopkins methodology is universal — vertical expertise is optional." },
+        { "q": "Do you store my data?", "a": "Brand Memory lives in your browser's localStorage. Only the request goes to the server, not the contents." },
+        { "q": "How do I pay?", "a": "Stripe (international cards) or YooKassa (Russian cards: Mir, Visa Russia, YooMoney, SBP). USD or RUB, no intermediary fees." }
+      ]
+    },
+    "finalCta": {
+      "kicker": "Start",
+      "h2Main": "One URL.",
+      "h2Italic": "A team of twenty-one is waiting.",
+      "subhead": "No signup. First three landings free. After that — $29/mo, or $540 with me personally for 30 days.",
+      "ctaPrimary": "Open the Studio →",
+      "ctaSecondary": "See pricing →"
+    }
   },
   "footer": {
     "tagline": "AI Marketing Studio. Moscow · Los Angeles.",
+    "linksHeading": "Navigation",
+    "contactsHeading": "Contact",
     "rights": "All rights reserved"
   }
 }

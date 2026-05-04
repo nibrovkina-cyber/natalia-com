@@ -1,24 +1,12 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import SiteNav from "../components/SiteNav";
 import SiteFooter from "../components/SiteFooter";
 import Kicker from "../components/Kicker";
 import Reveal from "../components/Reveal";
 import galleryData from "../../content/gallery.json";
-
-export const metadata: Metadata = {
-  title: "Маркетинг по Огилви. Запускает один человек · natashabrovkina.com",
-  description: "AI-команда из 16 агентов на методологии Ogilvy/Schwartz/Hopkins для малого бизнеса в РФ. Премиум-лендинги за 60 секунд из URL. Реальные кейсы: MEDEA Dent ×3.4 заявок, Simbios +58% конверсии.",
-  keywords: ["AI маркетинг", "AI копирайтинг", "Claude AI", "переделать сайт нейросетью", "лендинг бесплатно AI", "маркетинг малый бизнес Россия", "Ogilvy", "Schwartz", "Hopkins", "direct response"],
-  alternates: { canonical: "https://natashabrovkina.com/" },
-  openGraph: {
-    title: "Маркетинг по Огилви. Запускает один человек.",
-    description: "16 AI-агентов на методологии Ogilvy/Schwartz/Hopkins. Премиум-лендинги за 60 секунд из URL.",
-    url: "https://natashabrovkina.com/",
-    type: "website",
-    locale: "ru_RU",
-  },
-};
+import galleryDataEn from "../../content/gallery.en.json";
+import { getDictionary } from "../i18n/get-dictionary";
+import { type Locale, isLocale } from "../i18n/config";
 
 type GalleryItem = {
   slug: string; title: string; niche: string; nicheLabel: string; city: string;
@@ -27,7 +15,10 @@ type GalleryItem = {
   metric?: { value: string; label: string; period: string };
   fixes: string[]; methodology: string[];
 };
-const galleryFeatured = (galleryData as GalleryItem[]).filter(g => g.featured).slice(0, 2);
+function getGalleryFeatured(locale: Locale) {
+  const data = locale === "en" ? galleryDataEn : galleryData;
+  return (data as GalleryItem[]).filter(g => g.featured).slice(0, 2);
+}
 
 const AGENTS = [
   { n: "I",    role: "Позиционирование",    note: "Находит угол, который отличает от всех",  method: "Ogilvy" },
@@ -54,17 +45,11 @@ const METHOD_COLORS: Record<string, string> = {
   Hopkins: "var(--steel)",
 };
 
-const FAQS = [
-  { q: "Сколько времени до первого результата?", a: "90 секунд от вставки URL до готового лендинга. Остальные 15 агентов отвечают за 5–20 секунд." },
-  { q: "Чем отличается от ChatGPT Plus за $20?", a: "16 агентов с методологией Ogilvy/Schwartz/Hopkins и Brand Memory. ChatGPT забывает контекст между сессиями — мой инструмент помнит бизнес во всех задачах." },
-  { q: "Нужны ли технические знания?", a: "Нет. Вставляешь URL — получаешь результат в браузере — скачиваешь HTML. Подходит любой конструктор: Tilda, Framer, WordPress." },
-  { q: "Что если моей ниши нет в списке?", a: "Выбирается «Другое». Методология Ogilvy/Schwartz/Hopkins универсальная, вертикальная экспертиза опциональна." },
-  { q: "Сохраняете ли вы мои данные?", a: "Brand Memory хранится в localStorage браузера. На сервер уходит только запрос, без содержимого." },
-  { q: "Как оплатить из России?", a: "ЮKassa — карты Мир, Visa Russia, ЮMoney, СБП. В рублях, без иностранных посредников." },
-];
-
 export default async function Home({ params }: { params: Promise<{ locale: string }> }) {
-  await params;
+  const { locale: rawLocale } = await params;
+  const locale: Locale = isLocale(rawLocale) ? rawLocale : "ru";
+  const dict = await getDictionary(locale);
+  const galleryFeatured = getGalleryFeatured(locale);
   return (
     <div style={{ background: "var(--cream)", color: "var(--navy)", minHeight: "100vh" }}>
       <SiteNav variant="light" />
@@ -89,7 +74,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
           >
             <div>
               {/* Above-the-fold контент БЕЗ Reveal — Lighthouse LCP / SEO crawler */}
-              <Kicker withDot>AI Marketing Studio · Moscow</Kicker>
+              <Kicker withDot>{dict.home.hero.kicker}</Kicker>
               <h1
                 className="hero-h1"
                 style={{
@@ -104,7 +89,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
                   hyphens: "auto",
                 }}
               >
-                Маркетинг по&nbsp;Огилви.<br />
+                {dict.home.hero.h1Line1}<br />
                 <span
                   style={{
                     display: "block",
@@ -114,7 +99,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
                     marginTop: 8,
                   }}
                 >
-                  Запускает один человек.
+                  {dict.home.hero.h1Line2}
                 </span>
               </h1>
               <p
@@ -128,9 +113,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
                   fontWeight: 400,
                   }}
                 >
-                  16&nbsp;AI-агентов на&nbsp;методологии Ogilvy, Schwartz и&nbsp;Hopkins.
-                  Работают за&nbsp;копирайтера, дизайнера, SEO и&nbsp;таргетолога&nbsp;—
-                  одновременно.
+                  {dict.home.hero.subhead}
                 </p>
               <div
                 className="hero-cta"
@@ -161,7 +144,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
                     boxShadow: "0 8px 24px -12px rgba(31,27,22,0.4)",
                   }}
                 >
-                  Скачать бесплатно на GitHub →
+                  {dict.home.hero.ctaPrimary}
                 </a>
                 <Link
                   href="/tool"
@@ -174,7 +157,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
                     paddingBottom: 3,
                   }}
                 >
-                  Открыть hosted-инструмент →
+                  {dict.home.hero.ctaSecondary}
                 </Link>
               </div>
               <div
@@ -187,7 +170,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
                   textTransform: "uppercase",
                 }}
               >
-                без регистрации · первые 3 лендинга бесплатно
+                {dict.home.hero.ctaNote}
               </div>
             </div>
 
@@ -228,8 +211,8 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
                       marginBottom: 32,
                     }}
                   >
-                    <span>natashabrovkina.com</span>
-                    <span style={{ color: "var(--mint)" }}>● готово к брифу</span>
+                    <span>{dict.home.preview.domainLabel}</span>
+                    <span style={{ color: "var(--mint)" }}>{dict.home.preview.statusLabel}</span>
                   </div>
                   <blockquote
                     style={{
@@ -243,7 +226,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
                       margin: 0,
                     }}
                   >
-                    «Первое впечатление&nbsp;— единственное.»
+                    {dict.home.preview.quote}
                   </blockquote>
                   <div
                     style={{
@@ -254,7 +237,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
                       marginTop: 14,
                     }}
                   >
-                    — David Ogilvy, 1963
+                    {dict.home.preview.quoteAuthor}
                   </div>
                   <div
                     style={{
@@ -274,7 +257,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
                         marginBottom: 18,
                       }}
                     >
-                      16 агентов · готовы
+                      {dict.home.preview.agentsLabel}
                     </div>
                     <div
                       style={{
@@ -1320,7 +1303,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
               </h2>
             </Reveal>
             <div style={{ marginTop: 72 }}>
-              {FAQS.map((item, i) => (
+              {dict.home.faq.items.map((item, i) => (
                 <Reveal key={i} delay={100 + i * 50}>
                   <div
                     style={{
