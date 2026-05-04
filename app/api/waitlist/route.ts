@@ -1,8 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
-import crypto from "node:crypto";
 import { checkLimit } from "@/app/lib/rate-limit";
 
-export const runtime = "nodejs";
+// Edge runtime works on both Vercel and Cloudflare Pages workerd.
+// Web Crypto API is identical across runtimes; no node:crypto dependency.
+export const runtime = "edge";
 
 type Entry = {
   tier: string;
@@ -16,9 +17,14 @@ type Entry = {
 };
 
 // SHA-256 hash для PII в логах. Email/IP не должны попадать в plaintext
-// в Vercel logs — это 152-ФЗ adjacent риск.
-function hashPII(value: string): string {
-  return crypto.createHash("sha256").update(value).digest("hex").slice(0, 16);
+// в logs — это 152-ФЗ adjacent риск. Web Crypto = portable across runtimes.
+async function hashPII(value: string): Promise<string> {
+  const buf = new TextEncoder().encode(value);
+  const digest = await crypto.subtle.digest("SHA-256", buf);
+  const hex = Array.from(new Uint8Array(digest))
+    .map((b) => b.toString(16).padStart(2, "0"))
+    .join("");
+  return hex.slice(0, 16);
 }
 
 export async function POST(req: NextRequest) {
@@ -51,15 +57,20 @@ export async function POST(req: NextRequest) {
 
     // Запись для логов — БЕЗ plaintext PII (152-ФЗ).
     // Plain email + IP попадают только в защищённые каналы (Telegram boт владельца, webhook).
+    const [emailHash, ipHash] = await Promise.all([
+      hashPII(trimmedEmail.toLowerCase()),
+      hashPII(trimmedIp),
+    ]);
+
     const entry: Entry = {
       tier: String(tier).slice(0, 50),
       name: String(name).trim().slice(0, 120),
-      email_hash: hashPII(trimmedEmail.toLowerCase()),
+      email_hash: emailHash,
       email_domain: emailDomain,
       telegram: telegram ? String(telegram).trim().slice(0, 80) : undefined,
       business: business ? String(business).trim().slice(0, 500) : undefined,
       createdAt: new Date().toISOString(),
-      ip_hash: hashPII(trimmedIp),
+      ip_hash: ipHash,
     };
 
     // 1. Logs — без plaintext email/IP. Видны только domain + hash.
