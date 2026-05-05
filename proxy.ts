@@ -17,7 +17,7 @@ function detectLocale(request: NextRequest): "ru" | "en" {
   return i18n.defaultLocale;
 }
 
-export function middleware(request: NextRequest) {
+export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
   // Skip static assets, API, public files
@@ -32,6 +32,7 @@ export function middleware(request: NextRequest) {
     pathname === "/sitemap.xml" ||
     pathname === "/robots.txt" ||
     pathname === "/llms.txt" ||
+    pathname === "/manifest.webmanifest" ||
     pathname.includes(".")
   ) {
     return NextResponse.next();
@@ -53,6 +54,6 @@ export function middleware(request: NextRequest) {
 export const config = {
   matcher: [
     // Match everything except listed paths
-    "/((?!api|_next/static|_next/image|favicon|assets|demo|screens|slides|sitemap.xml|robots.txt|llms.txt).*)",
+    "/((?!api|_next/static|_next/image|favicon|assets|demo|screens|slides|sitemap.xml|robots.txt|llms.txt|manifest.webmanifest).*)",
   ],
 };

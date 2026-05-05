@@ -20,6 +20,14 @@ export async function generateMetadata(
     metadataBase: new URL("https://natashabrovkina.com"),
     title: t.title,
     description: t.description,
+    manifest: "/manifest.webmanifest",
+    icons: {
+      icon: [
+        { url: "/icon-192.png", sizes: "192x192", type: "image/png" },
+        { url: "/icon-512.png", sizes: "512x512", type: "image/png" },
+      ],
+      apple: [{ url: "/icon-192.png", sizes: "192x192", type: "image/png" }],
+    },
     alternates: {
       canonical: `https://natashabrovkina.com/${locale}`,
       languages: {
