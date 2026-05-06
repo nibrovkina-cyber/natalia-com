@@ -54,3 +54,7 @@ next-env.d.ts
 .playwright-auth.json
 /temp_wordstat/
 /temp_research/
+
+# OpenNext build output and wrangler local state
+.open-next/
+.wrangler/
