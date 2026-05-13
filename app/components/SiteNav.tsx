@@ -133,6 +133,37 @@ export default function SiteNav({
           </div>
         </Link>
 
+        {/* Nav links — hidden on mobile */}
+        <nav
+          className="nav-links"
+          style={{ display: "flex", alignItems: "center", gap: 4, flex: 1, justifyContent: "center" }}
+        >
+          {[
+            { href: "/method", label: "Метод" },
+            { href: "/team", label: "Команда" },
+            { href: "/gallery", label: "Кейсы" },
+            { href: "/pricing", label: "Цены" },
+          ].map(({ href, label }) => (
+            <Link
+              key={href}
+              href={href}
+              style={{
+                fontFamily: "var(--font-mono)",
+                fontSize: 11,
+                letterSpacing: "0.14em",
+                textTransform: "uppercase",
+                color: textColor,
+                textDecoration: "none",
+                padding: "6px 14px",
+                opacity: 0.6,
+                transition: "opacity 200ms",
+              }}
+            >
+              {label}
+            </Link>
+          ))}
+        </nav>
+
         <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
           <NavLanguageSwitcher textColor={textColor} />
           {showStickyPrice && (
@@ -201,6 +232,10 @@ export default function SiteNav({
       </div>
       <style>{`
         .nav-cta-short { display: none; }
+        .nav-links a:hover { opacity: 1 !important; }
+        @media (max-width: 860px) {
+          .nav-links { display: none !important; }
+        }
         @media (max-width: 640px) {
           .nav-row {
             padding: 12px 18px !important;

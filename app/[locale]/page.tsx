@@ -916,6 +916,221 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
           </div>
         </section>
 
+        {/* ============ YOUTUBE — channel preview ============ */}
+        <section
+          style={{
+            borderTop: "1px solid var(--line)",
+            padding: "160px 48px",
+          }}
+        >
+          <div style={{ maxWidth: 1120, margin: "0 auto" }}>
+            <Reveal>
+              <Kicker>YouTube</Kicker>
+            </Reveal>
+            <Reveal delay={80}>
+              <h2
+                style={{
+                  fontFamily: "var(--font-serif)",
+                  fontSize: "clamp(36px, 5vw, 68px)",
+                  lineHeight: 1.06,
+                  letterSpacing: "-0.02em",
+                  fontWeight: 500,
+                  marginTop: 28,
+                  maxWidth: 860,
+                }}
+              >
+                Смотри как работает{" "}
+                <span style={{ fontStyle: "italic", color: "var(--steel)" }}>
+                  маркетинговый AI.
+                </span>
+              </h2>
+            </Reveal>
+            <Reveal delay={140}>
+              <p
+                style={{
+                  fontFamily: "var(--font-serif)",
+                  fontSize: 19,
+                  lineHeight: 1.7,
+                  color: "var(--steel)",
+                  fontStyle: "italic",
+                  maxWidth: 600,
+                  marginTop: 32,
+                }}
+              >
+                Разборы, кейсы и живые демо: как 16 агентов пишут тексты, строят воронки
+                и заменяют целый маркетинговый отдел.
+              </p>
+            </Reveal>
+
+            <Reveal delay={200}>
+              <div
+                className="youtube-grid"
+                style={{
+                  display: "grid",
+                  gridTemplateColumns: "1.6fr 1fr",
+                  gap: 2,
+                  marginTop: 64,
+                }}
+              >
+                {/* Featured video embed */}
+                <div
+                  style={{
+                    position: "relative",
+                    paddingBottom: "56.25%",
+                    height: 0,
+                    overflow: "hidden",
+                    background: "var(--navy)",
+                  }}
+                >
+                  <iframe
+                    src="https://www.youtube.com/embed?listType=user_uploads&list=@NataliaBrovkina"
+                    title="YouTube канал — Наталия Бровкина"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                    style={{
+                      position: "absolute",
+                      top: 0,
+                      left: 0,
+                      width: "100%",
+                      height: "100%",
+                      border: "none",
+                    }}
+                  />
+                </div>
+
+                {/* Channel info */}
+                <div
+                  style={{
+                    background: "var(--navy)",
+                    color: "var(--cream)",
+                    padding: "48px 40px",
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "space-between",
+                  }}
+                >
+                  <div>
+                    <div
+                      style={{
+                        fontFamily: "var(--font-mono)",
+                        fontSize: 10,
+                        letterSpacing: "0.28em",
+                        textTransform: "uppercase",
+                        color: "var(--mint)",
+                        marginBottom: 20,
+                      }}
+                    >
+                      YouTube · Наталия Бровкина
+                    </div>
+                    <div
+                      style={{
+                        fontFamily: "var(--font-serif)",
+                        fontSize: "clamp(22px, 2.5vw, 30px)",
+                        fontWeight: 500,
+                        lineHeight: 1.2,
+                        letterSpacing: "-0.015em",
+                      }}
+                    >
+                      Маркетинг который<br />
+                      <span style={{ fontStyle: "italic", color: "var(--gold)" }}>
+                        можно измерить
+                      </span>
+                    </div>
+                    <p
+                      style={{
+                        fontFamily: "var(--font-serif)",
+                        fontSize: 15,
+                        lineHeight: 1.65,
+                        color: "rgba(245,243,239,0.65)",
+                        fontStyle: "italic",
+                        marginTop: 20,
+                      }}
+                    >
+                      Разборы реальных сайтов, демо агентов в работе,
+                      кейсы малого бизнеса. Без теории — только практика.
+                    </p>
+                  </div>
+
+                  <div style={{ marginTop: 48 }}>
+                    <div
+                      style={{
+                        borderTop: "1px solid rgba(245,243,239,0.12)",
+                        paddingTop: 28,
+                        display: "flex",
+                        flexDirection: "column",
+                        gap: 12,
+                      }}
+                    >
+                      {[
+                        "Как написать лендинг за 4 минуты",
+                        "5 уровней осознанности по Schwartz",
+                        "Аудит сайта · live demo",
+                      ].map((title, i) => (
+                        <div
+                          key={i}
+                          style={{
+                            display: "flex",
+                            alignItems: "center",
+                            gap: 12,
+                          }}
+                        >
+                          <span
+                            style={{
+                              fontFamily: "var(--font-serif)",
+                              fontStyle: "italic",
+                              color: "var(--gold)",
+                              fontSize: 14,
+                              minWidth: 24,
+                            }}
+                          >
+                            {i + 1}.
+                          </span>
+                          <span
+                            style={{
+                              fontFamily: "var(--font-serif)",
+                              fontSize: 14,
+                              color: "rgba(245,243,239,0.8)",
+                              lineHeight: 1.4,
+                            }}
+                          >
+                            {title}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+
+                    <a
+                      href="https://www.youtube.com/@NataliaBrovkina"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{
+                        display: "inline-flex",
+                        alignItems: "center",
+                        gap: 10,
+                        marginTop: 32,
+                        padding: "14px 28px",
+                        border: "1px solid rgba(245,243,239,0.24)",
+                        color: "var(--cream)",
+                        fontFamily: "var(--font-mono)",
+                        fontSize: 11,
+                        letterSpacing: "0.18em",
+                        textTransform: "uppercase",
+                        textDecoration: "none",
+                        transition: "border-color .2s",
+                      }}
+                    >
+                      <svg width="16" height="12" viewBox="0 0 16 12" fill="none">
+                        <path d="M15.7 1.88A2 2 0 0 0 14.32.5C13.07.14 8 .14 8 .14S2.93.14 1.68.5A2 2 0 0 0 .3 1.88C0 3.14 0 5.76 0 5.76s0 2.62.3 3.88a2 2 0 0 0 1.38 1.38C2.93 11.38 8 11.38 8 11.38s5.07 0 6.32-.36a2 2 0 0 0 1.38-1.38C16 8.38 16 5.76 16 5.76s0-2.62-.3-3.88zM6.36 8.16V3.36l4.24 2.4-4.24 2.4z" fill="currentColor"/>
+                      </svg>
+                      Открыть канал
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </Reveal>
+          </div>
+        </section>
+
         {/* ============ TWO WAYS — two editorial columns ============ */}
         <section
           style={{
@@ -1373,7 +1588,8 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
           .manifesto-cols,
           .cases-grid,
           .agents-grid,
-          .two-ways-grid {
+          .two-ways-grid,
+          .youtube-grid {
             grid-template-columns: 1fr !important;
             gap: 48px !important;
           }
