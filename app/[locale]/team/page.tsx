@@ -255,9 +255,9 @@ export default function TeamPage() {
               }}
             >
               {AGENTS.map((a, i) => (
-                <Reveal key={i} delay={40 + (i % 8) * 30}>
-                  <div
-                    className="team-card"
+                <div
+                  key={i}
+                  className="team-card"
                     style={{
                       padding: "36px 32px 36px",
                       borderRight: "1px solid var(--line)",
@@ -348,8 +348,7 @@ export default function TeamPage() {
                     >
                       {a.detail}
                     </div>
-                  </div>
-                </Reveal>
+                </div>
               ))}
             </div>
           </div>
