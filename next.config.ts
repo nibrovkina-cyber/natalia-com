@@ -1,7 +1,4 @@
 import type { NextConfig } from "next";
-import { initOpenNextCloudflareForDev } from "@opennextjs/cloudflare";
-
-initOpenNextCloudflareForDev();
 
 const nextConfig: NextConfig = {
   // Locale-prefix redirects. Replaces proxy.ts (Next 16 proxy can't run on Edge,
