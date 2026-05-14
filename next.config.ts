@@ -1,16 +1,10 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  async rewrites() {
-    return [
-      // Root → personal site (static HTML served from public/)
-      { source: "/", destination: "/personal.html" },
-    ];
-  },
   async redirects() {
     return [
-      // /studio is the friendly alias for the marketing section
-      { source: "/studio", destination: "/ru", permanent: false },
+      { source: "/", destination: "/ru", permanent: false },
+      { source: "/about", destination: "/personal.html", permanent: false },
       { source: "/method", destination: "/ru/method", permanent: false },
       { source: "/tool", destination: "/ru/tool", permanent: false },
       { source: "/pricing", destination: "/ru/pricing", permanent: false },
