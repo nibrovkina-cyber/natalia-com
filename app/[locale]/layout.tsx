@@ -83,8 +83,15 @@ function buildJsonLd(locale: Locale) {
         alternateName: locale === "ru" ? "Natalia Brovkina" : "Наталья Бровкина",
         url: "https://natashabrovkina.com",
         jobTitle: locale === "ru" ? "Основатель, AI Marketing Studio" : "Founder, AI Marketing Studio",
+        // sameAs consolidates the entity across platforms so AI engines
+        // (ChatGPT, Perplexity, Google AI Overviews) resolve one Nataliya Brovkina.
         sameAs: [
           "https://t.me/NATASHABROVKINA",
+          "https://t.me/nataliyabrovkina",
+          "https://www.youtube.com/@nataliyabrovkina",
+          "https://www.youtube.com/@NateBrovk",
+          "https://x.com/NataliyaBrovk",
+          "https://www.linkedin.com/in/nataliya-brovkina-b42a3bb6",
           "https://github.com/nibrovkina-cyber",
         ],
         knowsAbout:

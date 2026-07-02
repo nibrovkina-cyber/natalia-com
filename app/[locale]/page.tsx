@@ -31,6 +31,10 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
   const locale: Locale = isLocale(rawLocale) ? rawLocale : "ru";
   const dict = await getDictionary(locale);
   const galleryFeatured = getGalleryFeatured(locale);
+  // YouTube channel is language-specific: EN audience → EN channel, RU → RU channel.
+  const ytHandle = locale === "en" ? "@nataliyabrovkina" : "@NateBrovk";
+  const ytUrl = `https://www.youtube.com/${ytHandle}`;
+  const ytName = locale === "en" ? "Nataliya Brovkina" : "Наталия Бровкина";
   return (
     <div style={{ background: "var(--cream)", color: "var(--navy)", minHeight: "100vh" }}>
       <SiteNav variant="light" />
@@ -983,8 +987,8 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
                   }}
                 >
                   <iframe
-                    src="https://www.youtube.com/embed?listType=user_uploads&list=@NataliaBrovkina"
-                    title="YouTube канал — Наталия Бровкина"
+                    src={`https://www.youtube.com/embed?listType=user_uploads&list=${ytHandle}`}
+                    title={`YouTube — ${ytName}`}
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen
                     style={{
@@ -1020,7 +1024,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
                         marginBottom: 20,
                       }}
                     >
-                      YouTube · Наталия Бровкина
+                      YouTube · {ytName}
                     </div>
                     <div
                       style={{
@@ -1100,7 +1104,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
                     </div>
 
                     <a
-                      href="https://www.youtube.com/@NataliaBrovkina"
+                      href={ytUrl}
                       target="_blank"
                       rel="noopener noreferrer"
                       style={{
